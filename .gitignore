@@ -1,0 +1,29 @@
+# --- Sistema operativo e IDE ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# --- Backend Python (cartella backend/) ---
+backend/.venv/
+backend/venv/
+backend/env/
+backend/__pycache__/
+backend/*.pyc
+backend/.env
+backend/dist/
+backend/build/
+backend/*.egg-info/
+
+# --- Frontend Laravel (cartella frontend/) ---
+frontend/vendor/
+frontend/node_modules/
+frontend/.env
+frontend/storage/*.key
+frontend/storage/logs/*.log
+frontend/storage/framework/cache/data/*
+frontend/storage/framework/sessions/*
+frontend/storage/framework/views/*
+frontend/public/build/
+frontend/public/hot
+frontend/.phpunit.result.cache

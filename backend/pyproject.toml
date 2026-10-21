@@ -1,0 +1,28 @@
+[project]
+name = "travel-agent-api"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Mizzoni Adamo Junior", email = "adamojr@outlook.it"}
+]
+readme = "README.md"
+requires-python = ">=3.10,<4.0"
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "openai",
+    "langchain",
+    "langchain-openai",
+    "langchain-community",
+    "langgraph",
+    "pydantic",
+    "python-dotenv",
+    "google-search-results"
+]
+
+[tool.poetry]
+packages = [{include = "travel_agent_api", from = "src"}]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

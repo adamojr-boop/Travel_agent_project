@@ -2,7 +2,7 @@
     <div class="chat-header my-3 d-flex flex-column flex-lg-row align-items-lg-center justify-content-between pe-2">
         {{-- <h2 class="fs-4 text-truncate">{{ $chatTitle ?? '' }}</h2> --}}
     </div>
-    <div class="chat-box mt-3 mt-md-0">
+    <div class="chat-box mt-3 mt-md-0 rounded-top-3" style="border: 1px solid var(--lilac-ash);">
         @forelse ($chatMessages as $key => $chatMessage)
             @if($chatMessage['type'] == 'human')
             <div wire:key="{{ $key }}" class="chat-message sent">
@@ -17,7 +17,7 @@
             @endif
 
             @if($chatMessage['type'] == 'ai' && $chatMessage['content'])
-            <div wire:key="{{ $key }}" class="chat-message ">
+            <div wire:key="{{ $key }}" class="chat-message received">
                 <div class="chat-message-avatar">
                     <img src="/RagsAI-LOGO.png" alt="Avatar">
                 </div>
@@ -35,7 +35,7 @@
             </div>
         @endforelse 
     </div>
-    <form id="submitForm" wire:submit.prevent="ask" class="chat-input py-3 align-items-center">
+    <form id="submitForm" wire:submit.prevent="ask" class="chat-input py-3 align-items-center rounded-bottom-3" style="border: 1px solid var(--lilac-ash);">
         <div class="flex-grow-1">
             <div id="inputWrapper" class="w-100">
                 <input class="messageInput" placeholder="Send a message to start the conversation..." wire:model.live="currentMessage" type="text">

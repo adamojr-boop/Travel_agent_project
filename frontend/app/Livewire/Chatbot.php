@@ -37,29 +37,42 @@ class Chatbot extends Component
     }
 
 
-    public function generateResponse(){
+    public function generateResponse()
+    {
+        $response = Http::timeout(120)
+            ->withOptions(['stream' => true])
+            ->post(env('FASTAPI_URL') . "/chat/travel-agent/stream", [
+                'messages' => $this->chatMessages
+            ]);
 
-        $response = Http::timeout(120)->post(env('FASTAPI_URL') . "/chat/travel-agent" , [
-            'messages' => $this->chatMessages
-        ]);
+        $body = $response->toPsrResponse()->getBody();
+        $full = '';
+        $pending = '';
 
+        while (!$body->eof()) {
+            $pending .= $body->read(16);
 
-        $content = $response->json();
+            // Invia solo byte UTF-8 completi: un carattere può arrivare spezzato
+            $len = strlen($pending);
+            while ($len > 0 && !mb_check_encoding(substr($pending, 0, $len), 'UTF-8')) {
+                $len--;
+            }
+            if ($len === 0) {
+                continue;
+            }
 
-        if(!isset($content))
-        {
-            dd($content);
+            $piece = substr($pending, 0, $len);
+            $pending = substr($pending, $len);
+            $full .= $piece;
+            $this->stream(to: 'answer', content: $piece);
         }
 
-        // $messages = collect($content['messages']);
+        $full .= $pending;
 
-        // $this->chatMessages = $messages->filter(function($message){
-        //     return $message['type'] !== 'system';
-        // })->toArray();
-
-        $this->chatMessages = $content;
-
-
+        $this->chatMessages[] = [
+            'type' => 'ai',
+            'content' => $full
+        ];
     }
 
     public function render()

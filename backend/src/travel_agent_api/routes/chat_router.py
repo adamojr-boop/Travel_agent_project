@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+from fastapi.responses import StreamingResponse
 from pydantic import BaseModel  
 from travel_agent_api.services.agent_service import Agent  
 
@@ -21,6 +22,21 @@ class ChatComplentionRequest(BaseModel):
             }
         }
     }
+
+@router.post("/travel-agent/stream")
+def chat_completion_stream(request: ChatComplentionRequest):
+    """Restituisce la risposta dell'agente in streaming (testo semplice)."""
+    def generate():
+        try:
+            yield from Agent().stream(messages=request.messages)
+        except Exception as e:
+            yield f"⚠️ Si è verificato un errore nel backend dell'agente: {e}"
+
+    return StreamingResponse(
+        generate(),
+        media_type="text/plain; charset=utf-8",
+        headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
+    )
 
 @router.post("/travel-agent")  
 def chat_completion(request: ChatComplentionRequest):

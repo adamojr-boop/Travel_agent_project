@@ -113,6 +113,11 @@ body {
     border-right: 1px solid var(--border-color);
 }
 
+/* Nasconde il messaggio in streaming finché non arriva il primo testo */
+.chat-message:has([wire\:stream]:empty) {
+    display: none !important;
+}
+
 .sidebar-offcanvas {
     --bs-offcanvas-bg: var(--bg-card);
     --bs-offcanvas-color: var(--text-dark);
@@ -247,7 +252,12 @@ body {
     background-color: var(--bg-card);
     border: 1.5px solid var(--dusty-mauve);
     align-self: flex-start;
+    align-items: flex-start;
     flex-direction: row-reverse;
+}
+
+.chat-box .chat-message.received p {
+    margin-bottom: 0;
 }
 
 .chat-box .chat-message.received .chat-message-avatar img {

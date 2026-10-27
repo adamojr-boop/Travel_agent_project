@@ -63,7 +63,7 @@ format: markdown
 class Agent:
     def __init__(self):
         self.current_datetime = datetime.now()
-        self.model = ChatOpenAI(model_name="gpt-4o")
+        self.model = ChatOpenAI(model_name="gpt-4o", streaming=True)
         self.tools = [
             chain_historical_expert,
             flights_finder,
@@ -72,7 +72,17 @@ class Agent:
         ]
         self.agent_executor = create_react_agent(self.model, self.tools)
         
-    def run(self, messages: list):
+    def stream(self, messages: list):
+        """Genera il testo della risposta finale dell'agente a pezzi."""
+        conversation_history = self._build_history(messages)
+        for chunk, meta in self.agent_executor.stream(
+            {"messages": conversation_history}, stream_mode="messages"
+        ):
+            # Ignora i messaggi dei tool e le chiamate ai tool (senza testo)
+            if meta.get("langgraph_node") == "agent" and isinstance(chunk.content, str) and chunk.content:
+                yield chunk.content
+
+    def _build_history(self, messages: list):
         SYSTEM_PROMPT = f"""
             Sei un travel planner. Il tuo compito e' organizzare il viaggio per l'utente. 
             Aggiungi delle emojis per rendere il tuo output piu' interessante.
@@ -90,6 +100,9 @@ class Agent:
         print("Agent service - SYSTEM_PROMPT")
         print("*" * 80)
 
-        conversation_history = [{"role": "system", "content": SYSTEM_PROMPT}] + messages
+        return [{"role": "system", "content": SYSTEM_PROMPT}] + messages
+
+    def run(self, messages: list):
+        conversation_history = self._build_history(messages)
         response = self.agent_executor.invoke({"messages": conversation_history})
         return response["messages"][1:]

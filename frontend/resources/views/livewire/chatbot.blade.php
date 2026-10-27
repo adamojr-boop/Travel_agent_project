@@ -34,6 +34,17 @@
                 </div>
             </div>
         @endforelse 
+
+        @if($userPrompt)
+        <div wire:loading.flex wire:target="generateResponse" class="chat-message received">
+            <div class="chat-message-avatar">
+                <img src="/RagsAI-LOGO.png" alt="Avatar">
+            </div>
+            <div>
+                <p wire:stream="answer" style="white-space: pre-wrap;"></p>
+            </div>
+        </div>
+        @endif
     </div>
     <form id="submitForm" wire:submit.prevent="ask" class="chat-input py-3 align-items-center rounded-bottom-3" style="border: 1px solid var(--lilac-ash);">
         <div class="flex-grow-1">

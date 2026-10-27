@@ -1,20 +1,17 @@
 <div class="d-flex align-items-center">
-  <button class="btn d-md-none ms-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasResponsive" aria-controls="offcanvasResponsive">
+  <button class="btn d-sm-none ms-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasResponsive" aria-controls="offcanvasResponsive">
     <i class="bi bi-list fs-1" style="color: var(--text-dark);"></i>
   </button>
-  {{-- <h1 class="mb-0 d-block d-md-none">RagsAI</h1> --}}
 </div>
 
-<div class="offcanvas-md offcanvas-start" tabindex="-1" id="offcanvasResponsive" aria-labelledby="offcanvasResponsiveLabel">
+<div class="offcanvas-sm offcanvas-start sidebar-offcanvas" tabindex="-1" id="offcanvasResponsive">
   <div class="offcanvas-header">
-    <a href="{{ route('chat.index') }}" class="d-flex align-items-center gap-3 mb-0 me-md-auto link-body-emphasis text-decoration-none">
-      <h1 class="fs-3 mb-0">Planner Helper</h1>
-    </a>
+    <h1 class="fs-3 mb-0">Planner Helper</h1>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasResponsive" aria-label="Close"></button>
   </div>
-  <div class="offcanvas-body">
-    <div class="d-flex flex-column flex-shrink-0 p-md-4 sidebar rounded-3">
-      <a href="{{ route('chat.index') }}" class="d-none d-md-flex align-items-center gap-3 mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+  <div class="offcanvas-body p-0">
+    <div class="d-flex flex-column flex-shrink-0 sidebar rounded-top-3">
+      <a href="{{ route('chat.index') }}" class="d-none d-sm-flex align-items-center gap-3 mb-0 link-body-emphasis text-decoration-none">
           <img class="logo" src="/RagsAI-LOGO.png" alt="">
           <h1 class="fs-3">Planner Helper</h1>
       </a> 
@@ -28,20 +25,20 @@
         </li>
         <li class="mb-1">
           <a href="#" class="nav-link">
-            <i class="bi bi-gear"></i>
-            Impostazioni
+            <i class="bi bi-signpost-split"></i>
+            Itinerari
           </a>
         </li>
         <li class="mb-1">
           <a href="#" class="nav-link">
-            <i class="bi bi-box-arrow-in-right"></i>
-            Accedi
+            <i class="bi bi-globe-europe-africa"></i>
+            Regioni
           </a>
         </li>
         <li class="mb-1">
           <a href="#" class="nav-link">
             <i class="bi bi-person-plus"></i>
-            Registrati
+            Fornitori
           </a>
         </li>
         {{-- <li class="nav-item">
@@ -85,8 +82,6 @@
           <li><a class="dropdown-item" href="#">Sign out</a></li>
         </ul>
       </div>
-  </div>
+    </div>
   </div>
 </div>
-
-

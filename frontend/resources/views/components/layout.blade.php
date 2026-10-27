@@ -16,10 +16,10 @@
     @vite(['resources/css/app.css' , 'resources/js/app.js'])
   </head>
   <body data-bs-theme="dark">
-    <div class="d-block d-md-flex">
+    <div class="d-block d-sm-flex">
       
       <x-sidebar/>
-        <main class="w-100 p-md-4">
+        <main class="w-100 p-sm-4" style="min-width: 0;">
             {{ $slot }}
         </main>
     </div>

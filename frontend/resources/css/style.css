@@ -107,13 +107,27 @@ body {
 /* Sidebar */
 .sidebar {
     min-height: 100vh;
-    width: 300px;
+    padding-top: 12px;
+    width: 170px;
     background-color: var(--lavender-veil);
     border-right: 1px solid var(--border-color);
 }
 
+.sidebar-offcanvas {
+    --bs-offcanvas-bg: var(--bg-card);
+    --bs-offcanvas-color: var(--text-dark);
+}
+
+@media (min-width: 576px) {
+    .sidebar-offcanvas {
+        flex-shrink: 0;
+    }
+}
+
 .sidebar .logo {
     width: 40px;
+    left: 1%;
+    position: sticky;
 }
 
 .sidebar .nav-link {

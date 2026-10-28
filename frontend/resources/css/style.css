@@ -11,6 +11,7 @@
     --text-dark: #2D282E;
     --accent-color: var(--lavender-2);
     --accent-hover: var(--dusty-mauve);
+    --border-dark: var(--border-color);
 }
 
 * {
@@ -197,6 +198,11 @@ body {
     font-weight: 500;
 }
 
+.form-control::placeholder {
+    color: var(--text-dark);
+    opacity: .7;
+}
+
 .chat-input input::placeholder {
     color: #5C525E;
     opacity: 0.8;
@@ -290,7 +296,13 @@ body {
 }
 
 /* Tabelle e Documenti */
-table {
+table,
+.table {
+    --bs-table-bg: var(--bg-main);
+    --bs-table-color: var(--text-dark);
+    --bs-table-border-color: var(--border-dark);
+    --bs-table-striped-bg: transparent;
+    --bs-table-hover-bg: var(--lavender-2);
     border-collapse: collapse;
     margin: 0;
     padding: 0;
@@ -300,13 +312,19 @@ table {
 }
  
 table tr {
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-dark);
     padding: .35em;
 }
  
 table th,
 table td {
-    padding: .625em;    
+    padding: .625em;
+    border-right: 1px solid var(--border-dark);
+}
+
+table th:last-child,
+table td:last-child {
+    border-right: 0;
 }
  
 table th {
@@ -381,6 +399,7 @@ table th {
     }
     
     table td {
+      border-right: 0;
       border-bottom: 1px solid var(--border-color);
       display: block;
       font-size: 1em;

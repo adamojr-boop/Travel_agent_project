@@ -24,47 +24,23 @@
           </a>
         </li>
         <li class="mb-1">
-          <a href="#" class="nav-link">
+          <a href="{{ route('itinerari.index') }}" class="nav-link {{ Route::currentRouteName() == 'itinerari.index' ? 'active' : '' }}">
             <i class="bi bi-signpost-split"></i>
             Itinerari
           </a>
         </li>
         <li class="mb-1">
-          <a href="#" class="nav-link">
+          <a href="{{ route('regioni.index') }}" class="nav-link {{ Route::currentRouteName() == 'regioni.index' ? 'active' : '' }}">
             <i class="bi bi-globe-europe-africa"></i>
             Regioni
           </a>
         </li>
         <li class="mb-1">
-          <a href="#" class="nav-link">
+          <a href="{{ route('fornitori.index') }}" class="nav-link {{ Route::currentRouteName() == 'fornitori.index' ? 'active' : '' }}">
             <i class="bi bi-person-plus"></i>
             Fornitori
           </a>
         </li>
-        {{-- <li class="nav-item">
-          <a href="{{ route('home') }}" class="nav-link link-body-emphasis {{ (Route::currentRouteName() == 'home') ? 'active' : ''}}" aria-current="page">
-              <i class="bi bi-house"></i>
-              Home
-          </a>
-        </li> --}}
-        {{-- <li class="mb-3">
-          <a 
-            href="{{ route('chat.index') }}" 
-            class="nav-link link-body-emphasis {{ (Route::currentRouteName() == 'chat.index') ? 'active' : ''}}"
-          >
-            <i class="bi bi-chat"></i>
-            Chat
-          </a>
-        </li> --}}
-        {{-- <li class="mb-3">
-          <a 
-            href="{{ route('documents.index') }}" 
-            class="nav-link link-body-emphasis {{ (Route::currentRouteName() == 'documents.index') ? 'active' : ''}}"
-          >
-            <i class="bi bi-file-earmark-break"></i>
-            Documents
-          </a>
-        </li> --}}
       </ul>
       <div>
 

@@ -1,32 +1,29 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Livewire\ItinerariIndex;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ItinerarioController;
 use App\Http\Controllers\RegioneController;
 use App\Http\Controllers\FornitoreController;
 
-// Rotta Chat
+// 1. Home / Chat
 Route::controller(ChatController::class)
     ->group(function(){
         Route::get('/', 'index')->name('chat.index');
     });
 
-// Rotta Itinerari
-Route::controller(ItinerarioController::class)
-    ->prefix('itinerari')
-    ->group(function(){
-        Route::get('/', 'index')->name('itinerari.index');
-    });
+// 2. Itinerari (Puntato direttamente al componente Livewire)
+Route::get('/itinerari', ItinerariIndex::class)->name('itinerari.index');
 
-// Rotta Regioni
+// 3. Regioni
 Route::controller(RegioneController::class)
     ->prefix('regioni')
     ->group(function(){
         Route::get('/', 'index')->name('regioni.index');
     });
 
-// Rotta Fornitori
+// 4. Fornitori
 Route::controller(FornitoreController::class)
     ->prefix('fornitori')
     ->group(function(){

@@ -127,7 +127,28 @@ body {
 @media (min-width: 576px) {
     .sidebar-offcanvas {
         flex-shrink: 0;
+        position: sticky;
+        top: 0;
+        align-self: flex-start;
+        height: 100vh;
     }
+}
+
+/* Sezione filtri, con lo stesso sfondo generale lavanda/azzurro */
+.filters-panel {
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.filters-panel .form-control,
+.filters-panel .form-select {
+    color-scheme: light;
+}
+
+.itinerary-card {
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-color);
 }
 
 .sidebar .logo {

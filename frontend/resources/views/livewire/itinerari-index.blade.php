@@ -1,68 +1,83 @@
-<div class="container py-4">
-    <div class="row mb-4">
-        <div class="col-md-12 text-center">
-            <h1 class="fw-bold text-primary">ZampApp - Esplora gli Itinerari</h1>
-            <p class="text-muted">Trova il viaggio perfetto tra le meraviglie d'Italia</p>
+<div class="d-flex flex-column gap-4">
+    <div class="card ragsy-card p-4 d-flex flex-column gap-4">
+        
+        <!-- Intestazione della sezione -->
+        <div>
+            <h2 class="mb-1" style="color: var(--text-dark);">Esplora gli Itinerari</h2>
+            <p class="mb-0" style="color: var(--text-dark);">Trova il viaggio perfetto filtrando per regione, prezzo o durata.</p>
+        </div>
+
+        <!-- Sezione Filtri con sfondo lavanda/azzurro -->
+        <div class="filters-panel p-4">
+            <div class="row g-3">
+                <!-- Filtro per Regione -->
+                <div class="col-md-4">
+                    <label for="searchRegione" class="form-label fw-bold" style="color: var(--text-dark);">Filtra per Regione</label>
+                    <select wire:model.live="searchRegione" id="searchRegione" class="form-select" style="background-color: #ffffff; border-color: var(--lilac-ash); color: var(--text-dark);">
+                        <option value="">Tutte le regioni</option>
+                        @foreach($regioni as $regione)
+                            <option value="{{ $regione->nome }}">{{ $regione->nome }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <!-- Filtro per Prezzo Massimo -->
+                <div class="col-md-4">
+                    <label for="prezzoMax" class="form-label fw-bold" style="color: var(--text-dark);">Prezzo Massimo (€)</label>
+                    <input wire:model.live="prezzoMax" type="number" id="prezzoMax" class="form-control" placeholder="Es. 600" style="background-color: #ffffff; border-color: var(--lilac-ash); color: var(--text-dark);">
+                </div>
+
+                <!-- Filtro per Durata Minima -->
+                <div class="col-md-4">
+                    <label for="durataMinima" class="form-label fw-bold" style="color: var(--text-dark);">Durata Minima (Giorni)</label>
+                    <input wire:model.live="durataMinima" type="number" id="durataMinima" class="form-control" placeholder="Es. 3" style="background-color: #ffffff; border-color: var(--lilac-ash); color: var(--text-dark);">
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- SEZIONE FILTRI -->
-    <div class="card shadow-sm mb-4 p-4 bg-light border-0">
-        <div class="row g-3">
-            <!-- Filtro per Regione -->
-            <div class="col-md-4">
-                <label for="searchRegione" class="form-label fw-semibold">Filtra per Regione</label>
-                <select wire:model.live="searchRegione" id="searchRegione" class="form-select">
-                    <option value="">Tutte le regioni</option>
-                    @foreach($regioni as $regione)
-                        <option value="{{ $regione->nome }}">{{ $regione->nome }}</option>
-                    @endforeach
-                </select>
-            </div>
+    <div class="card ragsy-card p-4">
+        <!-- Griglia degli Itinerari con sfondo lavanda/azzurro -->
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            @forelse($itinerari as $itinerario)
+                <div class="col">
+                    <div class="card h-100 shadow-sm rounded-3 itinerary-card">
+                        <div class="card-body d-flex flex-column p-4">
+                            <!-- Titolo del viaggio -->
+                            <h4 class="card-title fw-bold mb-2" style="color: var(--text-dark);">{{ $itinerario->titolo }}</h4>
+                            
+                            <!-- Descrizione -->
+                            <p class="card-text small flex-grow-1 mb-3" style="color: var(--text-dark);">
+                                {{ $itinerario->descrizione }}
+                            </p>
+                            
+                            <!-- Badge delle Regioni collegate -->
+                            <div class="mb-3">
+                                @foreach($itinerario->regioni as $reg)
+                                    <span class="badge me-1 px-2 py-1" style="background-color: #ffffff; color: var(--text-dark); border: 1px solid var(--lilac-ash);">
+                                        {{ $reg->nome }}
+                                    </span>
+                                @endforeach
+                            </div>
 
-            <!-- Filtro per Prezzo Massimo -->
-            <div class="col-md-4">
-                <label for="prezzoMax" class="form-label fw-semibold">Prezzo Massimo (€)</label>
-                <input wire:model.live="prezzoMax" type="number" id="prezzoMax" class="form-control" placeholder="Es. 600">
-            </div>
-
-            <!-- Filtro per Durata Minima -->
-            <div class="col-md-4">
-                <label for="durataMinima" class="form-label fw-semibold">Durata Minima (Giorni)</label>
-                <input wire:model.live="durataMinima" type="number" id="durataMinima" class="form-control" placeholder="Es. 3">
-            </div>
-        </div>
-    </div>
-
-    <!-- GRIGLIA DEGLI ITINERARI -->
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-        @forelse($itinerari as $itinerario)
-            <div class="col">
-                <div class="card h-100 shadow-sm border-0">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title fw-bold text-dark">{{ $itinerario->titolo }}</h5>
-                        <p class="card-text text-secondary small flex-grow-1">{{ $itinerario->descrizione }}</p>
-                        
-                        <!-- Badge delle Regioni collegate -->
-                        <div class="mb-3">
-                            @foreach($itinerario->regioni as $reg)
-                                <span class="badge bg-secondary me-1">{{ $reg->nome }}</span>
-                            @endforeach
-                        </div>
-
-                        <div class="d-flex justify-content-between align-items-center mt-auto pt-3 border-top">
-                            <span class="text-success fw-bold fs-5">€ {{ number_format($itinerario->prezzo, 2, ',', '.') }}</span>
-                            <span class="badge bg-primary text-light">{{ $itinerario->durata_giorni }} Giorni</span>
+                            <!-- Prezzo e Durata -->
+                            <div class="d-flex justify-content-between align-items-center mt-auto pt-3 border-top" style="border-color: var(--lilac-ash);">
+                                <span class="fw-bold fs-4" style="color: #198754;">€ {{ number_format($itinerario->prezzo, 2, ',', '.') }}</span>
+                                <span class="badge px-3 py-2 fs-6" style="background-color: #ffffff; color: var(--text-dark); border: 1px solid var(--lilac-ash);">
+                                    {{ $itinerario->durata_giorni }} Giorni
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        @empty
-            <div class="col-12">
-                <div class="alert alert-warning text-center py-4" role="alert">
-                    Nessun itinerario trovato con i filtri selezionati. Prova a modificare i parametri di ricerca!
+            @empty
+                <div class="col-12">
+                    <div class="alert text-center py-4 rounded-3 m-0" style="background-color: #ffffff; border: 1px solid var(--border-color); color: var(--text-dark);" role="alert">
+                        Nessun itinerario trovato con i filtri selezionati. Prova a modificare i parametri!
+                    </div>
                 </div>
-            </div>
-        @endforelse
+            @endforelse
+        </div>
+
     </div>
 </div>

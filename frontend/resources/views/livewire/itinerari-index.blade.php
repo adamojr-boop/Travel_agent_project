@@ -37,11 +37,11 @@
     </div>
 
     <div class="card ragsy-card p-4">
-        <!-- Griglia degli Itinerari con sfondo lavanda/azzurro -->
+        <!-- Griglia degli Itinerari -->
         <div class="row row-cols-1 row-cols-md-2 g-4">
             @forelse($itinerari as $itinerario)
                 <div class="col">
-                    <div class="card h-100 shadow-sm rounded-3 itinerary-card">
+                    <div class="card h-100 shadow-sm rounded-3 itinerary-card" style="background-color: #ffffff; border: 1px solid var(--lilac-ash);">
                         <div class="card-body d-flex flex-column p-4">
                             <!-- Titolo del viaggio -->
                             <h4 class="card-title fw-bold mb-2" style="color: var(--text-dark);">{{ $itinerario->titolo }}</h4>
@@ -54,30 +54,43 @@
                             <!-- Badge delle Regioni collegate -->
                             <div class="mb-3">
                                 @foreach($itinerario->regioni as $reg)
-                                    <span class="badge me-1 px-2 py-1" style="background-color: #ffffff; color: var(--text-dark); border: 1px solid var(--lilac-ash);">
+                                    <span class="badge me-1 px-2 py-1" style="background-color: var(--lavender-veil); color: var(--text-dark); border: 1px solid var(--lilac-ash);">
                                         {{ $reg->nome }}
                                     </span>
                                 @endforeach
                             </div>
 
                             <!-- Prezzo e Durata -->
-                            <div class="d-flex justify-content-between align-items-center mt-auto pt-3 border-top" style="border-color: var(--lilac-ash);">
+                            <div class="d-flex justify-content-between align-items-center mb-3 pt-3 border-top" style="border-color: var(--lilac-ash);">
                                 <span class="fw-bold fs-4" style="color: #198754;">€ {{ number_format($itinerario->prezzo, 2, ',', '.') }}</span>
-                                <span class="badge px-3 py-2 fs-6" style="background-color: #ffffff; color: var(--text-dark); border: 1px solid var(--lilac-ash);">
+                                <span class="badge px-3 py-2 fs-6" style="background-color: var(--lavender-veil); color: var(--text-dark); border: 1px solid var(--lilac-ash);">
                                     {{ $itinerario->durata_giorni }} Giorni
                                 </span>
                             </div>
+
+                            <!-- Pulsanti Azione Rapida in basso -->
+                            <div class="d-flex justify-content-end gap-2 mt-auto pt-2 border-top" style="border-color: var(--lilac-ash) !important;">
+                                <!-- Tasto Modifica -->
+                                <a href="{{ route('itinerari.edit', $itinerario->id) }}" class="btn btn-sm px-3" style="background-color: var(--lavender-veil); color: var(--text-dark); border: 1px solid var(--lilac-ash);">
+                                    <i class="bi bi-pencil"></i> Modifica
+                                </a>
+                                
+                                <!-- Tasto Elimina con conferma -->
+                                <button wire:click="deleteItinerario({{ $itinerario->id }})" wire:confirm="Sei sicura di voler eliminare questo itinerario?" class="btn btn-sm px-2" style="background-color: #fff; color: #dc3545; border: 1px solid var(--lilac-ash);">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </div>
+
                         </div>
                     </div>
                 </div>
             @empty
                 <div class="col-12">
-                    <div class="alert text-center py-4 rounded-3 m-0" style="background-color: #ffffff; border: 1px solid var(--border-color); color: var(--text-dark);" role="alert">
+                    <div class="alert text-center py-4 rounded-3 m-0" style="background-color: #ffffff; border: 1px solid var(--lilac-ash); color: var(--text-dark);" role="alert">
                         Nessun itinerario trovato con i filtri selezionati. Prova a modificare i parametri!
                     </div>
                 </div>
             @endforelse
         </div>
-
     </div>
 </div>

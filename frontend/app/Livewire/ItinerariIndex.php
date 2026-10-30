@@ -35,4 +35,15 @@ class ItinerariIndex extends Component
             'regioni' => Regione::orderBy('nome')->get()
         ]);
     }
+
+    public function deleteItinerario($id)
+{
+    $itinerario = Itinerario::find($id);
+    if ($itinerario) {
+        // Rimuove anche le relazioni pivot associate per pulizia
+        $itinerario->regioni()->detach();
+        ##$itinerario->fornitori()->detach();
+        $itinerario->delete();
+    }
+}
 }

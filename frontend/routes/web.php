@@ -15,7 +15,9 @@ Route::controller(ChatController::class)
 
 // 2. Itinerari (Livewire)
 Route::get('/itinerari', ItinerariIndex::class)->name('itinerari.index');
-
+Route::get('/itinerari/{id}/edit', function($id) {
+    // Qui collegheremo poi il componente di modifica
+})->name('itinerari.edit');
 // 3. Regioni (Livewire)
 Route::get('/regioni', RegioniIndex::class)->name('regioni.index');
 

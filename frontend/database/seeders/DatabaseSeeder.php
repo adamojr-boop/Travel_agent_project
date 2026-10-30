@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
     $this->call([
         RegionSeeder::class,
         ItinerarioSeeder::class,
+        FornitoreSeeder::class,
     ]);
 }
 }

@@ -42,7 +42,7 @@ class ItinerariIndex extends Component
     if ($itinerario) {
         // Rimuove anche le relazioni pivot associate per pulizia
         $itinerario->regioni()->detach();
-        ##$itinerario->fornitori()->detach();
+        $itinerario->fornitori()->detach();
         $itinerario->delete();
     }
 }

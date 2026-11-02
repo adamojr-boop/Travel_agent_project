@@ -38,4 +38,14 @@ class Itinerario extends Model
             $q->where('nome', $nomeRegione);
         });
     }
+
+    public function fornitori()
+    {
+        return $this->belongsToMany(Fornitore::class, 'itinerario_fornitore');
+    }
+
+    public function voci()
+    {
+        return $this->hasMany(ItinerarioVoce::class);
+    }
 }

@@ -12,4 +12,9 @@ class Fornitore extends Model
         'nome',
         'ambito',
     ];
+
+    public function itinerari()
+    {
+        return $this->belongsToMany(Itinerario::class, 'itinerario_fornitore');
+    }
 }

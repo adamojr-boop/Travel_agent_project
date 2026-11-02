@@ -70,15 +70,9 @@
 
                             <!-- Pulsanti Azione Rapida in basso -->
                             <div class="d-flex justify-content-end gap-2 mt-auto pt-2 border-top" style="border-color: var(--lilac-ash) !important;">
-                                <!-- Tasto Modifica -->
-                                <a href="{{ route('itinerari.edit', $itinerario->id) }}" class="btn btn-sm px-3" style="background-color: var(--lavender-veil); color: var(--text-dark); border: 1px solid var(--lilac-ash);">
-                                    <i class="bi bi-pencil"></i> Modifica
-                                </a>
-                                
-                                <!-- Tasto Elimina con conferma -->
-                                <button wire:click="deleteItinerario({{ $itinerario->id }})" wire:confirm="Sei sicura di voler eliminare questo itinerario?" class="btn btn-sm px-2" style="background-color: #fff; color: #dc3545; border: 1px solid var(--lilac-ash);">
-                                    <i class="bi bi-trash"></i>
-                                </button>
+                                <a href="{{ route('itinerari.show', $itinerario->id) }}" class="btn btn-sm btn-outline-primary" style="border-color: var(--lilac-ash); color: var(--text-dark);">
+    <i class="bi bi-eye"></i> Dettagli
+</a>
                             </div>
 
                         </div>

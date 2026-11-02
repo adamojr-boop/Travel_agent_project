@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Livewire\ItinerariIndex;
+use App\Livewire\ItinerariEdit;
+use App\Livewire\ItinerariShow;
 use App\Livewire\RegioniIndex;
 use App\Livewire\FornitoriIndex;
 use App\Http\Controllers\ChatController;
@@ -15,9 +17,8 @@ Route::controller(ChatController::class)
 
 // 2. Itinerari (Livewire)
 Route::get('/itinerari', ItinerariIndex::class)->name('itinerari.index');
-Route::get('/itinerari/{id}/edit', function($id) {
-    // Qui collegheremo poi il componente di modifica
-})->name('itinerari.edit');
+Route::get('/itinerari/{id}', ItinerariShow::class)->name('itinerari.show');
+Route::get('/itinerari/{id}/edit', ItinerariEdit::class)->name('itinerari.edit');
 // 3. Regioni (Livewire)
 Route::get('/regioni', RegioniIndex::class)->name('regioni.index');
 

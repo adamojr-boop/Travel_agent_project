@@ -1,66 +1,92 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Travel Agent – Frontend
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Client web del progetto Travel Agent, realizzato con Laravel 11, Livewire 3,
+Vite, Bootstrap e Tailwind. Contiene la chat con l'agente AI e un gestionale
+per itinerari, regioni e fornitori. Per la panoramica del progetto e l'avvio
+completo vedi il [README generale](../README.md).
 
-## About Laravel
+## Funzionalità
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Chat** (`/`): componente Livewire [Chatbot](./app/Livewire/Chatbot.php) che
+  invia la conversazione all'API FastAPI (`POST /chat/travel-agent/stream`) e
+  mostra la risposta in streaming; le risposte sono rese in Markdown
+  (`spatie/laravel-markdown`).
+- **Itinerari** (`/itinerari`, `/itinerari/{id}`, `/itinerari/{id}/edit`):
+  elenco con filtri (prezzo massimo, durata minima, regione), dettaglio,
+  modifica ed eliminazione; ogni itinerario ha regioni, fornitori e voci.
+- **Regioni** (`/regioni`) e **Fornitori** (`/fornitori`): elenchi gestiti con
+  componenti Livewire.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Le route sono definite in [routes/web.php](./routes/web.php).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Modello dati
 
-## Learning Laravel
+Tabelle principali: `regioni`, `itinerari`, `fornitori`, `itinerario_voci` e le
+tabelle pivot `itinerario_regione` e `itinerario_fornitore`. Migrazioni e seeder
+sono in `database/`.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Struttura
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+```text
+app/
+├── Http/Controllers/   # ChatController (vista della chat) e altri controller
+├── Livewire/           # Chatbot, Itinerari*, Regioni*, Fornitori*
+└── Models/             # Itinerario, ItinerarioVoce, Regione, Fornitore, User
+resources/views/        # Viste Blade e viste dei componenti Livewire
+routes/web.php          # Route dell'applicazione
+database/               # Migrazioni, seeder e factory
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Requisiti
 
-## Laravel Sponsors
+- PHP 8.2 o superiore e Composer.
+- Node.js e npm.
+- Un database raggiungibile, configurato in `.env`.
+- API backend in esecuzione (vedi [README del backend](../backend/README.md)).
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Installazione
 
-### Premium Partners
+Dalla cartella `frontend`:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+```powershell
+composer install
+Copy-Item .env.example .env
+php artisan key:generate
+npm install
+```
 
-## Contributing
+Configurare in `.env` i parametri del database (`DB_*`) e l'indirizzo
+dell'API:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```dotenv
+FASTAPI_URL=http://127.0.0.1:8001
+```
 
-## Code of Conduct
+Quindi creare le tabelle ed eventualmente caricare i dati di esempio:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```powershell
+php artisan migrate
+php artisan db:seed
+```
 
-## Security Vulnerabilities
+## Avvio
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Per avviare frontend e backend insieme usare `start-dev.sh` dalla radice del
+progetto (vedi il [README generale](../README.md)). Per avviare solo il
+frontend:
 
-## License
+```powershell
+php artisan serve --host=127.0.0.1 --port=8000
+npm run dev
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Aprire `http://127.0.0.1:8000`. Il backend accetta richieste CORS dalle
+origini `http://127.0.0.1:8000` e `http://localhost:8000`.
+
+## Note
+
+- Il timeout della chiamata all'API della chat è di 120 secondi.
+- Le route non sono ancora protette da autenticazione.
+- Evoluzioni previste (persistenza della chat, integrazione con il database,
+  esportazione PDF, sicurezza): vedi la sezione "To Do" del
+  [README generale](../README.md).

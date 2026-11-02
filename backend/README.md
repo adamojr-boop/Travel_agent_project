@@ -7,6 +7,8 @@ viaggio. Il client Laravel è opzionale e descritto nel
 
 ## Funzionalità
 
+- Endpoint `POST /chat/travel-agent/stream` che restituisce la risposta
+  dell'agente in streaming come testo semplice (usato dal client Laravel).
 - Endpoint `POST /chat/travel-agent` per inviare una conversazione e ricevere
   i messaggi aggiornati con la risposta dell'agente.
 - Agente creato con LangGraph e modello OpenAI `gpt-4o`.
@@ -48,7 +50,12 @@ file `.env`.
 
 ## Avvio
 
-Dalla cartella `backend`, avviare il server di sviluppo:
+Per avviare l'intero progetto (backend, Laravel e Vite) con un solo comando si
+può usare lo script `start-dev.sh` nella radice, da Git Bash: vedi il
+[README generale](../README.md). Lo script usa l'ambiente virtuale
+`backend\.venv313`.
+
+Per avviare solo il backend, dalla cartella `backend`: il server di sviluppo:
 
 ```powershell
 poetry run uvicorn travel_agent_api.main:app --reload --port 8001
@@ -72,7 +79,14 @@ porta `8000` (`http://127.0.0.1:8000` o `http://localhost:8000`).
 
 ## Endpoint chat
 
-`POST /chat/travel-agent`
+### `POST /chat/travel-agent/stream`
+
+Accetta lo stesso corpo della richiesta dell'endpoint seguente e risponde con
+`text/plain` in streaming: vengono inviati solo i token di testo generati
+dall'agente, mentre le chiamate e i risultati dei tool sono scartati. Gli errori
+sono restituiti come testo nello stream.
+
+### `POST /chat/travel-agent`
 
 Esempio di richiesta:
 
@@ -117,6 +131,13 @@ condividere chiavi API e altri dati sensibili.
 
 La cartella `tests` al momento non contiene test applicativi: gli endpoint
 possono essere provati manualmente tramite `/docs`.
+
+## Evoluzioni previste
+
+Singleton dell'agente, alleggerimento delle risposte SerpApi, autenticazione
+condivisa con Laravel e rate limiting, integrazione con il database dei
+fornitori e degli itinerari: vedi la sezione "To Do" del
+[README generale](../README.md).
 
 ## Note
 

@@ -7,7 +7,7 @@ from travel_agent_api.tools.flights_finder import flights_finder
 from travel_agent_api.tools.hotels_finder import hotels_finder
 from travel_agent_api.tools.chain_historical_expert import chain_historical_expert
 from travel_agent_api.tools.chain_travel_plan import chain_travel_plan
-
+from travel_agent_api.tools.fornitori_tool import cerca_fornitori
 FLIGHTS_OUTPUT = """
 format: markdown 
 ## Miglior Opzione 
@@ -69,6 +69,7 @@ class Agent:
             flights_finder,
             hotels_finder,
             chain_travel_plan,
+            cerca_fornitori,
         ]
         self.agent_executor = create_react_agent(self.model, self.tools)
         
@@ -87,6 +88,10 @@ class Agent:
             Sei un travel planner. Il tuo compito e' organizzare il viaggio per l'utente. 
             Aggiungi delle emojis per rendere il tuo output piu' interessante.
             La data di oggi e' {self.current_datetime}
+            Hai a disposizione il tool `cerca_fornitori` per interrogare il database dei fornitori reali di viaggio.
+            Usalo ogni volta che l'utente chiede informazioni su hotel, guide, transfer o fornitori specifici
+            (ambiti: Alloggi, Mezzi, Servizi),
+            senza inventare i dati: se non trova risultati, dillo chiaramente.
             Usa le seguenti istruzioni per creare un output:
             Esempio Ouput Voli: 
             {FLIGHTS_OUTPUT}

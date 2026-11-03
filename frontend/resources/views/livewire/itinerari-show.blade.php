@@ -4,9 +4,14 @@
         <!-- Intestazione con Titolo e Pulsante Indietro -->
         <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom" style="border-color: var(--lilac-ash) !important;">
             <div>
-                <span class="badge mb-2 px-3 py-2 text-white fw-bold" style="background-color: var(--text-dark);">
-                    <i class="bi bi-clock"></i> {{ $itinerario->durata_giorni }} Giorni
-                </span>
+                <div class="d-flex gap-2 mb-2">
+                    <span class="badge px-3 py-2 text-white fw-bold" style="background-color: var(--text-dark);">
+                        <i class="bi bi-clock"></i> {{ $itinerario->durata_giorni }} Giorni
+                    </span>
+                    <span class="badge px-3 py-2 text-white fw-bold {{ $itinerario->type === 'wedding' ? 'bg-danger' : 'bg-primary' }}">
+                        {{ $itinerario->type === 'wedding' ? '💍 Wedding' : '✈️ Trip' }}
+                    </span>
+                </div>
                 <h1 class="h2 fw-bold mb-1" style="color: var(--text-dark);">{{ $itinerario->titolo }}</h1>
             </div>
             <a href="{{ route('itinerari.index') }}" class="btn btn-outline-secondary btn-sm px-3" style="border-color: var(--lilac-ash); color: var(--text-dark);">
@@ -39,7 +44,7 @@
             </div>
         </div>
 
-        <!-- 2. Voci / Attività dell'Itinerario (Prezzo a persona per ogni voce) -->
+        <!-- 2. Voci / Attività dell'Itinerario -->
         <div class="mb-4">
             <div class="p-4 rounded-3" style="background-color: var(--lavender-veil); border: 1px solid var(--lilac-ash);">
                 <h5 class="fw-bold mb-3" style="color: var(--text-dark);"><i class="bi bi-list-check"></i> Attività & Servizi Inclusi</h5>
@@ -71,47 +76,26 @@
             </div>
         </div>
 
-        <!-- 3. Regioni e Fornitori Partner -->
-        <div class="row g-4 mb-4">
-            <!-- Regioni -->
-            <div class="col-md-6">
-                <div class="p-3 rounded-3 h-100" style="background-color: var(--lavender-veil); border: 1px solid var(--lilac-ash);">
-                    <h5 class="fw-bold mb-3" style="color: var(--text-dark);"><i class="bi bi-geo-alt"></i> Regioni Coinvolte</h5>
-                    @if($itinerario->regioni->count() > 0)
-                    <div class="d-flex flex-wrap gap-2">
-                        @foreach($itinerario->regioni as $regione)
-                        <span class="badge bg-white text-dark px-3 py-2 border" style="border-color: var(--lilac-ash) !important;">
-                            {{ $regione->nome }}
-                        </span>
-                        @endforeach
-                    </div>
-                    @else
-                    <p class="text-muted small mb-0">Nessuna regione associata.</p>
-                    @endif
-                </div>
-            </div>
-
-            <!-- Fornitori Partner -->
-            <div class="col-md-6">
-                <div class="p-3 rounded-3 h-100" style="background-color: var(--lavender-veil); border: 1px solid var(--lilac-ash);">
-                    <h5 class="fw-bold mb-3" style="color: var(--text-dark);"><i class="bi bi-building"></i> Fornitori Partner</h5>
-                    @if($itinerario->fornitori->count() > 0)
-                    <ul class="list-group list-group-flush bg-transparent">
-                        @foreach($itinerario->fornitori as $fornitore)
-                        <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-0 py-1" style="border-color: var(--lilac-ash);">
-                            <span style="color: var(--text-dark);">{{ $fornitore->nome }}</span>
-                            <span class="badge bg-secondary text-white small">{{ $fornitore->ambito }}</span>
-                        </li>
-                        @endforeach
-                    </ul>
-                    @else
-                    <p class="text-muted small mb-0">Nessun fornitore associato.</p>
-                    @endif
-                </div>
+        <!-- 3. Fornitori Partner (A tutta larghezza ora che non ci sono le regioni) -->
+        <div class="mb-4">
+            <div class="p-3 rounded-3" style="background-color: var(--lavender-veil); border: 1px solid var(--lilac-ash);">
+                <h5 class="fw-bold mb-3" style="color: var(--text-dark);"><i class="bi bi-building"></i> Fornitori Partner</h5>
+                @if($itinerario->fornitori->count() > 0)
+                <ul class="list-group list-group-flush bg-transparent">
+                    @foreach($itinerario->fornitori as $fornitore)
+                    <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-0 py-1" style="border-color: var(--lilac-ash);">
+                        <span style="color: var(--text-dark);">{{ $fornitore->nome }}</span>
+                        <span class="badge bg-secondary text-white small">{{ $fornitore->ambito }}</span>
+                    </li>
+                    @endforeach
+                </ul>
+                @else
+                <p class="text-muted small mb-0">Nessun fornitore associato.</p>
+                @endif
             </div>
         </div>
 
-        <!-- 4. Riepilogo Economico (Totale in Fondo) -->
+        <!-- 4. Riepilogo Economico -->
         <div class="mb-5">
             <div class="p-4 rounded-3 d-flex justify-content-between align-items-center" style="background-color: var(--lavender-veil); border: 1px solid var(--lilac-ash);">
                 <div>
@@ -130,7 +114,6 @@
                 Indietro
             </a>
             <div class="d-flex gap-2">
-                <!-- Pulsante Genera / Scarica PDF -->
                 <button wire:click="generaPdf" class="btn px-4 text-white fw-bold shadow-sm" style="background-color: #6c5ce7;" title="Genera il documento PDF per il cliente">
                     <i class="bi bi-file-earmark-pdf"></i> Genera PDF
                 </button>

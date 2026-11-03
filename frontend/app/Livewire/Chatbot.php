@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use Livewire\Attributes\Layout;
 use App\Models\Conversation;
 use App\Models\Message;
 use Illuminate\Support\Facades\Http;
@@ -13,6 +14,8 @@ class Chatbot extends Component
     public $userPrompt = '';
     public $chatMessages = [];
     public $conversationId;
+    public $conversationTitle = '';
+    public $isEditingTitle = false;
 
     protected $rules = [
         'currentMessage' => 'required'
@@ -22,30 +25,70 @@ class Chatbot extends Component
         'currentMessage.required' => 'Please enter a message'
     ];
 
-    public function mount()
+    public function mount($conversationId = null)
     {
-        // 1. Recupera l'ultima conversazione attiva o ne crea una nuova
-        $conversation = Conversation::latest()->first();
+        if ($conversationId) {
+            $conversation = Conversation::find($conversationId);
+        } else {
+            $conversation = Conversation::latest()->first();
+        }
 
         if (!$conversation) {
             $conversation = Conversation::create([
-                'titolo' => 'Nuova Conversazione Travel Planner'
+                'titolo' => 'Nuova Conversazione'
             ]);
         }
 
-        $this->conversationId = $conversation->id;
+        $this->loadConversation($conversation);
+    }
 
-        // 2. Carica i messaggi salvati nel database per ripristinare la cronologia
+    public function loadConversation(Conversation $conversation)
+    {
+        $this->conversationId = $conversation->id;
+        $this->conversationTitle = $conversation->titolo ?? 'Nuova Conversazione';
+        $this->chatMessages = [];
+
         $savedMessages = Message::where('conversation_id', $this->conversationId)
             ->orderBy('created_at', 'asc')
             ->get();
 
         foreach ($savedMessages as $msg) {
             $this->chatMessages[] = [
-                'type' => $msg->role, // 'human' oppure 'ai'
+                'type' => $msg->role,
                 'content' => $msg->content
             ];
         }
+    }
+
+    public function newConversation()
+    {
+        $conversation = Conversation::create([
+            'titolo' => 'Nuova Conversazione'
+        ]);
+
+        $this->loadConversation($conversation);
+    }
+
+    public function clearCurrentChat()
+    {
+        Message::where('conversation_id', $this->conversationId)->delete();
+        $this->chatMessages = [];
+        session()->flash('message', 'Chat svuotata!');
+    }
+
+    public function startEditingTitle()
+    {
+        $this->isEditingTitle = true;
+    }
+
+    public function saveTitle()
+    {
+        if (!empty($this->conversationTitle)) {
+            Conversation::where('id', $this->conversationId)->update([
+                'titolo' => $this->conversationTitle
+            ]);
+        }
+        $this->isEditingTitle = false;
     }
 
     public function ask()
@@ -54,13 +97,11 @@ class Chatbot extends Component
 
         $userText = $this->currentMessage;
 
-        // Aggiunge alla vista locale
         $this->chatMessages[] = [
             'type' => 'human',
             'content' => $userText
         ];
 
-        // Salva il messaggio dell'utente nel DB
         Message::create([
             'conversation_id' => $this->conversationId,
             'role' => 'human',
@@ -90,7 +131,6 @@ class Chatbot extends Component
         while (!$body->eof()) {
             $pending .= $body->read(16);
 
-            // Invia solo byte UTF-8 completi: un carattere può arrivare spezzato
             $len = strlen($pending);
             while ($len > 0 && !mb_check_encoding(substr($pending, 0, $len), 'UTF-8')) {
                 $len--;
@@ -107,13 +147,11 @@ class Chatbot extends Component
 
         $full .= $pending;
 
-        // Aggiunge la risposta completa alla vista locale
         $this->chatMessages[] = [
             'type' => 'ai',
             'content' => $full
         ];
 
-        // Salva la risposta dell'assistente nel DB
         Message::create([
             'conversation_id' => $this->conversationId,
             'role' => 'ai',
@@ -124,6 +162,7 @@ class Chatbot extends Component
     public function render()
     {
         $this->dispatch('scrollChatToBottom');
-        return view('livewire.chatbot');
+        
+        return view('livewire.chatbot')->layout('components.layout');
     }
 }

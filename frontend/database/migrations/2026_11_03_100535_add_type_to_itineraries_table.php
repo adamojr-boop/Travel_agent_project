@@ -8,14 +8,14 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::table('itineraries', function (Blueprint $table) {
+        Schema::table('itinerari', function (Blueprint $table) {
             $table->string('type')->default('trip')->after('id'); // Valori possibili: 'trip' o 'wedding'
         });
     }
 
     public function down(): void
     {
-        Schema::table('itineraries', function (Blueprint $table) {
+        Schema::table('itinerari', function (Blueprint $table) {
             $table->dropColumn('type');
         });
     }

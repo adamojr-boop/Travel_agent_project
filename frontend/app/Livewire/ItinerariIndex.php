@@ -3,23 +3,30 @@
 namespace App\Livewire;
 
 use App\Models\Itinerario;
-use App\Models\Regione;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
 
-#[Layout('components.layout')] // <-- Questo dice a Livewire di usare <x-layout>
+#[Layout('components.layout')] 
 class ItinerariIndex extends Component
 {
-    public $searchRegione = '';
+    public $selectedType = 'all'; // Filtro: 'all', 'wedding', 'trip'
     public $prezzoMax = '';
     public $durataMinima = '';
 
+    // Metodo per cambiare il tab/filtro attivo
+    public function setType($type)
+    {
+        $this->selectedType = $type;
+    }
+
     public function render()
     {
-        $query = Itinerario::with('regioni');
+        // Rimosso 'regioni' dall'eager loading
+        $query = Itinerario::with('fornitori');
 
-        if (!empty($this->searchRegione)) {
-            $query->inRegione($this->searchRegione);
+        // Filtra per tipologia (wedding o trip) se non è 'all'
+        if ($this->selectedType !== 'all') {
+            $query->where('type', $this->selectedType);
         }
 
         if (!empty($this->prezzoMax)) {
@@ -31,19 +38,20 @@ class ItinerariIndex extends Component
         }
 
         return view('livewire.itinerari-index', [
-            'itinerari' => $query->get(),
-            'regioni' => Regione::orderBy('nome')->get()
+            'itinerari' => $query->latest()->get()
         ]);
     }
 
     public function deleteItinerario($id)
-{
-    $itinerario = Itinerario::find($id);
-    if ($itinerario) {
-        // Rimuove anche le relazioni pivot associate per pulizia
-        $itinerario->regioni()->detach();
-        $itinerario->fornitori()->detach();
-        $itinerario->delete();
+    {
+        $itinerario = Itinerario::find($id);
+        if ($itinerario) {
+            // Rimossa la chiamata alle regioni, lasciamo solo i fornitori e le voci se presenti
+            $itinerario->fornitori()->detach();
+            $itinerario->voci()->delete();
+            $itinerario->delete();
+            
+            session()->flash('message', 'Itinerario eliminato con successo!');
+        }
     }
-}
 }

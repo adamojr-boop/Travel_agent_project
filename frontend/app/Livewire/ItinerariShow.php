@@ -11,13 +11,14 @@ class ItinerariShow extends Component
 
     public function mount($id)
     {
-        // Carica l'itinerario con le voci analitiche (e i relativi fornitori), regioni e fornitori generali
-        $this->itinerario = Itinerario::with(['regioni', 'fornitori', 'voci.fornitore'])->findOrFail($id);
+        // Carica l'itinerario con le voci analitiche (e i relativi fornitori) e i fornitori generali
+        // Rimosso 'regioni' poiché la sezione è stata eliminata
+        $this->itinerario = Itinerario::with(['fornitori', 'voci.fornitore'])->findOrFail($id);
     }
 
     public function deleteItinerario()
     {
-        $this->itinerario->regioni()->detach();
+        // Rimossa la chiamata a regioni()->detach()
         $this->itinerario->fornitori()->detach();
         $this->itinerario->voci()->delete();
         $this->itinerario->delete();

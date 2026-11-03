@@ -2,8 +2,9 @@
 
 Client web del progetto Travel Agent, realizzato con Laravel 11, Livewire 3,
 Vite, Bootstrap e Tailwind. Contiene la chat con l'agente AI e un gestionale
-per itinerari, regioni e fornitori. Per la panoramica del progetto e l'avvio
-completo vedi il [README generale](../README.md).
+per itinerari e fornitori. Le regioni restano disponibili come dati associati
+agli itinerari, senza una pagina dedicata. Per la panoramica del progetto e
+l'avvio completo vedi il [README generale](../README.md).
 
 ## Funzionalità
 
@@ -14,8 +15,8 @@ completo vedi il [README generale](../README.md).
 - **Itinerari** (`/itinerari`, `/itinerari/{id}`, `/itinerari/{id}/edit`):
   elenco con filtri (prezzo massimo, durata minima, regione), dettaglio,
   modifica ed eliminazione; ogni itinerario ha regioni, fornitori e voci.
-- **Regioni** (`/regioni`) e **Fornitori** (`/fornitori`): elenchi gestiti con
-  componenti Livewire.
+- **Fornitori** (`/fornitori`): elenco gestito con Livewire. Le regioni si
+  selezionano, filtrano e visualizzano all'interno degli itinerari.
 
 Le route sono definite in [routes/web.php](./routes/web.php).
 
@@ -30,7 +31,7 @@ sono in `database/`.
 ```text
 app/
 ├── Http/Controllers/   # ChatController (vista della chat) e altri controller
-├── Livewire/           # Chatbot, Itinerari*, Regioni*, Fornitori*
+├── Livewire/           # Chatbot, Itinerari*, Fornitori*
 └── Models/             # Itinerario, ItinerarioVoce, Regione, Fornitore, User
 resources/views/        # Viste Blade e viste dei componenti Livewire
 routes/web.php          # Route dell'applicazione

@@ -5,10 +5,11 @@ from pydantic import BaseModel, Field
 
 class CercaFornitoriInput(BaseModel):
     ambito: str = Field(None, description="Filtra per ambito del fornitore: Alloggi (hotel, B&B), Mezzi (trasporti, transfer, noleggio) o Servizi (guide, altri servizi)")
+    regione: str = Field(None, description="Filtra per regione italiana del fornitore, es. Toscana, Lazio.")
 
 @tool("cerca_fornitori", args_schema=CercaFornitoriInput)
-def cerca_fornitori(ambito: str = None) -> str:
-    """Cerca i fornitori reali disponibili nel database del gestionale Laravel, filtrando per ambito (Alloggi, Mezzi, Servizi)."""
+def cerca_fornitori(ambito: str = None, regione: str = None) -> str:
+    """Cerca i fornitori reali disponibili nel database del gestionale Laravel, filtrando per ambito (Alloggi, Mezzi, Servizi) e/o regione."""
     url = f"{os.getenv('LARAVEL_API_URL', 'http://127.0.0.1:8002/api/internal')}/fornitori"
     token = os.getenv('INTERNAL_API_TOKEN')
     
@@ -20,6 +21,8 @@ def cerca_fornitori(ambito: str = None) -> str:
     params = {}
     if ambito:
         params["ambito"] = ambito
+    if regione:
+        params["regione"] = regione
         
     try:
         response = httpx.get(url, headers=headers, params=params, timeout=10.0)

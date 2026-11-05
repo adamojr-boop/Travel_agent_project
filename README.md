@@ -110,6 +110,15 @@ agli indirizzi locali `localhost:8000` e `127.0.0.1:8000`.
 ### 1. Integrazione tra Bot e Database (Laravel ⇄ Python)
 
 - **Obiettivo**: abbattere il muro che oggi separa la chat dal gestionale.
+- **Stato**: l'agente usa un'API interna di Laravel (header `X-Internal-Token`,
+  variabile `INTERNAL_API_TOKEN` uguale in `frontend/.env` e `backend/.env`).
+  Poiché `php artisan serve` è mono-processo, l'API gira su una seconda porta
+  (**8002**, `LARAVEL_API_URL=http://127.0.0.1:8002/api/internal` in `backend/.env`),
+  avviata da `start-dev.sh`.
+  - `GET /api/internal/fornitori` → tool `cerca_fornitori`
+  - `GET /api/internal/itinerari` (filtri `regione`, `fornitore`, `citta`, `tipo`, `durata_min`)
+    → tool `cerca_itinerari`; `GET /api/internal/itinerari/{id}` → `leggi_itinerario`
+  - `POST /api/internal/itinerari` → `salva_bozza_itinerario` (salva sempre come `bozza`)
 - **Cosa fare**: permettere all'agente Python di interrogare i fornitori reali e
   gli itinerari esistenti, e consentire alla chat di creare e salvare bozze di
   itinerario direttamente nel database di Laravel con un semplice comando.

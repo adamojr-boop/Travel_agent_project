@@ -17,8 +17,19 @@ class FornitoreController extends Controller
             $query->where('ambito', 'like', '%' . $request->ambito . '%');
         }
 
+        if ($request->filled('regione')) {
+            $query->whereHas('regione', fn ($q) => $q->where('nome', 'like', '%' . $request->regione . '%'));
+        }
+
         // Limitiamo i risultati per non sovraccaricare il contesto dell'IA
-        $fornitori = $query->limit(20)->get(['id', 'nome', 'ambito']);
+        $fornitori = $query->with('regione:id,nome')->limit(20)->get(['id', 'nome', 'ambito', 'citta', 'regione_id'])
+            ->map(fn ($f) => [
+                'id' => $f->id,
+                'nome' => $f->nome,
+                'ambito' => $f->ambito,
+                'citta' => $f->citta,
+                'regione' => $f->regione?->nome,
+            ]);
 
         return response()->json($fornitori);
     }

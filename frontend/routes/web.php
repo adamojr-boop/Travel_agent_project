@@ -46,7 +46,8 @@ Route::patch('/chat/{conversationId}/rename', function (Request $request, $conve
 
 // 2. Itinerari (Livewire)
 Route::get('/itinerari', ItinerariIndex::class)->name('itinerari.index');
-Route::get('/itinerari/{id}', ItinerariShow::class)->name('itinerari.show');
+Route::get('/itinerari/{id}/pdf', \App\Http\Controllers\ItinerarioPdfController::class)->whereNumber('id')->name('itinerari.pdf');
+    Route::get('/itinerari/{id}', ItinerariShow::class)->name('itinerari.show');
 Route::get('/itinerari/{id}/edit', ItinerariEdit::class)->name('itinerari.edit');
 
 // 3. Fornitori (Livewire)

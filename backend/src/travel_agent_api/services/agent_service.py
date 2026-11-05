@@ -8,6 +8,7 @@ from travel_agent_api.tools.hotels_finder import hotels_finder
 from travel_agent_api.tools.chain_historical_expert import chain_historical_expert
 from travel_agent_api.tools.chain_travel_plan import chain_travel_plan
 from travel_agent_api.tools.fornitori_tool import cerca_fornitori
+from travel_agent_api.tools.itinerari_tool import cerca_itinerari, leggi_itinerario, salva_bozza_itinerario
 FLIGHTS_OUTPUT = """
 format: markdown 
 ## Miglior Opzione 
@@ -46,18 +47,21 @@ format: markdown
     *Servizi Inclusi:* Spa, Piscina, Parcheggio gratuito
 """
 
-TRAVEL_PLAN_OUTPUT = """
-format: markdown 
-    ### Itinerario: 
-    ### Giorno 1 - 2024-12-13:
-    *Mattina:* Descrizione dell'attivita' da svolgere la mattina
-    *Pomeriggio:* Descrizione dell'attivita' da svolgere il pomeriggio
-    *Sera:* Descrizione dell'attivita' da svolgere la sera
-    ### Giorno 2 - 2024-12-14:
-    *Mattina:* Descrizione dell'attivita' da svolgere la mattina
-    *Pomeriggio:* Descrizione dell'attivita' da svolgere il pomeriggio
-    *Sera:* Descrizione dell'attivita' da svolgere la sera
-    ...
+ITINERARY_EXAMPLE = """
+Esempio reale di struttura (da un itinerario del gestionale, testi in inglese):
+Title: Rome pre-cruise stay (24 pax) | type: trip | 2027-05-14 -> 2027-05-16 | 2 nights / 3 days
+Day 1 - Friday, May 14 - Rome
+  intro: "Every stone tells a story. Rome stuns with ancient ruins, opulent fountains, and narrow streets buzzing with life."
+  - Private Transfer: "Private Group transfer from Airport Rome FCO to Hotel in Rome with Assistant" (24 participants)
+  - Accommodation: "UNA Hotels Decò Roma" (2 nights, fornitore: UNA Hotels Decò Roma)
+  - Private Tour with Vehicle [optional]: "Private evening tour of Rome by Golfcart" (2 hours, $250 per person,
+    inclusions: private driver escort, stops at major landmarks; exclusions: personal expenses, gratuities)
+Day 2 - Saturday, May 15 - Rome
+  - Private Tour with Vehicle [Option 1]: "Full day Rome walking tour with Colosseum and Roman Forum" (8 hours, $340 per person)
+  - Private Tour with Vehicle [Option 2]: "Half day Colosseum and Roman Forum" (4 hours, $248 per person)
+Day 3 - Sunday, May 16
+  - Private Transfer: "Private Group transfer from Hotel in Rome to Civitavecchia Pier with Assistant"
+Le sezioni fisse del PDF (Inclusions, Important notes, Italy facts, Concierge Services, contatti) le aggiunge il template: NON ripeterle.
 """
 
 class Agent:
@@ -70,6 +74,9 @@ class Agent:
             hotels_finder,
             chain_travel_plan,
             cerca_fornitori,
+            cerca_itinerari,
+            leggi_itinerario,
+            salva_bozza_itinerario,
         ]
         self.agent_executor = create_react_agent(self.model, self.tools)
         
@@ -92,13 +99,25 @@ class Agent:
             Usalo ogni volta che l'utente chiede informazioni su hotel, guide, transfer o fornitori specifici
             (ambiti: Alloggi, Mezzi, Servizi),
             senza inventare i dati: se non trova risultati, dillo chiaramente.
+
+            CREAZIONE ITINERARI (viaggi e matrimoni in Italia):
+            1. Raccogli, a piccoli passi e senza fare troppe domande insieme, i dati necessari: tipo (trip o wedding),
+               date, numero di persone, citta'/regioni da toccare, esigenze (hotel, transfer, tour, guide, eventi), budget se noto.
+            2. Usa `cerca_itinerari` (filtri: regione, fornitore, citta', tipo, durata) e `leggi_itinerario` per prendere
+               come modello itinerari reali simili; usa `cerca_fornitori` per scegliere hotel reali del database
+               e usa il nome ESATTO nel campo fornitore.
+            3. Proponi all'utente l'itinerario giorno per giorno. Il contenuto dell'itinerario (titoli, descrizioni,
+               inclusioni) va scritto in INGLESE, nello stesso stile e con gli stessi tipi di servizio degli esempi
+               (Private Transfer, Private Tour with Vehicle, Private Guide Service, Private Transportation Service,
+               Group Guide Service, Accommodation, Assistance). Mostra i prezzi solo se noti: non inventarli.
+            4. Solo dopo la conferma esplicita dell'utente chiama UNA volta `salva_bozza_itinerario`; poi riassumi
+               cosa e' stato salvato. Se il salvataggio fallisce, riporta l'errore senza ritentare all'infinito.
+            {ITINERARY_EXAMPLE}
             Usa le seguenti istruzioni per creare un output:
             Esempio Ouput Voli: 
             {FLIGHTS_OUTPUT}
             Esempio Output Hotel:
             {HOTELS_OUTPUT}
-            Esempio di Output Viaggio:
-            {TRAVEL_PLAN_OUTPUT}
         """
         #Tracing
         print("*" * 80)

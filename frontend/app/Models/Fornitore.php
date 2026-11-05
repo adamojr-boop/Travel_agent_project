@@ -11,7 +11,15 @@ class Fornitore extends Model
     protected $fillable = [
         'nome',
         'ambito',
+        'citta',
+        'descrizione',
+        'regione_id',
     ];
+
+    public function regione()
+    {
+        return $this->belongsTo(Regione::class);
+    }
 
     public function itinerari()
     {

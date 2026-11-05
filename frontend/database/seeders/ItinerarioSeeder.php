@@ -2,53 +2,49 @@
 
 namespace Database\Seeders;
 
+use App\Models\Fornitore;
 use App\Models\Itinerario;
-use App\Models\Regione;
+use App\Support\RegioniItinerario;
 use Illuminate\Database\Seeder;
 
 class ItinerarioSeeder extends Seeder
 {
+    /** Itinerari reali (nomi cliente anonimizzati) tratti dai PDF d'esempio. */
     public function run(): void
     {
-        $viaggi = [
-            [
-                'titolo' => 'Tour del Chianti e Borghi Toscani',
-                'descrizione' => '4 giorni tra degustazioni di vino, colline senesi e borghi medievali.',
-                'prezzo' => 450.00,
-                'durata_giorni' => 4,
-                'regioni' => ['Toscana', 'Umbria']
-            ],
-            [
-                'titolo' => 'Meraviglie della Costiera Amalfitana',
-                'descrizione' => 'Panorama mozzafiato tra Positano, Amalfi e Capri.',
-                'prezzo' => 750.00,
-                'durata_giorni' => 5,
-                'regioni' => ['Campania']
-            ],
-            [
-                'titolo' => 'Trekking tra le Dolomiti Trentine',
-                'descrizione' => 'Aria pura, rifugi in quota e sentieri spettacolari.',
-                'prezzo' => 390.00,
-                'durata_giorni' => 3,
-                'regioni' => ['Trentino-Alto Adige', 'Veneto']
-            ],
-            [
-                'titolo' => 'Barocco Siciliano e Valle dei Templi',
-                'descrizione' => 'Un viaggio tra storia millenaria, mare cristallino e cucina tipica.',
-                'prezzo' => 890.00,
-                'durata_giorni' => 7,
-                'regioni' => ['Sicilia']
-            ]
-        ];
+        $dati = json_decode(file_get_contents(database_path('seeders/data/esempi.json')), true);
+        $fornitori = Fornitore::pluck('id', 'nome');
 
-        foreach ($viaggi as $dati) {
-            $nomiRegioni = $dati['regioni'];
-            unset($dati['regioni']);
+        foreach ($dati['itinerari'] as $i) {
+            $giorni = $i['giorni_dettaglio'];
+            $durata = $i['giorni'];
+            unset($i['giorni_dettaglio'], $i['giorni']);
 
-            $itinerario = Itinerario::create($dati);
+            $itinerario = Itinerario::updateOrCreate(
+                ['codice' => $i['codice']],
+                $i + ['descrizione' => null, 'prezzo' => 0, 'durata_giorni' => $durata]
+            );
 
-            $regioni = Regione::whereIn('nome', $nomiRegioni)->get();
-            $itinerario->regioni()->attach($regioni);
+            // Ricostruisce i giorni a ogni esecuzione per restare idempotente.
+            $itinerario->giorni()->delete();
+
+            foreach ($giorni as $g) {
+                $servizi = $g['servizi'];
+                unset($g['servizi']);
+                $giorno = $itinerario->giorni()->create($g);
+
+                foreach ($servizi as $s) {
+                    $nomeFornitore = $s['fornitore'] ?? null;
+                    unset($s['fornitore']);
+                    $s['fornitore_id'] = $nomeFornitore ? ($fornitori[$nomeFornitore] ?? null) : null;
+                    $giorno->servizi()->create($s);
+                }
+            }
+
+            $itinerario->fornitori()->sync(
+                $itinerario->giorni()->with('servizi')->get()->flatMap->servizi->pluck('fornitore_id')->filter()->unique()
+            );
+            RegioniItinerario::sincronizza($itinerario);
         }
     }
 }

@@ -1,0 +1,1185 @@
+{
+ "fornitori": [
+  {
+   "nome": "Borgo Vescine",
+   "ambito": "Alloggi",
+   "citta": "Radda in Chianti",
+   "descrizione": "Nestled in the heart of the Chianti Classico countryside, just 40 minutes from Florence and Siena, Borgo Vescine is a beautifully preserved medieval hamlet offering an authentic Tuscan experience surrounded by vineyards, olive groves, and rolling hills. The property combines timeless charm, elegant hospitality, and breathtaking scenery, making it an exceptional setting for destination weddings and exclusive celebrations. The borgo features 28 charming rooms accommodating up to 65 guests, allowing family and friends to stay together in a unique and intimate atmosphere. Historic stone pathways, panoramic views, and picturesque squares create a magical backdrop for every moment of the celebration. Wedding events can seamlessly unfold across the property's various venues. The Olive Grove (Uliveta), framed by centuries-old olive trees and a charming gazebo, provides a romantic setting for symbolic ceremonies. The Panoramic Terrace and Italian Gardens are perfect for elegant aperitifs and cocktail receptions, while the iconic Piazza del Borgo offers a spectacular location for al fresco dinners under the stars. Guests can also enjoy memorable experiences such as wine tastings in the historic Wine Room, vineyard walks accompanied by the resident sommelier, cocktails at the Borgo Bar or Pool Bar, and refined dining at La Terrazza del Borgo restaurant. After dinner, celebrations continue in the elegant Orangerie, where DJ sets, dancing, and open bar service create the perfect atmosphere for an unforgettable party. Music is permitted until 11:30 PM for non-exclusive events and until 2:00 AM with an exclusive buyout of the property. Extensions beyond 2:00 AM are available for an additional fee. With its authentic Tuscan character, exclusive-use possibilities, and stunning Chianti setting, Borgo Vescine is an ideal choice for couples seeking a romantic and truly memorable destination wedding experience."
+  },
+  {
+   "nome": "Byblos Art Hotel Villa Amistà",
+   "ambito": "Alloggi",
+   "citta": "San Pietro in Cariano",
+   "descrizione": "Byblos Art Hotel Villa Amistà is a distinctive luxury property set in a historic Venetian villa just outside Verona, surrounded by landscaped gardens and peaceful countryside. Its location offers a tranquil retreat while remaining within easy reach of Verona’s cultural landmarks and Lake Garda. The hotel is renowned for its striking blend of classical architecture and contemporary art, where frescoed ceilings and elegant period details are contrasted with bold modern design pieces throughout the interiors. Rooms and suites are individually styled, combining artistic expression with refined comfort and modern amenities."
+  },
+  {
+   "nome": "Castello Dal Pozzo Resort",
+   "ambito": "Alloggi",
+   "citta": "Oleggio Castello",
+   "descrizione": "More than a historic estate, Castello Dal Pozzo is a place to experience. Set within 60 acres of centuries-old parkland overlooking the shimmering waters of Lake Maggiore, this enchanting Neo-Gothic castle has been owned by the same noble family for generations. Today, it welcomes guests as an elegant 5-star resort, where timeless heritage, refined interiors, and modern comforts blend seamlessly. Surrounded by pristine gardens and breathtaking lake views, the estate retains its authentic character and sense of place. Every detail tells a story, every space reflects its rich history, and every stay feels uniquely personal."
+  },
+  {
+   "nome": "Hotel Cerretani Firenze - MGallery Collection",
+   "ambito": "Alloggi",
+   "citta": "Florence",
+   "descrizione": "Situated near Florence’s Duomo, Hotel Cerretani Firenze combines Renaissance charm with stylish design. The elegant façade opens into refined interiors featuring contemporary art and comfortable rooms."
+  },
+  {
+   "nome": "Hotel Continental Sorrento",
+   "ambito": "Alloggi",
+   "citta": "Sorrento",
+   "descrizione": "Nestled in one of Sorrento’s most enchanting corners, Grand Hotel Continental offers a refined retreat where elegance meets comfort. From its sophisticated interiors to the panoramic \"Terrazza Vittoria\" with breathtaking views of the Gulf of Naples, every detail is designed for an unforgettable stay. Relax by the pool surrounded by lush gardens, indulge in authentic Sorrentine flavors, or embrace total well-being in the Acqua Relax area. With warm hospitality and timeless charm, this is a haven of tranquility in the heart of Sorrento."
+  },
+  {
+   "nome": "Hotel Giacomo Morra Alba - Handwritten Collection",
+   "ambito": "Alloggi",
+   "citta": "Alba",
+   "descrizione": "Hotel Giacomo Morra in Alba offers a refined blend of historic charm and contemporary design, carefully restored from its early 1900s origins. The rooms are thoughtfully curated, combining modern comfort with subtle references to the city’s heritage, creating an intimate and stylish retreat where natural light and elegant furnishings enhance every stay. Enjoy a culinary journey at the on-site restaurant, which highlights"
+  },
+  {
+   "nome": "Hotel L'Orologio Firenze",
+   "ambito": "Alloggi",
+   "citta": "Florence",
+   "descrizione": "Elevate your Florentine vacation with a stay at Hotel L'Orologio, a charming 4* establishment that graces Florence's historic heart. Overlooking the enchanting Santa Maria Novella Square and situated mere moments from iconic landmarks, the hotel is the perfect base for travelers seeking to explore the cultural heritage of the city, Elegance with a thematic twist inspired by haute horlogerie adorns each floor, paying tribute to the prestigious watchmakers Rolex, Vacheron-Constantin, and Patek Philippe. Rooms exude sophistication, featuring fine materials, marble baths, and whimsical details. Enjoy your breakfast- soaking stunning Basilica vistas from an authentic Renaissance loggia on the fourth floor, sip your favorite drink at the lounge bar, and enjoy impeccable service at Hotel L'Orologio Firenze."
+  },
+  {
+   "nome": "Hotel Repubblica Marinara",
+   "ambito": "Alloggi",
+   "citta": "Pisa",
+   "descrizione": "Conveniently located in one of Pisa’s most strategic areas, Hotel Repubblica Marinara offers an ideal base for both leisure and business travelers. Just a short distance from the historic city center, the hotel provides easy access to Pisa’s most celebrated attractions while ensuring excellent connectivity to the surrounding region. Its advantageous location near Pisa International Airport, Pisa Centrale Railway Station, the Palazzo dei Congressi, the National Research Council (CNR), and the Cisanello University Hospital makes it a practical choice for a wide range of travel needs. The hotel is also well connected to the main motorway junctions, allowing guests to explore Tuscany with ease. Combining comfort, accessibility, and modern hospitality, Hotel Repubblica Marinara serves as an excellent gateway to discover Pisa’s rich cultural heritage, iconic landmarks, and the beautiful Tuscan countryside."
+  },
+  {
+   "nome": "Relais Santo Stefano",
+   "ambito": "Alloggi",
+   "citta": "Sandigliano",
+   "descrizione": "Surrounded by the rolling vineyards and gentle hills of Piemonte, Relais Santo Stefano is a peaceful countryside retreat where contemporary comfort meets the region's timeless charm. Elegant guestrooms, a wellness center, indoor and outdoor pools, and refined dining create the perfect setting for relaxation. Ideally located for exploring the renowned wine regions, picturesque villages, and scenic landscapes of northern Italy, the hotel offers a tranquil escape where nature, gastronomy, and authentic Italian hospitality come together."
+  },
+  {
+   "nome": "Sertorelli Sport Hotel",
+   "ambito": "Alloggi",
+   "citta": "Cervinia",
+   "descrizione": "Nestled in the heart of the Italian Alps beneath the iconic Matterhorn, the Sertorelli Sport Hotel offers an authentic mountain retreat in one of Italy's most renowned alpine destinations. Blending traditional Alpine charm with modern comforts, this elegant 4-star Superior property enjoys a privileged location just moments from Cervinia's vibrant center, ski lifts, and world- class slopes. Warm hospitality, refined interiors, and stunning mountain scenery create the perfect setting for an unforgettable stay in every season. Guests can unwind in the hotel's"
+  },
+  {
+   "nome": "Starhotels Ritz",
+   "ambito": "Alloggi",
+   "citta": "Milan",
+   "descrizione": "Ideally located near the vibrant Porta Venezia district and the famous Corso Buenos Aires shopping avenue, Starhotels Ritz offers an excellent base for exploring Milan's rich blend of culture, fashion, and local life. The hotel features 197 recently renovated rooms and suites, elegantly designed with contemporary interiors that reflect the city's refined style and sophistication. Guests can enjoy authentic Italian flavors and international specialties at the hotel's restaurant, while the stylish bar provides a welcoming setting for a coffee break, light lunch, or evening cocktail. With its comfortable accommodations, modern amenities, and convenient location close to both major attractions and public transportation, Starhotels Ritz is an ideal choice for discovering the many facets of Milan."
+  },
+  {
+   "nome": "The Venice Times Hotel",
+   "ambito": "Alloggi",
+   "citta": "Venice",
+   "descrizione": "Nestled in the authentic Cannaregio district, The Venice Times Hotel offers a refined blend of Venetian charm, contemporary comfort, and artistic elegance. Thoughtfully designed interiors and carefully curated details create a warm and sophisticated atmosphere, perfect for an unforgettable stay in Venice. Ideally located in the heart of the city, the hotel is within walking distance of some of Venice’s most iconic landmarks, including the Grand Canal, Ca’ d’Oro, the Rialto Bridge, and Teatro La Fenice. Its central yet peaceful setting allows guests to effortlessly discover the city's rich history, culture, and timeless beauty. Elegant accommodations, personalized service, and inviting common spaces, including the stylish Manuzio Lounge, provide the perfect retreat after a day of exploration. Whether enjoying a relaxing aperitif or returning from a stroll through Venice's enchanting streets, guests will find The Venice Times Hotel a welcoming haven in one of Italy’s most celebrated destinations."
+  },
+  {
+   "nome": "UNA Hotels Decò Roma",
+   "ambito": "Alloggi",
+   "citta": "Rome",
+   "descrizione": "Ideally located in the heart of Rome, just steps from Termini Station, UNAHOTELS Decò Roma combines contemporary comfort with elegant Italian style. Its central location offers easy access to the city's iconic landmarks, shopping districts, and cultural attractions, making it an excellent base for exploring the Eternal City. The hotel features stylish and spacious accommodations, welcoming public areas, a peaceful garden, and the renowned Il Grande Gatsby Restaurant, where guests can savor authentic Italian cuisine. A generous breakfast, attentive service, and modern amenities further enhance the guest experience. Within walking distance of public transportation, restaurants, cafés, and shops, UNAHOTELS Decò Roma provides the perfect balance of convenience, comfort, and accessibility for both leisure travelers and groups seeking to discover Rome with ease."
+  },
+  {
+   "nome": "UNA Hotels Galles Milano",
+   "ambito": "Alloggi",
+   "citta": "Milan",
+   "descrizione": "A refined and welcoming hotel located on Corso Buenos Aires, one of Milan’s most vibrant shopping districts, just a short metro ride from the city’s main attractions, including Piazza Gae Aulenti, the Teatro alla Scala, and the Duomo. Guests can unwind at the hotel’s wellness area featuring an indoor pool, spa, and panoramic rooftop terrace with beautiful city views. The property also offers the elegant Le Terrazze Restaurant, serving local and international cuisine. The 201 individually styled rooms combine classic comfort with modern amenities, including complimentary Wi-Fi, air conditioning, streaming services, and spacious work areas. A perfect choice for travelers seeking a comfortable stay with excellent facilities, convenient access to Milan’s cultural highlights, and one of the city’s best shopping locations right on the doorstep."
+  },
+  {
+   "nome": "Villa Sabolini",
+   "ambito": "Alloggi",
+   "citta": "Colle di Val D'Elsa",
+   "descrizione": null
+  }
+ ],
+ "itinerari": [
+  {
+   "codice": "FLGX0f4f8-v1",
+   "type": "trip",
+   "titolo": "Rome (24 pax)",
+   "data_inizio": "2027-05-14",
+   "data_fine": "2027-05-16",
+   "notti": 2,
+   "giorni": 3,
+   "persone": 24,
+   "valuta": "USD",
+   "stato": "confermato",
+   "giorni_dettaglio": [
+    {
+     "numero": 1,
+     "data": "2027-05-14",
+     "citta": "Rome",
+     "intro": "Every stone tells a story. Rome stuns with ancient ruins, opulent fountains, and narrow streets buzzing with life. Toss a coin into the Trevi Fountain, climb the Spanish Steps, and feel history unfold around every corner.",
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Private Transfer",
+       "titolo": "Private Group transfer from Airport Rome FCO to Hotel in Rome with Assistant"
+      },
+      {
+       "ordine": 2,
+       "tipo": "Accommodation",
+       "titolo": "UNA Hotels Decò Roma",
+       "descrizione": "Ideally located just steps from Roma Termini Station and within easy reach of the Basilica di Santa Maria Maggiore, UNA Hotels Decò Roma offers an elegant and convenient base for discovering the Eternal City. Combining contemporary comfort with refined Art Deco-inspired design, the hotel features 196 stylish rooms and suites, thoughtfully appointed to ensure a relaxing stay. Guests can enjoy a warm and welcoming atmosphere, enhanced by sophisticated interiors and attentive service. The hotel's strategic location provides excellent access to Rome's major attractions, making it an ideal choice for both leisure and business travelers. For corporate events and meetings, the property offers five spacious and flexible meeting rooms, equipped to host conferences, business gatherings, and private events in a professional and elegant setting.",
+       "notti": 2,
+       "fornitore": "UNA Hotels Decò Roma"
+      },
+      {
+       "ordine": 3,
+       "tipo": "Private Tour with Vehicle",
+       "titolo": "Private evening tour of Rome by Golfcart",
+       "opzionale": true,
+       "descrizione": "Late in the afternoon, meet your private driver escort and set off on a charming golf cart tour through the illuminated streets of Rome. As twilight falls, discover the Eternal City from a unique perspective, when its iconic monuments and piazzas are beautifully lit and the atmosphere becomes truly magical. Your tour will take you to some of Rome's most celebrated landmarks, including Piazza del Popolo, the elegant Spanish Steps, and the world-famous Trevi Fountain, where you may wish to toss a coin and make a wish. Continue through the lively Piazza Navona and Piazza della Rotonda, home to the magnificent Pantheon, where ancient history and vibrant city life blend seamlessly. Proceed to Piazza Venezia, dominated by the impressive Vittoriano Monument, also known as the Altar of the Fatherland, which houses the Tomb of the Unknown Soldier. Throughout the tour, there will be opportunities to stop, stroll, and take memorable photographs. To conclude the experience, reach Gianicolo Hill, one of Rome's most scenic viewpoints, offering breathtaking panoramic views over the city's rooftops, domes, and monuments. After enjoying this unforgettable panorama, return comfortably to your hotel.",
+       "partecipanti": 24,
+       "durata": "2 hours",
+       "prezzo_a_persona": 250.0,
+       "valuta": "USD",
+       "inclusioni": [
+        "Private 2-hour evening golf cart tour of",
+        "Rome",
+        "Private driver escort",
+        "Stops at Rome's major landmarks and panoramic viewpoints",
+        "Hotel pick-up and drop-off (if centrally located)",
+        "Opportunity for photo stops and short walks during the tour"
+       ],
+       "esclusioni": [
+        "Personal expenses",
+        "Gratuities",
+        "Food and beverages",
+        "Entrance fees (not required during the tour)"
+       ]
+      }
+     ]
+    },
+    {
+     "numero": 2,
+     "data": "2027-05-15",
+     "citta": "Rome",
+     "intro": null,
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Private Tour with Vehicle",
+       "titolo": "Full day Rome walking tour with Colosseum and Roman Forum",
+       "opzione": 1,
+       "descrizione": "Discover the highlights of Rome on a full- day experience combining the city's most iconic ancient sites with its charming historic center. Meet your private guide and begin your journey with a visit to the legendary Colosseum, one of the most remarkable monuments of the ancient world. Learn about the fascinating history of the Roman Empire, the gladiatorial games, and the spectacles that once captivated thousands of spectators. Continue to the Roman Forum, the heart of political, religious, and commercial life in Ancient Rome. As you stroll among the impressive ruins, your guide will bring centuries of history to life with engaging stories and insights into daily life during the Empire. Following your exploration of Ancient Rome, enjoy a walking tour through the historic center, discovering elegant piazzas, picturesque streets, and architectural treasures that reflect the city's unique blend of past and present. Throughout the day, your guide will introduce you to Rome's rich cultural heritage, offering a perfect balance of historical discovery and authentic local atmosphere.",
+       "partecipanti": 24,
+       "durata": "8 hours",
+       "prezzo_a_persona": 340.0,
+       "valuta": "USD",
+       "inclusioni": [
+        "Private full-day transportation by coach or minivan (as appropriate to group size)",
+        "Private English-speaking guide for up to 8 hours",
+        "Entrance ticket to the Colosseum and",
+        "Roman Forum",
+        "Whisper audio system",
+        "City access taxes and parking fees (for coach services)"
+       ],
+       "esclusioni": [
+        "Meals and beverages",
+        "Personal expenses",
+        "Gratuities",
+        "Hotel porterage",
+        "Any services not specifically mentioned above"
+       ]
+      },
+      {
+       "ordine": 2,
+       "tipo": "Private Tour with Vehicle",
+       "titolo": "Half day Colosseum and Roman Forum",
+       "opzione": 2,
+       "descrizione": "Enjoy an unforgettable journey into the heart of Ancient Rome with a guided visit to two of the city's most important archaeological sites. Begin at the magnificent Colosseum, the world's most famous amphitheater and a symbol of Imperial Rome. Your guide will reveal the stories behind the gladiatorial contests, public spectacles, and political strategies that made this extraordinary monument the center of Roman entertainment. Continue to the nearby Roman Forum, once the vibrant hub of political, social, and economic life in the ancient city. Wander through the remains of temples, basilicas, and public buildings while your guide recreates the atmosphere of a place where senators debated, citizens gathered, and history was made. This half-day experience provides a fascinating insight into Rome's glorious past and is ideal for those wishing to discover the city's ancient treasures with the benefit of expert commentary.",
+       "prezzo_a_persona": 248.0,
+       "valuta": "USD",
+       "partecipanti": 24,
+       "durata": "4 hours"
+      }
+     ]
+    },
+    {
+     "numero": 3,
+     "data": "2027-05-16",
+     "citta": null,
+     "intro": null,
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Private Transfer",
+       "titolo": "Private Group transfer from Hotel in Rome to Civitavecchia Pier with Assistant"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "codice": "ATGR0ec57-v1",
+   "type": "trip",
+   "titolo": "Milan – Sandigliano – Venice – Florence (32 pax)",
+   "data_inizio": "2027-05-02",
+   "data_fine": "2027-05-16",
+   "notti": 14,
+   "giorni": 15,
+   "persone": 32,
+   "valuta": "USD",
+   "stato": "confermato",
+   "giorni_dettaglio": [
+    {
+     "numero": 1,
+     "data": "2027-05-02",
+     "citta": "Milan",
+     "intro": "Style leads the way in Milan. From cathedral spires to cutting-edge fashion, the city pulses with energy and elegance. Shop the boutiques, stroll the canals, and savor an aperitivo while the city sparkles into the evening.",
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Accommodation",
+       "titolo": "UNA Hotels Galles Milano",
+       "descrizione": "A refined and welcoming hotel located on Corso Buenos Aires, one of Milan’s most vibrant shopping districts, just a short metro ride from the city’s main attractions, including Piazza Gae Aulenti, the Teatro alla Scala, and the Duomo. Guests can unwind at the hotel’s wellness area featuring an indoor pool, spa, and panoramic rooftop terrace with beautiful city views. The property also offers the elegant Le Terrazze Restaurant, serving local and international cuisine. The 201 individually styled rooms combine classic comfort with modern amenities, including complimentary Wi-Fi, air conditioning, streaming services, and spacious work areas. A perfect choice for travelers seeking a comfortable stay with excellent facilities, convenient access to Milan’s cultural highlights, and one of the city’s best shopping locations right on the doorstep.",
+       "notti": 1,
+       "fornitore": "UNA Hotels Galles Milano"
+      },
+      {
+       "ordine": 2,
+       "tipo": "Private Transfer",
+       "titolo": "Private individual transfer from Milan Malpensa Airport to Hotel in Milan"
+      }
+     ]
+    },
+    {
+     "numero": 2,
+     "data": "2027-05-03",
+     "citta": "Sandigliano",
+     "intro": null,
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Private Transfer",
+       "titolo": "Private transfer from Hotel in Milan to Hotel in Sandigliano (Biella)"
+      },
+      {
+       "ordine": 2,
+       "tipo": "Private Transportation Service",
+       "titolo": "Half day private coach at disposal for visit to Romagnano, VBC & Botto Giuseppe"
+      },
+      {
+       "ordine": 3,
+       "tipo": "Accommodation",
+       "titolo": "Relais Santo Stefano",
+       "descrizione": "Surrounded by the rolling vineyards and gentle hills of Piemonte, Relais Santo Stefano is a peaceful countryside retreat where contemporary comfort meets the region's timeless charm. Elegant guestrooms, a wellness center, indoor and outdoor pools, and refined dining create the perfect setting for relaxation. Ideally located for exploring the renowned wine regions, picturesque villages, and scenic landscapes of northern Italy, the hotel offers a tranquil escape where nature, gastronomy, and authentic Italian hospitality come together.",
+       "notti": 2,
+       "fornitore": "Relais Santo Stefano"
+      },
+      {
+       "ordine": 4,
+       "tipo": "Assistance",
+       "titolo": "Driver's meals 3-5 March"
+      }
+     ]
+    },
+    {
+     "numero": 3,
+     "data": "2027-05-04",
+     "citta": "Sandigliano",
+     "intro": null,
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Private Transportation Service",
+       "titolo": "Private coach at disposal full day 8h: Tollegno and Piacenza"
+      }
+     ]
+    },
+    {
+     "numero": 4,
+     "data": "2027-05-05",
+     "citta": "Milan",
+     "intro": null,
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Private Transportation Service",
+       "titolo": "Private transfer by coach from Biella hotel to Milano hotel + 2hrs stop in Quarona"
+      },
+      {
+       "ordine": 2,
+       "tipo": "Accommodation",
+       "titolo": "UNA Hotels Galles Milano",
+       "descrizione": "A refined and welcoming hotel located on Corso Buenos Aires, one of Milan’s most vibrant shopping districts, just a short metro ride from the city’s main attractions, including Piazza Gae Aulenti, the Teatro alla",
+       "notti": 2,
+       "fornitore": "UNA Hotels Galles Milano"
+      }
+     ]
+    },
+    {
+     "numero": 5,
+     "data": "2027-05-06",
+     "citta": "Milan",
+     "intro": "Scala, and the Duomo. Guests can unwind at the hotel’s wellness area featuring an indoor pool, spa, and panoramic rooftop terrace with beautiful city views. The property also offers the elegant Le Terrazze Restaurant, serving local and international cuisine. The 201 individually styled rooms combine classic comfort with modern amenities, including complimentary Wi-Fi, air conditioning, streaming services, and spacious work areas. A perfect choice for travelers seeking a comfortable stay with excellent facilities, convenient access to Milan’s cultural highlights, and one of the city’s best shopping locations right on the doorstep.",
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Private Transportation Service",
+       "titolo": "Private coach at disposal for half day visit to Woolmark Company Office max 4h"
+      },
+      {
+       "ordine": 2,
+       "tipo": "Private Guide Service",
+       "titolo": "PM Private Milan half-day tour including visit to Duomo, Last Supper and La Scala Theatre 6h",
+       "descrizione": "Discover Milan, Italy’s vibrant capital of fashion, design, and culture, on this privately guided half-day tour. A city where centuries of history blend seamlessly with contemporary elegance, Milan offers a fascinating mix of Gothic masterpieces, artistic treasures, world-famous landmarks, and stylish boulevards. Begin with a visit to the magnificent Duomo di Milano, the city’s iconic cathedral and one of the largest Gothic churches in the world. Inside, admire its soaring columns, stunning stained-glass windows, intricate sculptures, and centuries of history that make this sacred monument truly unforgettable. Continue through the heart of the city, strolling beneath the elegant glass-vaulted roof of the Galleria Vittorio Emanuele II, one of Europe's oldest and most beautiful shopping arcades. Nearby, admire the world-renowned La Scala Theatre, one of the most prestigious opera houses in the world. A highlight of the tour is the visit to Leonardo da Vinci’s Last Supper, one of the most celebrated masterpieces of the Renaissance and a true bucket-list experience for art lovers. The tour also offers an introduction to Milan’s celebrated fashion scene, with a walk through the elegant streets of the renowned Quadrilatero della Moda, home to prestigious boutiques, designer ateliers, and international luxury brands.",
+       "partecipanti": 31,
+       "durata": "6 hours"
+      }
+     ]
+    },
+    {
+     "numero": 6,
+     "data": "2027-05-07",
+     "citta": "Venice",
+     "intro": null,
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Private Transportation Service",
+       "titolo": "Private transfer by coach from Milano hotel to Venice + 2hrs stop in Valdagno"
+      },
+      {
+       "ordine": 2,
+       "tipo": "Accommodation",
+       "titolo": "The Venice Times Hotel",
+       "descrizione": "Nestled in the authentic Cannaregio district, The Venice Times Hotel offers a refined blend of Venetian charm, contemporary comfort, and artistic elegance. Thoughtfully designed interiors and carefully curated details create a warm and sophisticated atmosphere, perfect for an unforgettable stay in Venice. Ideally located in the heart of the city, the hotel is within walking distance of some of Venice’s most iconic landmarks, including the Grand Canal, Ca’ d’Oro, the Rialto Bridge, and Teatro La Fenice. Its central yet peaceful setting allows guests to effortlessly discover the city's rich history, culture, and timeless beauty. Elegant accommodations, personalized service, and inviting common spaces, including the stylish Manuzio Lounge, provide the perfect retreat after a day of exploration. Whether enjoying a relaxing aperitif or returning from a stroll through Venice's enchanting streets, guests will find The Venice Times Hotel a welcoming haven in one of Italy’s most celebrated destinations.",
+       "notti": 3,
+       "fornitore": "The Venice Times Hotel"
+      }
+     ]
+    },
+    {
+     "numero": 7,
+     "data": "2027-05-08",
+     "citta": "Venice",
+     "intro": null,
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Private Guide Service",
+       "titolo": "Half day Venice walking tour",
+       "descrizione": "Step into the timeless beauty of Venice, a city that for centuries stood at the heart of one of the most powerful maritime republics in the Mediterranean. Shaped by its influential Doges and centuries of trade with the East, Venice remains a fascinating blend of history, culture, and architectural splendor. Your guided walking tour begins in the magnificent St. Mark’s Square, often described as the drawing room of Europe and the only square in Venice known as a piazza. Here, admire the city’s most iconic landmarks, including the elegant Procuratie, the stunning St. Mark’s Basilica, the historic Clock Tower, and the symbols that celebrate Venice’s glorious past. Continue with a view of the famous Bridge of Sighs, one of the city's most photographed monuments, before venturing into the heart of authentic Venice. Follow your guide through a maze of charming alleyways and picturesque campi (squares), where everyday Venetian life unfolds amidst beautiful palaces, historic churches, and lively local corners. The tour concludes at the iconic Rialto Bridge, one of Venice’s most celebrated landmarks and the historic commercial heart of the city. Here, your guide will be happy to provide recommendations for further independent exploration, shopping, or leisure time along the enchanting canals.",
+       "partecipanti": 31,
+       "durata": "4 hours",
+       "inclusioni": [
+        "Private English-speaking guide for a half-day walking tour of Venice",
+        "Guided visit of St. Mark’s Square and its surroundings",
+        "Exterior commentary on St. Mark’s",
+        "Basilica, the Procuratie, the Clock Tower, and the Doge’s Palace",
+        "View of the Bridge of Sighs",
+        "Guided walk through Venice’s historic campi and lesser-known streets",
+        "Visit to the Rialto area and Rialto Bridge",
+        "Whisper audio system for enhanced listening throughout the tour"
+       ]
+      },
+      {
+       "ordine": 2,
+       "tipo": "Group Guide Service",
+       "titolo": "Afternoon Venice Gondola Experience",
+       "descrizione": "No visit to Venice is complete without experiencing its most iconic and timeless tradition: a gondola ride through the city’s enchanting canals. Glide gracefully along the waterways aboard the elegant black gondola, a symbol of Venice for centuries. Skillfully steered by expert gondoliers using a single oar, these traditional boats offer a unique perspective of the city, revealing hidden corners, charming bridges, historic palaces, and picturesque canal-side scenes inaccessible by foot. As you navigate both the quieter canals and sections of the Grand Canal, you will gain a deeper appreciation of the special relationship between Venice and its lagoon— a bond that has shaped the city’s history, culture, and daily life for generations. This unforgettable experience offers a relaxing and authentic way to immerse yourself in the unique atmosphere of one of the world's most extraordinary destinations."
+      }
+     ]
+    },
+    {
+     "numero": 8,
+     "data": "2027-05-09",
+     "citta": "Venice",
+     "intro": null,
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Private Guide Service",
+       "titolo": "Private half day excursion to the islands of Murano and Burano with glass blowing demonstration",
+       "descrizione": "Escape the crowds of Venice and immerse yourself in the timeless beauty of the Venetian Lagoon with a memorable excursion to the enchanting islands of Murano and Burano, each renowned for its unique heritage and traditions. Your journey begins in Murano, world- famous for its centuries-old glassmaking tradition. Since 1291, the island has been home to master artisans who transformed glass production into an art form recognized around the globe. During a visit to a historic glass factory, witness a fascinating live demonstration and admire the extraordinary skill with which molten glass is shaped into elegant and intricate works of art. Continue by boat to the colorful island of Burano, celebrated for its picturesque canals, vibrant fishermen’s houses, and long-standing lace-making tradition. Dating back to the 15th century, Burano lace became a symbol of prestige and refinement, and the island remains an important guardian of this delicate craftsmanship. Stroll through its charming streets, enjoy the relaxed atmosphere, and learn about the local traditions and legends that have been passed down through"
+      }
+     ]
+    },
+    {
+     "numero": 9,
+     "data": "2027-05-10",
+     "citta": "Florence",
+     "intro": null,
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Private Guide Service",
+       "titolo": "Private transfer from hotel in Venice to hotel in Florence with stop for Parmigiano cheese factory in Parma and ham producer in Modena",
+       "descrizione": "Travel comfortably from Venice to Florence while discovering two of the culinary treasures that have made the Emilia- Romagna region famous throughout the world. After departing Venice, journey into the heart of Italy’s celebrated Food Valley for an authentic introduction to some of the country's most iconic gastronomic traditions. Your first stop is a renowned Parmigiano Reggiano dairy, where you will learn about the centuries-old production process behind the “King of Cheeses.” Explore the facilities, discover the craftsmanship involved in its creation, and gain insight into the strict standards that make Parmigiano Reggiano one of Italy’s most treasured products. Continue to the Modena area for a visit to a traditional ham producer, where local experts will introduce you to the techniques and traditions behind the region’s celebrated cured meats. This fascinating experience offers a unique glimpse into Italy’s rich food culture and the dedication of artisans who preserve these time-honored methods. Following your visits, relax as you continue south through the picturesque Italian countryside toward Florence, the cradle of the Renaissance, where you will be transferred directly to your hotel.",
+       "partecipanti": 31,
+       "inclusioni": [
+        "Private transfer from Venice to Florence",
+        "English-speaking assistant from Venice hotel to Tronchetto terminal",
+        "Private water taxi transfer from Venice hotel to Tronchetto",
+        "Separate luggage transfer from Venice hotel to Tronchetto (I calculated 2 pieces each)",
+        "English-speaking assistant accompanying the group from Venice to",
+        "Florence",
+        "Private coach at disposal for the full day",
+        "Guided visit of a traditional Parmigiano",
+        "Reggiano cheese factory (Shared experience)",
+        "Visit to a local ham producer in the",
+        "Modena area",
+        "Shared food-production experiences and demonstrations",
+        "All transportation related to the scheduled visits",
+        "Hotel drop-off in Florence via private minivan transfers",
+        "City access taxes and parking fees where applicable"
+       ]
+      },
+      {
+       "ordine": 2,
+       "tipo": "Accommodation",
+       "titolo": "Hotel Cerretani Firenze - MGallery Collection",
+       "descrizione": "Situated near Florence’s Duomo, Hotel Cerretani Firenze combines Renaissance charm with stylish design. The elegant façade opens into refined interiors featuring contemporary art and comfortable rooms.",
+       "notti": 2,
+       "fornitore": "Hotel Cerretani Firenze - MGallery Collection"
+      }
+     ]
+    },
+    {
+     "numero": 10,
+     "data": "2027-05-11",
+     "citta": "Florence",
+     "intro": "Amenities include a rooftop terrace with stunning city views, a wellness center, and a restaurant serving Tuscan specialties. This boutique hotel offers an ideal location to explore Florence’s cultural treasures while enjoying personalized service and a sophisticated ambiance.",
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Private Guide Service",
+       "titolo": "Private half day walking tour of Florence",
+       "descrizione": "Discover the timeless beauty of Florence, the cradle of the Renaissance and one of Italy’s most captivating cities. With its compact historic center, elegant architecture, and wealth of artistic treasures, Florence is best explored on foot. Accompanied by your expert guide, enjoy a leisurely walk through the city's most celebrated landmarks and hidden corners. Admire the magnificent Cathedral of Santa Maria del Fiore, with its iconic dome dominating the skyline, and the elegant Giotto’s Bell Tower. Stroll through the historic Piazza della Signoria, the political heart of Florence for centuries, and continue to Piazza Santa Croce, home to one of the city's most important churches. Your walk also includes the famous Ponte Vecchio, Florence’s oldest bridge and one of its most recognizable symbols, lined with traditional artisan shops. Beyond the iconic sights, discover lesser-known gems such as the remarkable Orsanmichele, a masterpiece of Florentine Gothic architecture, and the beloved Porcellino Fountain, whose bronze boar is said to bring good luck to those who rub its nose. Throughout the tour, your guide will bring Florence's rich history to life through fascinating stories, intriguing anecdotes, and insights into the influential families, artists, and visionaries who shaped this extraordinary city.",
+       "partecipanti": 31,
+       "durata": "4 hours",
+       "inclusioni": [
+        "Private English-speaking guide for a half-day walking tour of Florence",
+        "Guided exploration of Florence’s historic center",
+        "Exterior visit of the Duomo Complex and Giotto’s Bell Tower",
+        "Visit to Piazza della Signoria",
+        "Visit to Piazza Santa Croce",
+        "Walk across Ponte Vecchio",
+        "Commentary on Orsanmichele and the",
+        "Porcellino Fountain",
+        "Whisper audio system for enhanced listening throughout the tour",
+        "Travel services",
+        "Coach at disposal for half-day textile visit in Prato",
+        "Inclusions:",
+        "Private transfer from Florence hotel to",
+        "Cascine coach terminal (by minivans and coach)",
+        "Private transfer from Cascine coach terminal to Florence hotel (by minivans)"
+       ]
+      },
+      {
+       "ordine": 2,
+       "tipo": "Private Transportation Service",
+       "titolo": "Coach at disposal for half-day textile visit in Prato"
+      }
+     ]
+    },
+    {
+     "numero": 11,
+     "data": "2027-05-12",
+     "citta": "Pisa",
+     "intro": "Beyond the famous tower, Pisa offers Romanesque churches, lively student life, and a historic riverfront. Walk the Arno, explore medieval quarters, and enjoy a city that balances icons with authentic charm. The rate is based on a total of 6hrs disposal including pick up from Florence Cascine coach terminal and drop off in Prato and back.",
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Private Tour with Vehicle",
+       "titolo": "Private transfer from hotel in Florence to hotel in Pisa with stop in Volterra and Pisa tour",
+       "descrizione": "After breakfast and check-out, meet your assistant and private drivers and transfer by minivan to Florence Cascine Coach Terminal. Here, board your private coach and depart for Pisa, enjoying a stop along the way in the enchanting hilltop town of Volterra. Upon arrival, meet your local guide and discover one of Tuscany’s most captivating medieval towns. Rich in Etruscan heritage and surrounded by sweeping countryside views, Volterra offers a fascinating blend of history, culture, and authentic Tuscan charm. Stroll through its atmospheric streets and picturesque squares while learning about the town’s remarkable past and its important role throughout the centuries. Following your visit, continue to Pisa. Once one of the most powerful Maritime Republics of the Mediterranean, Pisa is home to the world-famous Piazza dei Miracoli, a UNESCO World Heritage Site and one of Italy’s most extraordinary architectural complexes. During your guided visit, admire the magnificent Cathedral, the striking Baptistery, the iconic Leaning Tower, and the Monumental Cemetery (Camposanto), all exceptional examples of Pisan Romanesque architecture. As your guide unveils the rich history behind these monuments, discover the artistic and cultural influences that shaped Pisa during its golden age. Your visit includes access to the Cathedral and Baptistery, offering a deeper insight into the city’s heritage and architectural splendor. For those wishing to experience one of Italy’s most famous landmarks from within, an ascent of the Leaning Tower is also included. After the tour, transfer to your hotel in Pisa for check-in and overnight. Included Meet & greet with local assistant Private minivan transfer from Florence hotel to Florence Cascine Coach Terminal Full-day private coach service from Florence to Pisa via Volterra Guided walking tour of Volterra with licensed English-speaking local guides Guided tour of Pisa and Piazza dei Miracoli with licensed English-speaking local guides Entrance to Pisa Cathedral Entrance to Pisa Baptistery Entrance to the Leaning Tower of Pisa",
+       "partecipanti": 31,
+       "durata": "8 hours"
+      },
+      {
+       "ordine": 2,
+       "tipo": "Accommodation",
+       "titolo": "Hotel Repubblica Marinara",
+       "descrizione": "Conveniently located in one of Pisa’s most strategic areas, Hotel Repubblica Marinara offers an ideal base for both leisure and business travelers. Just a short distance from the historic city center, the hotel provides easy access to Pisa’s most celebrated attractions while ensuring excellent connectivity to the surrounding region. Its advantageous location near Pisa International Airport, Pisa Centrale Railway Station, the Palazzo dei Congressi, the National Research Council (CNR), and the Cisanello University Hospital makes it a practical choice for a wide range of travel needs. The hotel is also well connected to the main motorway junctions, allowing guests to explore Tuscany with ease. Combining comfort, accessibility, and modern hospitality, Hotel Repubblica Marinara serves as an excellent gateway to discover Pisa’s rich cultural heritage, iconic landmarks, and the beautiful Tuscan countryside.",
+       "notti": 1,
+       "fornitore": "Hotel Repubblica Marinara"
+      }
+     ]
+    },
+    {
+     "numero": 12,
+     "data": "2027-05-13",
+     "citta": "Rome",
+     "intro": "Every stone tells a story. Rome stuns with ancient ruins, opulent fountains, and narrow streets buzzing with life. Toss a coin into the Trevi Fountain, climb the Spanish Steps, and feel history unfold around every corner.",
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Private Transfer",
+       "titolo": "Private transfer from Pisa to Rome by private coach with Assistant"
+      },
+      {
+       "ordine": 2,
+       "tipo": "Accommodation",
+       "titolo": "UNA Hotels Decò Roma",
+       "descrizione": "Ideally located in the heart of Rome, just steps from Termini Station, UNAHOTELS Decò Roma combines contemporary comfort with elegant Italian style. Its central location offers easy access to the city's iconic landmarks, shopping districts, and cultural attractions, making it an excellent base for exploring the Eternal City. The hotel features stylish and spacious accommodations, welcoming public areas, a peaceful garden, and the renowned Il Grande Gatsby Restaurant, where guests can savor authentic Italian cuisine. A generous breakfast, attentive service, and modern amenities further enhance the guest experience. Within walking distance of public transportation, restaurants, cafés, and shops, UNAHOTELS Decò Roma provides the perfect balance of convenience, comfort, and accessibility for both leisure travelers and groups seeking to discover Rome with ease.",
+       "notti": 3,
+       "fornitore": "UNA Hotels Decò Roma"
+      },
+      {
+       "ordine": 3,
+       "tipo": "Private Guide Service",
+       "titolo": "Afternoon Private Roman Forum and Colosseum half day tour",
+       "descrizione": "Step back in time and discover the heart of Ancient Rome on a guided journey through two of the city's most iconic archaeological sites. Begin with a visit to the legendary Colosseum, the largest amphitheater ever built and one of the most recognizable monuments in the world. A masterpiece of Roman engineering, the Colosseum once hosted spectacular gladiatorial contests, public spectacles, and grand events attended by thousands of spectators. More than just entertainment, these games played an important role in Roman society, serving as a powerful tool for emperors to reinforce their authority and maintain public support. Continue to the nearby Roman Forum, the political, religious, and commercial center of ancient Rome for centuries. This remarkable archaeological area was once the stage upon which the history of the Roman Empire unfolded. As you stroll among the remains of temples, basilicas, triumphal arches, and government buildings, your expert guide will bring the ancient city back to life, revealing stories of emperors, politicians, merchants, and ordinary citizens who shaped the destiny of Rome. Through engaging commentary and fascinating historical insights, gain a deeper understanding of the daily life, achievements, and legacy of one of the greatest civilizations in history. Included Half-day guided tour of the Colosseum and Roman Forum Licensed English-speaking local guides Entrance to the Colosseum Entrance to the Roman Forum Whisper audio devices for enhanced listening during the guided tour Private coach service at disposal for the duration of the tour",
+       "partecipanti": 31,
+       "durata": "4 hours"
+      }
+     ]
+    },
+    {
+     "numero": 13,
+     "data": "2027-05-14",
+     "citta": "Rome",
+     "intro": null,
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Private Tour with Vehicle",
+       "titolo": "Private Vatican Museums half day tour",
+       "descrizione": "Prepare for an extraordinary journey through art, history, and faith as you explore one of the world's most celebrated cultural treasures: the Vatican Museums. Home to centuries of papal patronage, the Vatican Museums house an unparalleled collection of masterpieces gathered by the Popes throughout the ages. As you walk through magnificent galleries, richly decorated halls, and elegant courtyards, your expert guide will unveil the stories behind some of the greatest works of Renaissance and classical art. Discover masterpieces created by legendary artists such as Raphael, Botticelli, Pinturicchio, and Michelangelo, whose creativity helped shape the artistic heritage of Western civilization. The highlight of the visit is undoubtedly the Sistine Chapel, where Michelangelo's breathtaking ceiling frescoes and monumental Last Judgment continue to inspire and captivate visitors from around the globe. This immersive experience offers a unique opportunity to admire some of humanity’s greatest artistic achievements while gaining insight into the spiritual and historical significance of Vatican City. Included Half-day guided tour of the Vatican Museums and Sistine Chapel Licensed English-speaking local guides Skip-the-line entrance to the Vatican Museums Access to the Sistine Chapel Whisper audio devices for enhanced listening during the guided tour Private coach service at disposal for the"
+      }
+     ]
+    },
+    {
+     "numero": 14,
+     "data": "2027-05-15",
+     "citta": "Rome",
+     "intro": null,
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Private Tour with Vehicle",
+       "titolo": "Private full day tour to Pompeii",
+       "descrizione": "Travel south through the Italian countryside towards Pompeii, one of the most extraordinary archaeological sites in the world. Along the way, admire views of Mount Vesuvius, the imposing volcano whose catastrophic eruption in AD 79 both destroyed and remarkably preserved this thriving Roman city for centuries. Upon arrival, meet your local guide and begin an immersive exploration of the ancient ruins. Walk along remarkably preserved streets and discover a city frozen in time, where homes, temples, baths, shops, and public buildings offer a fascinating glimpse into daily life during the Roman Empire. As you stroll through the archaeological site, your expert guide will bring Pompeii’s history to life, revealing the stories of its inhabitants and the dramatic events that led to the city's sudden demise. From intricate frescoes and ancient marketplaces to grand villas and public squares, each corner of Pompeii tells the story of a sophisticated civilization preserved beneath volcanic ash for nearly two millennia. During the day, your dedicated tour escort will be happy to recommend suitable local venues for lunch or a light snack at your leisure. Included Full-day private coach service Full-day English-speaking tour assistant Guided tour of Pompeii with licensed English-speaking local guides Entrance to the Archaeological Park of Pompeii Whisper audio devices for enhanced listening during the guided tour",
+       "partecipanti": 31,
+       "durata": "8 hours"
+      }
+     ]
+    },
+    {
+     "numero": 15,
+     "data": "2027-05-16",
+     "citta": null,
+     "intro": "Our dedicated Support team is available to assist you with any needs that may arise during your trip. Additionally, we provide comprehensive assistance with pre-travel inquiries to ensure your journey is smooth from start to finish. Whether you need recommendations for dining at your destination or have questions before your departure, our team is here to help you every step of the way. recommended, especially during warmer months. The itinerary and route within the archaeological site may vary depending on operational requirements and site regulations. Certain areas may occasionally be closed for restoration work, maintenance, or conservation purposes without prior notice. Lunch is not included unless otherwise specified. Coach access and drop-off points are regulated by local authorities and may require short walks before entering the archaeological site.",
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Private Transfer",
+       "titolo": "Private transfers from Rome hotel to Rome FCO airport (Individual transfers)"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "codice": "FLGR106d8-v1",
+   "type": "trip",
+   "titolo": "Colle di Val D'Elsa – Florence (12 pax)",
+   "data_inizio": "2027-07-20",
+   "data_fine": "2027-07-27",
+   "notti": 7,
+   "giorni": 8,
+   "persone": 12,
+   "valuta": "USD",
+   "stato": "confermato",
+   "giorni_dettaglio": [
+    {
+     "numero": 1,
+     "data": "2027-07-20",
+     "citta": "Colle di Val D'Elsa",
+     "intro": null,
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Private Transfer",
+       "titolo": "Private Transfers from Florence Airport to Villa Sabolini (individual transfers)"
+      },
+      {
+       "ordine": 2,
+       "tipo": "Accommodation",
+       "titolo": "Villa Sabolini",
+       "fornitore": "Villa Sabolini"
+      }
+     ]
+    },
+    {
+     "numero": 2,
+     "data": "2027-07-21",
+     "citta": "Colle di Val D'Elsa",
+     "intro": null,
+     "servizi": []
+    },
+    {
+     "numero": 3,
+     "data": "2027-07-22",
+     "citta": "Colle di Val D'Elsa",
+     "intro": null,
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Private Tour with Vehicle",
+       "titolo": "Private half day tour to San Gimignano",
+       "descrizione": "Meet your private driver at the villa and journey through the rolling Tuscan countryside to San Gimignano, one of Tuscany’s most iconic and picturesque hill towns. Upon arrival, enjoy approximately two hours of free time to explore at your own pace. Known as the “Medieval Manhattan” of Tuscany, San Gimignano is famous for its remarkable skyline, where ancient stone towers still rise above the town as a testament to the wealth and influence of the noble families who built them during the Middle Ages. Stroll through the charming cobblestone streets, browse artisan shops, admire the beautifully preserved medieval architecture, and take in the stunning views of the surrounding Tuscan landscape. Included: Private vehicle with driver Private guide",
+       "partecipanti": 12,
+       "durata": "3 hours"
+      },
+      {
+       "ordine": 2,
+       "tipo": "Private Tour with Vehicle",
+       "titolo": "Afternoon Vespa experience with a wine tasting"
+      }
+     ]
+    },
+    {
+     "numero": 4,
+     "data": "2027-07-23",
+     "citta": "Colle di Val D'Elsa",
+     "intro": null,
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Private Tour with Vehicle",
+       "titolo": "Private truffel hunting with a cooking class",
+       "descrizione": "Enjoy an authentic Tuscan experience combining a private truffle hunt with a"
+      }
+     ]
+    },
+    {
+     "numero": 5,
+     "data": "2027-07-24",
+     "citta": "Colle di Val D'Elsa",
+     "intro": null,
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Private Transfer",
+       "titolo": "Private vehicle at disposal for 8 hours from Villa Sabolini to Teatro del Silenzio"
+      }
+     ]
+    },
+    {
+     "numero": 6,
+     "data": "2027-07-25",
+     "citta": "Florence",
+     "intro": "Masterpieces line the streets of Florence. From Michelangelo’s David to sunset views over the Arno, the city invites you to explore Renaissance treasures, cozy trattorias, and artisan boutiques. Every step leads to something unforgettable. INCLUSIONS: private vehcile with a driver. From 7 to 12 passengers, two vehicles will be used.",
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Private Transfer",
+       "titolo": "Private transfer from Villa Sabolini to Florence hotel"
+      },
+      {
+       "ordine": 2,
+       "tipo": "Accommodation",
+       "titolo": "Hotel L'Orologio Firenze",
+       "descrizione": "Elevate your Florentine vacation with a stay at Hotel L'Orologio, a charming 4* establishment that graces Florence's historic heart. Overlooking the enchanting Santa Maria Novella Square and situated mere moments from iconic landmarks, the hotel is the perfect base for travelers seeking to explore the cultural heritage of the city, Elegance with a thematic twist inspired by haute horlogerie adorns each floor, paying tribute to the prestigious watchmakers Rolex, Vacheron-Constantin, and Patek Philippe. Rooms exude sophistication, featuring fine materials, marble baths, and whimsical details. Enjoy your breakfast- soaking stunning Basilica vistas from an authentic Renaissance loggia on the fourth floor, sip your favorite drink at the lounge bar, and enjoy impeccable service at Hotel L'Orologio Firenze.",
+       "notti": 2,
+       "fornitore": "Hotel L'Orologio Firenze"
+      },
+      {
+       "ordine": 3,
+       "tipo": "Private Guide Service",
+       "titolo": "The Oltrarno neighborhood: Pitti Palace and Boboli Gardens private half day walking tour",
+       "descrizione": "Meet your private guide at 3:30 PM outside Caffè Rivoire, the historic café located in Piazza della Signoria, at the corner of Via Vacchereccia, and begin your exploration of Florence’s elegant Oltrarno district. Located on the opposite side of the Arno River, Oltrarno is one of Florence’s most authentic neighborhoods, where artisans, local traditions, and remarkable historic landmarks still preserve the city's timeless charm. It was here that many noble families chose to settle during the Renaissance, seeking a quieter and healthier environment away from the crowded city center. Your visit begins at the magnificent Pitti Palace, the grand residence that became the symbol of Medici power and one of the most important palaces in Florence. Originally adopted by the Medici family in the 16th century as their preferred residence, the palace houses an extraordinary collection of paintings and artworks gathered not simply to display wealth and power, but to decorate the family's private living spaces with pieces they genuinely admired. After exploring the palace interiors, continue to the stunning Boboli Gardens, one of the finest examples of an Italian Renaissance garden. With elegant pathways, sculptures, fountains, and panoramic views, the gardens became a model for royal and noble gardens throughout Europe. Here, art, nature, symmetry, and the display of prestige combine to create an extraordinary open- air museum. As you wander through the palace and gardens, you will discover the fascinating story of the Medici dynasty, admire remarkable works of art, and enjoy one of Florence's most beautiful and iconic landscapes. Departure Time: 3:30 PM Meeting Point: Outside Caffè Rivoire, Piazza della Signoria (corner of Via Vacchereccia)"
+      }
+     ]
+    },
+    {
+     "numero": 7,
+     "data": "2027-07-26",
+     "citta": "Florence",
+     "intro": null,
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Private Guide Service",
+       "titolo": "Private Florence Walk and Taste half day tour",
+       "descrizione": "Discover Florence through its flavors on this delightful walking tour that showcases the city's rich culinary traditions and local specialties. A perfect introduction to Florentine culture, this experience offers a unique perspective on a city where beauty, art, history, and gastronomy have been intertwined since the Renaissance. Accompanied by your private guide, begin your journey with a traditional Italian coffee and fresh pastry before exploring the vibrant Mercato Centrale, Florence's historic covered market. Wander through the bustling stalls filled with local produce, meats, cheeses, and regional delicacies while learning about the ingredients that define Tuscan cuisine. As you stroll through the city's charming streets and hidden corners, enjoy a variety of carefully selected tastings, including a traditional schiacciata with truffle, a selection of fried fish and vegetables, and refreshing seasonal treats. Continue into the authentic Oltrarno district, where local life still thrives, and conclude with a generous charcuterie and cheese board paired with a glass of Chianti wine, produced in the rolling hills surrounding Florence."
+      }
+     ]
+    },
+    {
+     "numero": 8,
+     "data": "2027-07-27",
+     "citta": null,
+     "intro": "This delicious experience offers the perfect blend of sightseeing, storytelling, and local flavors, providing a deeper understanding of Florence's culture through its cuisine. Departure Time: 10:30 AM Duration: Approximately 3 hours Included: Private local guide Coffee and pastry Fresh fruit or smoothie Schiacciata with truffle Traditional fried fish and vegetables Selection of local cheeses and cured meats One glass of Chianti wine All food tastings mentioned in the itinerary Please note: Any dietary requirements or food allergies must be communicated at the time of booking.",
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Private Transfer",
+       "titolo": "Private transfer from Florence hotel to Florence airport"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "codice": "FLGR0d62c-v1",
+   "type": "trip",
+   "titolo": "Alba – San Pietro in Cariano (24 pax)",
+   "data_inizio": "2026-10-11",
+   "data_fine": "2026-10-18",
+   "notti": 7,
+   "giorni": 8,
+   "persone": 24,
+   "valuta": "USD",
+   "stato": "confermato",
+   "giorni_dettaglio": [
+    {
+     "numero": 1,
+     "data": "2026-10-11",
+     "citta": "Alba",
+     "intro": null,
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Private Transfer",
+       "titolo": "Private transfers from Airport Milan MXP to Hotel in Alba (individual transfers)"
+      },
+      {
+       "ordine": 2,
+       "tipo": "Accommodation",
+       "titolo": "Hotel Giacomo Morra Alba - Handwritten Collection",
+       "descrizione": "Hotel Giacomo Morra in Alba offers a refined blend of historic charm and contemporary design, carefully restored from its early 1900s origins. The rooms are thoughtfully curated, combining modern comfort with subtle references to the city’s heritage, creating an intimate and stylish retreat where natural light and elegant furnishings enhance every stay. Enjoy a culinary journey at the on-site restaurant, which highlights",
+       "notti": 4,
+       "fornitore": "Hotel Giacomo Morra Alba - Handwritten Collection"
+      }
+     ]
+    },
+    {
+     "numero": 2,
+     "data": "2026-10-12",
+     "citta": "Alba",
+     "intro": null,
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Private Tour with Vehicle",
+       "titolo": "Full day Langhe Wine Experience: Monforte d’Alba & Barolo",
+       "descrizione": "A delightful day in the rolling hills of the Langhe begins with a morning visit to Monforte d’Alba, one of the area’s most charming wine villages. Here, you will be welcomed at a local winery for a guided tour and tasting, offering an introduction to the territory and its renowned wine traditions. Following the tasting, enjoy some free time to stroll through the"
+      }
+     ]
+    },
+    {
+     "numero": 3,
+     "data": "2026-10-13",
+     "citta": "Alba",
+     "intro": null,
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Private Tour with Vehicle",
+       "titolo": "Full day Neive, Barbaresco and Tresio",
+       "descrizione": "Enjoy a full-day immersion in the heart of the Langhe, discovering the charming villages of Neive, Barbaresco, and Treiso, each offering its own character and scenic beauty. Accompanied by guided visits, the day includes stops at two local wineries, where you will gain insight into the wine- making traditions of the area and enjoy tastings of the region’s renowned wines. Throughout the day, ample free time is scheduled in each village, allowing you to wander through historic streets, admire vineyard landscapes, and soak in the relaxed and authentic atmosphere that makes the Langhe so unique. A perfect balance of guided experiences and independent exploration.",
+       "partecipanti": 24,
+       "inclusioni": [
+        "*Private 30-seater coach at disposal for FD tour (parking and city access tax included) *Estate visit and wine tasting at winery in Neive (visit of the winery -",
+        "Exploration of the family’s private museum - Tour of the aging room dedicated to Traditional Method sparkling wines - Visit to the barrel cellar featuring Barbaresco and Barolo wines - Taste of 3 wines - Langhe",
+        "Nebbiolo 2024, - Barbaresco ‘I",
+        "Patriarchi’ 2022, - Barolo 2021 - local products) *Barbaresco terrace experience (Winery visit - 4 Barbaresco wine tasting)"
+       ]
+      },
+      {
+       "ordine": 2,
+       "tipo": "Private Tour with Vehicle",
+       "titolo": "Alternative experience - Full day tour truffle hunting and cooking class",
+       "descrizione": "Spend an unforgettable day immersed in local life while discovering the fascinating world of truffles. Meet your driver at the hotel and depart for Montà, a small town set in the heart of the Langhe countryside. Upon arrival, you will be introduced to the trifulao—the truffle hunter—and his trusted dog, before setting off together into the nearby woods for an authentic truffle hunt. Once the hunt is complete, take time to relax on a panoramic terrace overlooking the rolling landscape, where a truffle- based aperitif awaits you. The experience continues as you climb aboard the hunter’s 4x4 and head to his family home. Here, you will be warmly welcomed and invited into"
+      }
+     ]
+    },
+    {
+     "numero": 4,
+     "data": "2026-10-14",
+     "citta": "Alba",
+     "intro": null,
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Private Tour with Vehicle",
+       "titolo": "Full day Fontanafredda Experience tour",
+       "descrizione": "Spend a full day immersed in the elegance and history of the renowned Fontanafredda estate, set in the heart of the Langhe vineyards. The experience begins with a guided visit of the historic property, followed by a wine tasting that showcases the estate’s most celebrated labels and wine-making heritage. After the visit, enjoy a relaxing lunch on site, surrounded by the peaceful scenery of the vineyards. The afternoon is dedicated to free time, allowing you to stroll through the beautiful gardens, explore the estate at your own pace, and fully appreciate the serene atmosphere of this iconic Langhe"
+      }
+     ]
+    },
+    {
+     "numero": 5,
+     "data": "2026-10-15",
+     "citta": "San Pietro in Cariano",
+     "intro": null,
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Private Transfer",
+       "titolo": "Private transfer from Alba to San Pietro in Cariano with stop in Barolo WiMu"
+      },
+      {
+       "ordine": 2,
+       "tipo": "Accommodation",
+       "titolo": "Byblos Art Hotel Villa Amistà",
+       "descrizione": "Byblos Art Hotel Villa Amistà is a distinctive luxury property set in a historic Venetian villa just outside Verona, surrounded by landscaped gardens and peaceful countryside. Its location offers a tranquil retreat while remaining within easy reach of Verona’s cultural landmarks and Lake Garda. The hotel is renowned for its striking blend of classical architecture and contemporary art, where frescoed ceilings and elegant period details are contrasted with bold modern design pieces throughout the interiors. Rooms and suites are individually styled, combining artistic expression with refined comfort and modern amenities.",
+       "notti": 3,
+       "fornitore": "Byblos Art Hotel Villa Amistà"
+      }
+     ]
+    },
+    {
+     "numero": 6,
+     "data": "2026-10-16",
+     "citta": "San Pietro in Cariano",
+     "intro": null,
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Private Tour with Vehicle",
+       "titolo": "Half day tour in San Pietro in Cariano wine tasting",
+       "descrizione": "Visit a prestigious wine estate, beautifully nestled among rolling vineyards in the Valpolicella countryside. The experience includes a guided visit and tasting, where you will discover the estate’s philosophy and savor a selection of their signature Amarone and Valpolicella wines. The tasting is complemented by a light lunch featuring local specialties, thoughtfully paired to enhance the wines, offering a refined and authentic introduction to the flavors and traditions of this renowned wine region.",
+       "partecipanti": 24,
+       "inclusioni": [
+        "*Private 30-seater coach for the tour",
+        "Parking fees included",
+        "City access taxes included *Valpolicella Experience",
+        "Walk along the cypress-lined avenue",
+        "Visit to the Roman ruins",
+        "Exploration of the vineyards",
+        "Visit to the two 16th-century tuff wine cellars",
+        "Tour of the drying room (fruttaio) *Wine Tasting & Light Lunch (served under the barchessa)",
+        "Selection of local cured meats",
+        "Traditional cheeses with fruit mustards",
+        "Artisan bread and breadsticks",
+        "Water *Wine Pairings (3 wines)",
+        "Terso Bianco IGT 2022 or Sidus Bianco",
+        "IGT 2017"
+       ]
+      }
+     ]
+    },
+    {
+     "numero": 7,
+     "data": "2026-10-17",
+     "citta": "San Pietro in Cariano",
+     "intro": null,
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Private Tour with Vehicle",
+       "titolo": "Half day Valpolicella winery experience"
+      }
+     ]
+    },
+    {
+     "numero": 8,
+     "data": "2026-10-18",
+     "citta": null,
+     "intro": null,
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Private Transfer",
+       "titolo": "Private transfers from Hotel in San Pietro in Cariano to Airport Milan MXP (individual transfers)"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "codice": "FLGR1071b-v2",
+   "type": "wedding",
+   "titolo": "Wedding in Cervinia – Milan (24 pax)",
+   "data_inizio": "2027-08-24",
+   "data_fine": "2027-08-31",
+   "notti": 7,
+   "giorni": 8,
+   "persone": 24,
+   "valuta": "USD",
+   "stato": "confermato",
+   "giorni_dettaglio": [
+    {
+     "numero": 1,
+     "data": "2027-08-24",
+     "citta": "Cervinia",
+     "intro": null,
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Private Transfer",
+       "titolo": "Private transfers from Milan Malpensa airport to Sertorelli Sporthotel in Aosta Valley (individual transfers)"
+      },
+      {
+       "ordine": 2,
+       "tipo": "Accommodation",
+       "titolo": "Sertorelli Sport Hotel",
+       "descrizione": "Nestled in the heart of the Italian Alps beneath the iconic Matterhorn, the Sertorelli Sport Hotel offers an authentic mountain retreat in one of Italy's most renowned alpine destinations. Blending traditional Alpine charm with modern comforts, this elegant 4-star Superior property enjoys a privileged location just moments from Cervinia's vibrant center, ski lifts, and world- class slopes. Warm hospitality, refined interiors, and stunning mountain scenery create the perfect setting for an unforgettable stay in every season. Guests can unwind in the hotel's",
+       "notti": 5,
+       "fornitore": "Sertorelli Sport Hotel"
+      }
+     ]
+    },
+    {
+     "numero": 6,
+     "data": "2027-08-29",
+     "citta": "Milan",
+     "intro": null,
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Accommodation",
+       "titolo": "Starhotels Ritz",
+       "descrizione": "Ideally located near the vibrant Porta Venezia district and the famous Corso Buenos Aires shopping avenue, Starhotels Ritz offers an excellent base for exploring Milan's rich blend of culture, fashion, and local life. The hotel features 197 recently renovated rooms and suites, elegantly designed with contemporary interiors that reflect the city's refined style and sophistication. Guests can enjoy authentic Italian flavors and international specialties at the hotel's restaurant, while the stylish bar provides a welcoming setting for a coffee break, light lunch, or evening cocktail. With its comfortable accommodations, modern amenities, and convenient location close to both major attractions and public transportation, Starhotels Ritz is an ideal choice for discovering the many facets of Milan.",
+       "notti": 2,
+       "fornitore": "Starhotels Ritz"
+      },
+      {
+       "ordine": 2,
+       "tipo": "Private Tour with Vehicle",
+       "titolo": "Private transfer from Hotel in Aosta Valley to Hotel in Milan with 2hrs stop in Monferrato for wine tasting in a local winery"
+      }
+     ]
+    },
+    {
+     "numero": 7,
+     "data": "2027-08-30",
+     "citta": "Milan",
+     "intro": null,
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Private Guide Service",
+       "titolo": "Private Milan Walking Tour",
+       "descrizione": "Milan is the perfect blend of romance and urban sophistication. Unlike many Italian cities, it is not defined by a single architectural style or historical era, but rather showcases influences spanning from Gothic masterpieces to Futurist innovation. It is an ideal destination for those wishing to experience Italy's contemporary elegance and vibrant cultural scene. Begin at the iconic Duomo, admiring the breathtaking façade of this magnificent cathedral, whose construction spanned over six centuries. From its highest point, tradition says that the golden statue of the Madonnina watches over the city. Accompanied by your private guide, enjoy a leisurely walk through Milan's historic center, discovering highlights such as the elegant Galleria Vittorio Emanuele II, the world-renowned La Scala Opera House, and the impressive Sforza Castle, a 14th- century fortress housing remarkable museums and art collections. Milan is also internationally celebrated as Italy's fashion capital. Follow your guide through the prestigious Fashion District, strolling along Via Montenapoleone and Via della Spiga, where luxury boutiques and designer ateliers stand as symbols of timeless style and creativity. The tour concludes back at Piazza Duomo.",
+       "partecipanti": 24,
+       "durata": "3 hours",
+       "inclusioni": [
+        "Private English-speaking guide for half-day tour (max. 3 hours service)",
+        "Private coach at disposal for Milan half-day tour (30-seater, city access tax and parking included)",
+        "Whisper headsets for all participants",
+        "Disclaimer :",
+        "Entrance fees are not included unless otherwise specified",
+        "Subject to availability at the time of booking"
+       ]
+      }
+     ]
+    },
+    {
+     "numero": 8,
+     "data": "2027-08-31",
+     "citta": null,
+     "intro": null,
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Private Transfer",
+       "titolo": "Private transfers from Hotel in Milan to Milan MXP Airport (Individual transfers)"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "codice": "FLGR10416-v1",
+   "type": "wedding",
+   "titolo": "Wedding in Oleggio Castello (20 pax)",
+   "data_inizio": "2027-05-25",
+   "data_fine": "2027-05-27",
+   "notti": 2,
+   "giorni": 3,
+   "persone": 20,
+   "valuta": "USD",
+   "stato": "confermato",
+   "giorni_dettaglio": [
+    {
+     "numero": 1,
+     "data": "2027-05-25",
+     "citta": "Oleggio Castello",
+     "intro": null,
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Private Transfer",
+       "titolo": "Private transfers from Airport Milan MXP to Castello dal Pozzo Resort (individual transfers)"
+      },
+      {
+       "ordine": 2,
+       "tipo": "Accommodation",
+       "titolo": "Castello Dal Pozzo Resort",
+       "descrizione": "More than a historic estate, Castello Dal Pozzo is a place to experience. Set within 60 acres of centuries-old parkland overlooking the shimmering waters of Lake Maggiore, this enchanting Neo-Gothic castle has been owned by the same noble family for generations. Today, it welcomes guests as an elegant 5-star resort, where timeless heritage, refined interiors, and modern comforts blend seamlessly. Surrounded by pristine gardens and breathtaking lake views, the estate retains its authentic character and sense of place. Every detail tells a story, every space reflects its rich history, and every stay feels uniquely personal.",
+       "notti": 2,
+       "fornitore": "Castello Dal Pozzo Resort"
+      }
+     ]
+    },
+    {
+     "numero": 2,
+     "data": "2027-05-26",
+     "citta": "Oleggio Castello",
+     "intro": null,
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Assistance",
+       "titolo": "Wedding Celebration",
+       "partecipanti": 20,
+       "inclusioni": [
+        "May 26–27, 2027",
+        "Set against the enchanting backdrop of",
+        "Lake Maggiore, this wedding experience unfolds within the historic grounds of",
+        "Castello Dal Pozzo, combining timeless elegance, stunning scenery, and unforgettable moments.",
+        "Wednesday, May 26, 2027 - Civil Wedding",
+        "Ceremony",
+        "The celebration begins with a private civil ceremony held on the Pratone, a beautiful open-air lawn within the castle's centuries- old park. Surrounded by lush greenery and the romantic atmosphere of the estate, this scenic setting offers the perfect backdrop for exchanging vows with family and friends.",
+        "Welcome Aperitivo on the Castle Terrace",
+        "Guests are welcomed to the festivities with an elegant aperitivo on the panoramic",
+        "Castle Terrace, where breathtaking views of Lake Maggiore create a spectacular setting for cocktails and conversation as the sun begins to set.",
+        "Wedding Dinner in the Castle",
+        "The celebration continues with an exclusive wedding reception in the historic castle. Guests will enjoy a refined gala dinner featuring a carefully curated multi- course menu inspired by local flavors and",
+        "Italian culinary traditions, accompanied by a selection of regional wines.",
+        "Throughout the evening, guests will have exclusive access to the castle's magnificent rooms and terraces, allowing them to fully immerse themselves in the unique atmosphere of this noble residence.",
+        "As night falls, the castle gardens are illuminated by decorative torches, creating a romantic and magical ambiance for the festivities.",
+        "After-Dinner Celebration",
+        "Following dinner and the wedding cake, the celebration continues with an after-dinner cocktail experience, offering guests the opportunity to relax, socialize, and continue celebrating in one of the most charming settings on Lake Maggiore.",
+        "A truly memorable wedding experience combining historic elegance, exceptional cuisine, and the timeless beauty of northern Italy.",
+        "Participants Duration 20 Full day days",
+        "Inclusions :",
+        "May 26–27, 2027",
+        "Set against the enchanting backdrop of Lake Maggiore, this wedding experience unfolds within the historic grounds of Castello Dal Pozzo, combining timeless elegance, stunning scenery, and unforgettable moments.",
+        "Wednesday, May 26, 2027 - Civil",
+        "Wedding Ceremony",
+        "The celebration begins with a private civil ceremony held on the Pratone, a beautiful open-air lawn within the castle's centuries-old park.",
+        "Surrounded by lush greenery and the romantic atmosphere of the estate, this scenic setting offers the perfect backdrop for exchanging vows with family and friends.",
+        "Welcome Aperitivo on the Castle",
+        "Terrace",
+        "Guests are welcomed to the festivities with an elegant aperitivo on the panoramic Castle Terrace, where breathtaking views of Lake Maggiore create a spectacular setting for cocktails and conversation as the sun"
+       ]
+      }
+     ]
+    },
+    {
+     "numero": 3,
+     "data": "2027-05-27",
+     "citta": null,
+     "intro": "Wedding Dinner in the Castle The celebration continues with an exclusive wedding reception in the historic castle. Guests will enjoy a refined gala dinner featuring a carefully curated multi-course menu inspired by local flavors and Italian culinary traditions, accompanied by a selection of regional wines. Throughout the evening, guests will have exclusive access to the castle's magnificent rooms and terraces, allowing them to fully immerse themselves in the unique atmosphere of this noble residence. As night falls, the castle gardens are illuminated by decorative torches, creating a romantic and magical ambiance for the festivities. After-Dinner Celebration Following dinner and the wedding cake, the celebration continues with an after-dinner cocktail experience, offering guests the opportunity to relax, socialize, and continue celebrating in one of the most charming settings on Lake Maggiore. A truly memorable wedding experience combining historic elegance, exceptional cuisine, and the timeless beauty of northern Italy.",
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Private Transfer",
+       "titolo": "Private transfers from Castello dal Pozzo Resort to Airport Milan MXP (individual transfers)"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "codice": "FLGR109cd-v1",
+   "type": "wedding",
+   "titolo": "Wedding in Sorrento (22 pax)",
+   "data_inizio": "2027-09-21",
+   "data_fine": "2027-09-26",
+   "notti": 5,
+   "giorni": 6,
+   "persone": 22,
+   "valuta": "USD",
+   "stato": "confermato",
+   "giorni_dettaglio": [
+    {
+     "numero": 1,
+     "data": "2027-09-21",
+     "citta": "Sorrento",
+     "intro": "Lemon trees frame every view and cliffs drop dramatically into the bay. Sorrento feels like summer on a plate, full of coastal charm and classic Italian warmth. It’s the perfect base—or a reason to stop and stay.",
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Accommodation",
+       "titolo": "Hotel Continental Sorrento",
+       "descrizione": "Nestled in one of Sorrento’s most enchanting corners, Grand Hotel Continental offers a refined retreat where elegance meets comfort. From its sophisticated interiors to the panoramic \"Terrazza Vittoria\" with breathtaking views of the Gulf of Naples, every detail is designed for an unforgettable stay. Relax by the pool surrounded by lush gardens, indulge in authentic Sorrentine flavors, or embrace total well-being in the Acqua Relax area. With warm hospitality and timeless charm, this is a haven of tranquility in the heart of Sorrento.",
+       "notti": 5,
+       "fornitore": "Hotel Continental Sorrento"
+      }
+     ]
+    },
+    {
+     "numero": 5,
+     "data": "2027-09-25",
+     "citta": "Sorrento",
+     "intro": null,
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Assistance",
+       "titolo": "Wedding event",
+       "inclusioni": [
+        "Exclusive use of the rooftop terrace",
+        "Private wedding event setup",
+        "Beverages during the event",
+        "Background music through the hotel's sound system"
+       ],
+       "esclusioni": [
+        "Brunch menu and catering services (to be quoted separately)",
+        "Wedding ceremony arrangements, if applicable",
+        "Floral decorations",
+        "Photography and videography services",
+        "Additional entertainment or live music",
+        "Any services not specifically mentioned under \"Inclusions\"",
+        "Please note that brunch menu options and related pricing will be available once the hotel's 2027 rates are finalized. Updated details are expected in January 2027."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "codice": "FLGR10416-v3",
+   "type": "wedding",
+   "titolo": "Wedding in Radda in Chianti (20 pax)",
+   "data_inizio": "2027-05-21",
+   "data_fine": "2027-05-23",
+   "notti": 2,
+   "giorni": 3,
+   "persone": 20,
+   "valuta": "USD",
+   "stato": "confermato",
+   "giorni_dettaglio": [
+    {
+     "numero": 1,
+     "data": "2027-05-21",
+     "citta": "Radda in Chianti",
+     "intro": "This medieval village in the heart of wine country offers stone lanes, scenic views, and cellars ready to welcome you. Radda feels cozy and authentic, ideal for sipping Chianti and soaking in the slow Tuscan lifestyle.",
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Private Transfer",
+       "titolo": "Private transfers from Florence Airport to Borgo Vescine (individual transfers)"
+      },
+      {
+       "ordine": 2,
+       "tipo": "Accommodation",
+       "titolo": "Borgo Vescine",
+       "descrizione": "Nestled in the heart of the Chianti Classico countryside, just 40 minutes from Florence and Siena, Borgo Vescine is a beautifully preserved medieval hamlet offering an authentic Tuscan experience surrounded by vineyards, olive groves, and rolling hills. The property combines timeless charm, elegant hospitality, and breathtaking scenery, making it an exceptional setting for destination weddings and exclusive celebrations. The borgo features 28 charming rooms accommodating up to 65 guests, allowing family and friends to stay together in a unique and intimate atmosphere. Historic stone pathways, panoramic views, and picturesque squares create a magical backdrop for every moment of the celebration. Wedding events can seamlessly unfold across the property's various venues. The Olive Grove (Uliveta), framed by centuries-old olive trees and a charming gazebo, provides a romantic setting for symbolic ceremonies. The Panoramic Terrace and Italian Gardens are perfect for elegant aperitifs and cocktail receptions, while the iconic Piazza del Borgo offers a spectacular location for al fresco dinners under the stars. Guests can also enjoy memorable experiences such as wine tastings in the historic Wine Room, vineyard walks accompanied by the resident sommelier, cocktails at the Borgo Bar or Pool Bar, and refined dining at La Terrazza del Borgo restaurant. After dinner, celebrations continue in the elegant Orangerie, where DJ sets, dancing, and open bar service create the perfect atmosphere for an unforgettable party. Music is permitted until 11:30 PM for non-exclusive events and until 2:00 AM with an exclusive buyout of the property. Extensions beyond 2:00 AM are available for an additional fee. With its authentic Tuscan character, exclusive-use possibilities, and stunning Chianti setting, Borgo Vescine is an ideal choice for couples seeking a romantic and truly memorable destination wedding experience.",
+       "notti": 2,
+       "fornitore": "Borgo Vescine"
+      },
+      {
+       "ordine": 3,
+       "tipo": "Accommodation",
+       "titolo": "Borgo Vescine",
+       "fornitore": "Borgo Vescine"
+      }
+     ]
+    },
+    {
+     "numero": 2,
+     "data": "2027-05-22",
+     "citta": "Radda in Chianti",
+     "intro": null,
+     "servizi": [
+      {
+       "ordine": 1,
+       "tipo": "Assistance",
+       "titolo": "Wedding event",
+       "descrizione": "Celebrate your special occasion surrounded by the authentic beauty, flavours, and traditions of Tuscany. Throughout the celebration, the estate’s talented chef will craft exceptional menus using fresh local ingredients and seasonal produce, creating memorable dining experiences from a relaxed welcome dinner by the pool to an elegant wedding dinner under the Tuscan sky. To make the stay even more special, guests can enjoy a variety of authentic experiences, including hands-on cooking classes, truffle hunting excursions, wine tastings, and unforgettable hot air balloon rides over the rolling countryside. Package Includes: Suite with private patio for the bride and groom Welcome dinner Welcome dinner beverage package Exclusive use of the pool area for the welcome dinner Post-ceremony aperitif with a selection of finger foods Exclusive use of the ceremony, aperitif, and wedding dinner areas Wedding dinner Wedding dinner beverage package Two-hour open bar following dinner In addition to the above, the package also includes the private and exclusive use of the designated event spaces for the ceremony, aperitif, wedding dinner, and welcome dinner, ensuring a fully private celebration for you and your guests."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

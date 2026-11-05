@@ -27,3 +27,7 @@ frontend/storage/framework/views/*
 frontend/public/build/
 frontend/public/hot
 frontend/.phpunit.result.cache
+# --- Cache generate ---
+__pycache__/
+*.pyc
+frontend/bootstrap/cache/*.php

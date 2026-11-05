@@ -2,7 +2,9 @@
 
 namespace App\Livewire;
 
+use App\Models\Fornitore;
 use App\Models\Itinerario;
+use App\Models\Regione;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
 
@@ -10,8 +12,8 @@ use Livewire\Attributes\Layout;
 class ItinerariIndex extends Component
 {
     public $selectedType = 'all'; // Filtro: 'all', 'wedding', 'trip'
-    public $prezzoMax = '';
-    public $durataMinima = '';
+    public $regione = '';
+    public $fornitore = '';
 
     // Metodo per cambiare il tab/filtro attivo
     public function setType($type)
@@ -21,24 +23,25 @@ class ItinerariIndex extends Component
 
     public function render()
     {
-        // Rimosso 'regioni' dall'eager loading
-        $query = Itinerario::with('fornitori');
+        $query = Itinerario::with(['fornitori', 'regioni']);
 
         // Filtra per tipologia (wedding o trip) se non è 'all'
         if ($this->selectedType !== 'all') {
             $query->where('type', $this->selectedType);
         }
 
-        if (!empty($this->prezzoMax)) {
-            $query->prezzoMax($this->prezzoMax);
+        if (!empty($this->regione)) {
+            $query->whereHas('regioni', fn ($q) => $q->where('regioni.id', $this->regione));
         }
 
-        if (!empty($this->durataMinima)) {
-            $query->durataMinima($this->durataMinima);
+        if (!empty($this->fornitore)) {
+            $query->whereHas('fornitori', fn ($q) => $q->where('fornitori.id', $this->fornitore));
         }
 
         return view('livewire.itinerari-index', [
-            'itinerari' => $query->latest()->get()
+            'itinerari' => $query->latest()->get(),
+            'regioniOpzioni' => Regione::whereHas('itinerari')->orderBy('nome')->get(['id', 'nome']),
+            'fornitoriOpzioni' => Fornitore::whereHas('itinerari')->orderBy('nome')->get(['id', 'nome']),
         ]);
     }
 
@@ -46,7 +49,7 @@ class ItinerariIndex extends Component
     {
         $itinerario = Itinerario::find($id);
         if ($itinerario) {
-            // Rimossa la chiamata alle regioni, lasciamo solo i fornitori e le voci se presenti
+            $itinerario->regioni()->detach();
             $itinerario->fornitori()->detach();
             $itinerario->voci()->delete();
             $itinerario->delete();

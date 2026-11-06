@@ -5,6 +5,8 @@ namespace Tests\Feature;
 use App\Models\Fornitore;
 use App\Models\Itinerario;
 use App\Models\Regione;
+use App\Models\User;
+use App\Support\AgentIdentity;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -13,6 +15,14 @@ class InternalApiTest extends TestCase
     use RefreshDatabase;
 
     private array $headers = ['X-Internal-Token' => 'test-token'];
+    private User $user;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->user = User::factory()->create();
+        $this->headers['X-Agent-Identity'] = AgentIdentity::issue($this->user->id);
+    }
 
     private function bozza(array $extra = []): array
     {
@@ -41,7 +51,7 @@ class InternalApiTest extends TestCase
 
     public function test_store_salva_sempre_come_bozza_con_regione_e_fornitore(): void
     {
-        $fornitore = Fornitore::create(['nome' => 'Hotel Roma', 'ambito' => 'Alloggi']);
+        $fornitore = Fornitore::create(['nome' => 'Hotel Roma', 'ambito' => 'Alloggi', 'user_id' => $this->user->id]);
 
         $this->postJson('/api/internal/itinerari', $this->bozza(['stato' => 'confermato']), $this->headers)
             ->assertCreated()
@@ -65,7 +75,7 @@ class InternalApiTest extends TestCase
 
     public function test_filtri_itinerari(): void
     {
-        Fornitore::create(['nome' => 'Hotel Roma', 'ambito' => 'Alloggi']);
+        Fornitore::create(['nome' => 'Hotel Roma', 'ambito' => 'Alloggi', 'user_id' => $this->user->id]);
         $this->postJson('/api/internal/itinerari', $this->bozza(), $this->headers)->assertCreated();
         $this->postJson('/api/internal/itinerari', $this->bozza([
             'titolo' => 'Wedding Venice', 'type' => 'wedding',
@@ -84,8 +94,8 @@ class InternalApiTest extends TestCase
     public function test_filtro_fornitori_per_regione(): void
     {
         $lazio = Regione::firstOrCreate(['nome' => 'Lazio']);
-        Fornitore::create(['nome' => 'A', 'ambito' => 'Alloggi', 'regione_id' => $lazio->id]);
-        Fornitore::create(['nome' => 'B', 'ambito' => 'Alloggi']);
+        Fornitore::create(['nome' => 'A', 'ambito' => 'Alloggi', 'regione_id' => $lazio->id, 'user_id' => $this->user->id]);
+        Fornitore::create(['nome' => 'B', 'ambito' => 'Alloggi', 'user_id' => $this->user->id]);
 
         $nomi = collect($this->getJson('/api/internal/fornitori?regione=Lazio', $this->headers)->assertOk()->json())->pluck('nome')->all();
         $this->assertSame(['A'], $nomi);

@@ -19,7 +19,7 @@ class ItinerarioController extends Controller
 
     public function index(Request $request)
     {
-        $query = Itinerario::query()->with(['regioni:id,nome', 'fornitori:id,nome']);
+        $query = Itinerario::where('user_id', $request->attributes->get('agent_user_id'))->with(['regioni:id,nome', 'fornitori:id,nome']);
 
         if ($request->filled('tipo')) {
             $query->diTipo($request->tipo);
@@ -57,8 +57,9 @@ class ItinerarioController extends Controller
         return response()->json($itinerari);
     }
 
-    public function show(Itinerario $itinerario)
+    public function show(Request $request, Itinerario $itinerario)
     {
+        abort_unless($itinerario->user_id === $request->attributes->get('agent_user_id'), 404);
         $itinerario->load(['regioni:id,nome', 'giorni.servizi.fornitore:id,nome']);
 
         return response()->json([
@@ -128,7 +129,8 @@ class ItinerarioController extends Controller
             'giorni.*.servizi.*.fornitore' => 'nullable|string|max:255',
         ]);
 
-        $itinerario = DB::transaction(function () use ($dati) {
+        $userId = $request->attributes->get('agent_user_id');
+        $itinerario = DB::transaction(function () use ($dati, $userId) {
             $inizio = isset($dati['data_inizio']) ? \Carbon\Carbon::parse($dati['data_inizio']) : null;
             $fine = isset($dati['data_fine']) ? \Carbon\Carbon::parse($dati['data_fine']) : null;
             $numeroGiorni = count($dati['giorni']);
@@ -144,6 +146,7 @@ class ItinerarioController extends Controller
                 'notti' => max($numeroGiorni - 1, 0),
                 'prezzo' => 0,
                 'stato' => 'bozza',
+                'user_id' => $userId,
             ]);
 
             foreach ($dati['giorni'] as $g) {
@@ -154,7 +157,7 @@ class ItinerarioController extends Controller
                 foreach ($servizi as $i => $s) {
                     $nome = $s['fornitore'] ?? null;
                     unset($s['fornitore']);
-                    $s['fornitore_id'] = $nome ? Fornitore::where('nome', 'like', '%' . $nome . '%')->value('id') : null;
+                    $s['fornitore_id'] = $nome ? Fornitore::where('user_id', $userId)->where('nome', 'like', '%' . $nome . '%')->value('id') : null;
                     $s['ordine'] = $i + 1;
                     $giorno->servizi()->create($s);
                 }

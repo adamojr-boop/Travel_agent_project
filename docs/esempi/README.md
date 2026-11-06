@@ -1,23 +1,19 @@
-# Esempi di itinerari
+# Documenti di esempio
 
-Cartella in cui inserire i documenti di esempio (itinerari già realizzati) che
-useremo come modello per struttura, tono e formato dei PDF generati dal bot.
+Questa cartella può contenere documenti locali di riferimento, ad esempio
+itinerari o programmi di matrimonio in PDF. I documenti qui presenti sono
+esclusi da Git dalle regole della cartella; questo README e `.gitignore` sono
+invece versionati.
 
-## Cosa inserire
+I dati estratti da alcuni esempi sono già presenti nel file tracciato
+[`frontend/database/seeders/data/esempi.json`](../../frontend/database/seeders/data/esempi.json)
+e possono essere caricati nel database con i seeder prima della prima
+registrazione. Il prompt dell'agente contiene inoltre un esempio concreto.
+L'esclusione dei documenti originali non protegge automaticamente i dati
+derivati: prima del push controllare che sia autorizzata la pubblicazione di
+nomi, prezzi, contatti e qualsiasi altra informazione presente.
 
-- 3-5 documenti **diversi tra loro** (es. viaggio breve, viaggio lungo,
-  matrimonio), nel formato originale (PDF, Word, Excel).
-- Se possibile, anche i file sorgente modificabili, oltre al PDF finale.
-
-## Prima di inserirli
-
-- **Anonimizza solo i nomi dei clienti** (viaggiatori, sposi, ospiti): i contenuti
-  vengono analizzati e possono finire nei prompt inviati a OpenAI.
-- Prezzi e contatti dei fornitori fanno parte del contenuto dell'app e possono
-  restare così come sono.
-- Usa nomi chiari, per esempio `viaggio-toscana-7gg.pdf` o `matrimonio-puglia.pdf`.
-
-## Versionamento
-
-I file in questa cartella sono **esclusi da Git** (vedi `.gitignore`): restano
-solo in locale. Questo README e il `.gitignore` sono gli unici file versionati.
+Non inserire dati personali o riservati senza autorizzazione e tenere presente
+che i contenuti usati nelle conversazioni possono essere inviati a servizi
+esterni. Il bot dispone separatamente di modelli strutturali condivisi nel
+codice, che non sono itinerari visibili nell'app.

@@ -7,12 +7,15 @@ use Livewire\Attributes\Layout;
 use App\Models\Conversation;
 use App\Models\Message;
 use Illuminate\Support\Facades\Http;
+use Livewire\Attributes\Locked;
+use App\Support\AgentIdentity;
 
 class Chatbot extends Component
 {
     public $currentMessage = '';
     public $userPrompt = '';
     public $chatMessages = [];
+    #[Locked]
     public $conversationId;
     public $conversationTitle = '';
     public $isEditingTitle = false;
@@ -28,14 +31,14 @@ class Chatbot extends Component
     public function mount($conversationId = null)
     {
         if ($conversationId) {
-            $conversation = Conversation::find($conversationId);
+            $conversation = Conversation::where('user_id', auth()->id())->findOrFail($conversationId);
         } else {
-            $conversation = Conversation::latest()->first();
+            $conversation = Conversation::where('user_id', auth()->id())->latest()->orderByDesc('id')->first();
         }
 
         if (!$conversation) {
             $conversation = Conversation::create([
-                'titolo' => 'Nuova Conversazione'
+                'titolo' => 'Nuova Conversazione', 'user_id' => auth()->id(),
             ]);
         }
 
@@ -44,6 +47,7 @@ class Chatbot extends Component
 
     public function loadConversation(Conversation $conversation)
     {
+        abort_unless($conversation->user_id === auth()->id(), 404);
         $this->conversationId = $conversation->id;
         $this->conversationTitle = $conversation->titolo ?? 'Nuova Conversazione';
         $this->chatMessages = [];
@@ -63,14 +67,16 @@ class Chatbot extends Component
     public function newConversation()
     {
         $conversation = Conversation::create([
-            'titolo' => 'Nuova Conversazione'
+            'titolo' => 'Nuova Conversazione', 'user_id' => auth()->id(),
         ]);
 
         $this->loadConversation($conversation);
+        $this->dispatch('chat-history-updated', conversationId: $conversation->id);
     }
 
     public function clearCurrentChat()
     {
+        $this->ownedConversation();
         Message::where('conversation_id', $this->conversationId)->delete();
         $this->chatMessages = [];
         session()->flash('message', 'Chat svuotata!');
@@ -83,16 +89,19 @@ class Chatbot extends Component
 
     public function saveTitle()
     {
+        $this->ownedConversation();
         if (!empty($this->conversationTitle)) {
             Conversation::where('id', $this->conversationId)->update([
                 'titolo' => $this->conversationTitle
             ]);
+            $this->dispatch('chat-history-updated', conversationId: $this->conversationId);
         }
         $this->isEditingTitle = false;
     }
 
     public function ask()
     {
+        $this->ownedConversation();
         $this->validate();
 
         $userText = $this->currentMessage;
@@ -116,13 +125,16 @@ class Chatbot extends Component
 
     public function generateResponse()
     {
+        $this->ownedConversation();
         $fastApiUrl = config('services.fastapi.url', env('FASTAPI_URL', 'http://127.0.0.1:8000'));
 
         $response = Http::timeout(120)
             ->withOptions(['stream' => true])
+            ->withHeaders(['X-Agent-Identity' => AgentIdentity::issue(auth()->id())])
             ->post($fastApiUrl . "/chat/travel-agent/stream", [
                 'messages' => $this->chatMessages
             ]);
+        $response->throw();
 
         $body = $response->toPsrResponse()->getBody();
         $full = '';
@@ -164,5 +176,10 @@ class Chatbot extends Component
         $this->dispatch('scrollChatToBottom');
         
         return view('livewire.chatbot')->layout('components.layout');
+    }
+
+    private function ownedConversation(): Conversation
+    {
+        return Conversation::where('user_id', auth()->id())->findOrFail($this->conversationId);
     }
 }

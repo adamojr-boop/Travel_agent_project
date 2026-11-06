@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Fornitore;
 use App\Models\Regione;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -37,24 +38,33 @@ class FornitoriIndex extends Component
         $this->resetPage();
     }
 
-    // Assegnazione manuale della regione a un fornitore
-    public function setRegione($fornitoreId, $regioneId)
-    {
-        Fornitore::whereKey($fornitoreId)->update(['regione_id' => $regioneId ?: null]);
-    }
-
     public bool $mostraForm = false;
     public $nuovoNome = '';
-    public $nuovoAmbito = 'Alloggi';
+    public $nuovoAmbito = '';
     public $nuovaCitta = '';
     public $nuovaRegione = '';
     public $nuovaDescrizione = '';
+
+    public function toggleForm()
+    {
+        if ($this->mostraForm) {
+            $this->annullaInserimento();
+        } else {
+            $this->mostraForm = true;
+        }
+    }
+
+    public function annullaInserimento()
+    {
+        $this->reset(['mostraForm', 'nuovoNome', 'nuovoAmbito', 'nuovaCitta', 'nuovaRegione', 'nuovaDescrizione']);
+        $this->resetValidation();
+    }
 
     public function salvaFornitore()
     {
         $dati = $this->validate([
             'nuovoNome' => 'required|string|max:255',
-            'nuovoAmbito' => 'required|string|max:255',
+            'nuovoAmbito' => ['required', Rule::in(array_keys(Fornitore::AMBITI))],
             'nuovaCitta' => 'nullable|string|max:255',
             'nuovaRegione' => 'nullable|exists:regioni,id',
             'nuovaDescrizione' => 'nullable|string',
@@ -62,18 +72,19 @@ class FornitoriIndex extends Component
 
         Fornitore::create([
             'nome' => $dati['nuovoNome'],
+            'user_id' => auth()->id(),
             'ambito' => $dati['nuovoAmbito'],
             'citta' => $dati['nuovaCitta'] ?: null,
             'regione_id' => $dati['nuovaRegione'] ?: null,
             'descrizione' => $dati['nuovaDescrizione'] ?: null,
         ]);
 
-        $this->reset(['mostraForm', 'nuovoNome', 'nuovaCitta', 'nuovaRegione', 'nuovaDescrizione']);
+        $this->annullaInserimento();
     }
 
     public function eliminaFornitore($id)
     {
-        $fornitore = Fornitore::findOrFail($id);
+        $fornitore = Fornitore::where('user_id', auth()->id())->findOrFail($id);
         $fornitore->itinerari()->detach();
         $fornitore->delete();
     }
@@ -81,11 +92,15 @@ class FornitoriIndex extends Component
     public function render()
     {
         $fornitori = Fornitore::with('regione')
+            ->where('user_id', auth()->id())
             ->when(trim($this->search), function ($query) {
                 $query->where('nome', 'like', '%' . trim($this->search) . '%');
             })
             ->when($this->ambitoFilter, function ($query) {
-                $query->where('ambito', $this->ambitoFilter);
+                $query->whereIn('ambito', [
+                    $this->ambitoFilter,
+                    Fornitore::AMBITI[$this->ambitoFilter] ?? $this->ambitoFilter,
+                ]);
             })
             ->when($this->regioneFilter, function ($query) {
                 $query->where('regione_id', $this->regioneFilter);
@@ -93,15 +108,9 @@ class FornitoriIndex extends Component
             ->orderBy('nome', 'asc')
             ->get();
 
-        // Estraiamo solo gli ambiti non nulli/vuoti
-        $ambiti = Fornitore::whereNotNull('ambito')
-            ->where('ambito', '!=', '')
-            ->distinct()
-            ->pluck('ambito');
-
         return view('livewire.fornitori-index', [
             'fornitori' => $fornitori,
-            'ambiti'    => $ambiti,
+            'ambiti'    => Fornitore::AMBITI,
             'regioni'   => Regione::orderBy('nome')->get(['id', 'nome']),
         ])->layout('components.layout');
     }

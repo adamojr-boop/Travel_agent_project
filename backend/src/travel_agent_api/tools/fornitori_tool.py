@@ -2,6 +2,7 @@ import os
 import httpx
 from langchain.tools import tool
 from pydantic import BaseModel, Field
+from travel_agent_api.agent_identity import internal_headers
 
 class CercaFornitoriInput(BaseModel):
     ambito: str = Field(None, description="Filtra per ambito del fornitore: Alloggi (hotel, B&B), Mezzi (trasporti, transfer, noleggio) o Servizi (guide, altri servizi)")
@@ -11,12 +12,7 @@ class CercaFornitoriInput(BaseModel):
 def cerca_fornitori(ambito: str = None, regione: str = None) -> str:
     """Cerca i fornitori reali disponibili nel database del gestionale Laravel, filtrando per ambito (Alloggi, Mezzi, Servizi) e/o regione."""
     url = f"{os.getenv('LARAVEL_API_URL', 'http://127.0.0.1:8002/api/internal')}/fornitori"
-    token = os.getenv('INTERNAL_API_TOKEN')
-    
-    headers = {
-        "X-Internal-Token": token,
-        "Accept": "application/json"
-    }
+    headers = internal_headers()
     
     params = {}
     if ambito:

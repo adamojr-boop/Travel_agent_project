@@ -10,7 +10,7 @@ class FornitoreController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Fornitore::query();
+        $query = Fornitore::where('user_id', $request->attributes->get('agent_user_id'));
 
         // Filtro facoltativo per ambito (Alloggi, Mezzi, Servizi)
         if ($request->filled('ambito')) {

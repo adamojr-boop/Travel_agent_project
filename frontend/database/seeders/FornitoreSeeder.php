@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Fornitore;
 use App\Models\Regione;
 use App\Support\RegioniItinerario;
+use App\Support\InitialDataSeederGuard;
 use Illuminate\Database\Seeder;
 
 class FornitoreSeeder extends Seeder
@@ -12,6 +13,7 @@ class FornitoreSeeder extends Seeder
     /** Hotel reali estratti dai PDF d'esempio (database/seeders/data/esempi.json). */
     public function run(): void
     {
+        InitialDataSeederGuard::ensureUnclaimed();
         $dati = json_decode(file_get_contents(database_path('seeders/data/esempi.json')), true);
 
         foreach ($dati['fornitori'] as $f) {

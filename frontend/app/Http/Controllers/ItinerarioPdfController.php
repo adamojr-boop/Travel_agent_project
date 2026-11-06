@@ -10,7 +10,7 @@ class ItinerarioPdfController extends Controller
 {
     public function __invoke($id)
     {
-        $itinerario = Itinerario::with(['giorni.servizi.fornitore'])->findOrFail($id);
+        $itinerario = Itinerario::with(['giorni.servizi.fornitore'])->where('user_id', auth()->id())->findOrFail($id);
 
         $nome = Str::slug($itinerario->codice ?: $itinerario->titolo) . '.pdf';
 

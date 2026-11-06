@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Fornitore;
 use App\Models\Itinerario;
 use App\Support\RegioniItinerario;
+use App\Support\InitialDataSeederGuard;
 use Illuminate\Database\Seeder;
 
 class ItinerarioSeeder extends Seeder
@@ -12,6 +13,7 @@ class ItinerarioSeeder extends Seeder
     /** Itinerari reali (nomi cliente anonimizzati) tratti dai PDF d'esempio. */
     public function run(): void
     {
+        InitialDataSeederGuard::ensureUnclaimed();
         $dati = json_decode(file_get_contents(database_path('seeders/data/esempi.json')), true);
         $fornitori = Fornitore::pluck('id', 'nome');
 

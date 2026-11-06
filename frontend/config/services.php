@@ -42,4 +42,8 @@ return [
     'internal_api' => [
         'token' => env('INTERNAL_API_TOKEN'),
     ],
+
+    'registration' => [
+        'invite_code' => env('REGISTRATION_INVITE_CODE'),
+    ],
 ];

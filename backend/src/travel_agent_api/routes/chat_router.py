@@ -1,7 +1,8 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel  
 from travel_agent_api.services.agent_service import Agent  
+from travel_agent_api.agent_identity import verify_identity
 
 # Creazione di un nuovo router FastAPI
 router = APIRouter()
@@ -24,11 +25,11 @@ class ChatComplentionRequest(BaseModel):
     }
 
 @router.post("/travel-agent/stream")
-def chat_completion_stream(request: ChatComplentionRequest):
+def chat_completion_stream(request: ChatComplentionRequest, identity: str = Depends(verify_identity)):
     """Restituisce la risposta dell'agente in streaming (testo semplice)."""
     def generate():
         try:
-            yield from Agent().stream(messages=request.messages)
+            yield from Agent(identity).stream(messages=request.messages)
         except Exception as e:
             yield f"⚠️ Si è verificato un errore nel backend dell'agente: {e}"
 
@@ -39,14 +40,14 @@ def chat_completion_stream(request: ChatComplentionRequest):
     )
 
 @router.post("/travel-agent")  
-def chat_completion(request: ChatComplentionRequest):
+def chat_completion(request: ChatComplentionRequest, identity: str = Depends(verify_identity)):
     """
     Endpoint per la gestione delle richieste di chat.
     Processa i messaggi ricevuti e restituisce la conversazione aggiornata.
     """
     try:
         # Creazione di una nuova istanza dell'agente
-        agent = Agent()
+        agent = Agent(identity)
         
         # Elaborazione dei messaggi con l'agente
         response = agent.run(messages=request.messages)
@@ -77,12 +78,6 @@ def chat_completion(request: ChatComplentionRequest):
             "content": ai_content
         })
 
-        #tracing
-        print("*" * 80)
-        print("Chat Router - Updated Messages")
-        print(updated_messages)
-        print("*" * 80)
-        
         return updated_messages
 
     except Exception as e:

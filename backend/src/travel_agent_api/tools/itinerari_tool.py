@@ -4,6 +4,7 @@ from typing import List, Literal, Optional
 import httpx
 from langchain.tools import tool
 from pydantic import BaseModel, Field
+from travel_agent_api.agent_identity import internal_headers
 
 TipoServizio = Literal[
     "Private Transfer",
@@ -21,7 +22,7 @@ def _base_url() -> str:
 
 
 def _headers() -> dict:
-    return {"X-Internal-Token": os.getenv("INTERNAL_API_TOKEN", ""), "Accept": "application/json"}
+    return internal_headers()
 
 
 class CercaItinerariInput(BaseModel):

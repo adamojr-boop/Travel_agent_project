@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Conversation extends Model
 {
-    protected $fillable = ['titolo'];
+    protected $fillable = ['titolo', 'user_id'];
 
     public function messages(): HasMany
     {

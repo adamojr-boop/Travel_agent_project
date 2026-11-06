@@ -1,6 +1,8 @@
 from datetime import datetime
 from langchain_openai import ChatOpenAI
 from langgraph.prebuilt import create_react_agent
+from langchain_core.tools import StructuredTool
+from travel_agent_api.agent_identity import identity_context
 
 # Tools
 from travel_agent_api.tools.flights_finder import flights_finder
@@ -9,6 +11,7 @@ from travel_agent_api.tools.chain_historical_expert import chain_historical_expe
 from travel_agent_api.tools.chain_travel_plan import chain_travel_plan
 from travel_agent_api.tools.fornitori_tool import cerca_fornitori
 from travel_agent_api.tools.itinerari_tool import cerca_itinerari, leggi_itinerario, salva_bozza_itinerario
+from travel_agent_api.tools.esempi_condivisi import cerca_esempi_condivisi
 FLIGHTS_OUTPUT = """
 format: markdown 
 ## Miglior Opzione 
@@ -65,7 +68,7 @@ Le sezioni fisse del PDF (Inclusions, Important notes, Italy facts, Concierge Se
 """
 
 class Agent:
-    def __init__(self):
+    def __init__(self, identity: str):
         self.current_datetime = datetime.now()
         self.model = ChatOpenAI(model_name="gpt-4o", streaming=True)
         self.tools = [
@@ -73,12 +76,27 @@ class Agent:
             flights_finder,
             hotels_finder,
             chain_travel_plan,
-            cerca_fornitori,
-            cerca_itinerari,
-            leggi_itinerario,
-            salva_bozza_itinerario,
+            cerca_esempi_condivisi,
+            self._bind_identity(cerca_fornitori, identity),
+            self._bind_identity(cerca_itinerari, identity),
+            self._bind_identity(leggi_itinerario, identity),
+            self._bind_identity(salva_bozza_itinerario, identity),
         ]
         self.agent_executor = create_react_agent(self.model, self.tools)
+
+    @staticmethod
+    def _bind_identity(original, identity):
+        def invoke(**kwargs):
+            token = identity_context.set(identity)
+            try:
+                return original.invoke({key: value for key, value in kwargs.items() if value is not None})
+            finally:
+                identity_context.reset(token)
+
+        return StructuredTool.from_function(
+            func=invoke, name=original.name, description=original.description,
+            args_schema=original.args_schema,
+        )
         
     def stream(self, messages: list):
         """Genera il testo della risposta finale dell'agente a pezzi."""

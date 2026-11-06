@@ -1,7 +1,7 @@
 <div class="chat-container">
     <!-- Header/Top-Bar della Chat -->
-    <div class="chat-header my-2 d-flex align-items-center justify-content-between pe-2">
-        <div class="d-flex align-items-center gap-2">
+    <div class="chat-header mt-2 d-flex align-items-center justify-content-between gap-2">
+        <div class="chat-title d-flex align-items-center gap-2">
             @if($isEditingTitle)
                 <input type="text" wire:model.defer="conversationTitle" class="form-control form-control-sm" style="border-color: var(--lilac-ash);">
                 <button wire:click="saveTitle" class="btn btn-sm btn-dark px-2 py-1"><i class="bi bi-check-lg"></i></button>
@@ -9,26 +9,24 @@
                 <h2 class="fs-5 fw-bold mb-0 text-truncate" style="color: var(--text-dark);">
                     {{ $conversationTitle ?? 'Nuova Conversazione' }}
                 </h2>
-                <button wire:click="startEditingTitle" class="btn btn-sm text-muted p-0 ms-1" title="Rinomina chat">
+                <button wire:click="startEditingTitle" class="btn btn-sm text-muted p-0 ms-1" title="Rinomina chat" aria-label="Rinomina chat">
                     <i class="bi bi-pencil"></i>
                 </button>
             @endif
         </div>
 
-        <div class="d-flex align-items-center gap-2">
-            <!-- Pulsante Nuova Chat -->
-            <button wire:click="newConversation" class="btn btn-sm btn-outline-dark fw-bold px-3" style="border-color: var(--lilac-ash);" title="Avvia una nuova chat">
-                <i class="bi bi-plus-lg"></i> Nuova Chat
+        <div class="dropdown flex-shrink-0">
+            <button class="btn btn-sm chat-menu-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Azioni chat" title="Azioni chat">
+                <i class="bi bi-three-dots-vertical" aria-hidden="true"></i>
             </button>
-            
-            <!-- Pulsante Svuota Chat Corrente -->
-            <button wire:click="clearCurrentChat" onclick="confirm('Sei sicura di voler svuotare i messaggi di questa chat?') || event.stopImmediatePropagation()" class="btn btn-sm btn-outline-danger px-2" title="Svuota messaggi chat">
-                <i class="bi bi-trash"></i> Svuota
-            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li><button type="button" wire:click="newConversation" class="dropdown-item"><i class="bi bi-plus-lg me-2"></i>Nuova chat</button></li>
+                <li><button type="button" wire:click="clearCurrentChat" wire:confirm="Sei sicura di voler svuotare i messaggi di questa chat?" class="dropdown-item text-danger"><i class="bi bi-trash me-2"></i>Svuota chat</button></li>
+            </ul>
         </div>
     </div>
 
-    <div class="chat-box mt-2 mt-md-0 rounded-top-3" style="border: 1px solid var(--lilac-ash);">
+    <div class="chat-box" style="border: 1px solid var(--lilac-ash);">
         @forelse ($chatMessages as $key => $chatMessage)
             @if($chatMessage['type'] == 'human')
             <div wire:key="{{ $key }}" class="chat-message sent">
@@ -53,7 +51,7 @@
             @endif
         @empty
             <!-- Stile ripristinato come in origine per la chat vuota -->
-            <div class="chat-message">
+            <div class="chat-message sent">
                 <div>
                     <p class="fs-3">What do you need today?</p>
                 </div>

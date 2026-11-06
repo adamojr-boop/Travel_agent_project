@@ -11,18 +11,18 @@ class ItinerariShow extends Component
 
     public function mount($id)
     {
-        $this->itinerarioId = Itinerario::findOrFail($id)->id;
+        $this->itinerarioId = Itinerario::where('user_id', auth()->id())->findOrFail($id)->id;
     }
 
     public function toggleStato()
     {
-        $itinerario = Itinerario::findOrFail($this->itinerarioId);
+        $itinerario = Itinerario::where('user_id', auth()->id())->findOrFail($this->itinerarioId);
         $itinerario->update(['stato' => $itinerario->stato === 'bozza' ? 'confermato' : 'bozza']);
     }
 
     public function deleteItinerario()
     {
-        $itinerario = Itinerario::findOrFail($this->itinerarioId);
+        $itinerario = Itinerario::where('user_id', auth()->id())->findOrFail($this->itinerarioId);
         $itinerario->regioni()->detach();
         $itinerario->fornitori()->detach();
         $itinerario->voci()->delete();
@@ -34,7 +34,7 @@ class ItinerariShow extends Component
 
     public function render()
     {
-        $itinerario = Itinerario::with(['regioni', 'giorni.servizi.fornitore'])->findOrFail($this->itinerarioId);
+        $itinerario = Itinerario::with(['regioni', 'giorni.servizi.fornitore'])->where('user_id', auth()->id())->findOrFail($this->itinerarioId);
 
         return view('livewire.itinerari-show', ['itinerario' => $itinerario])->layout('components.layout');
     }

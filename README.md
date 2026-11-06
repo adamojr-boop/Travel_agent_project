@@ -1,85 +1,58 @@
-# Travel Agent
+# Planner Helper
 
-Applicazione per l'organizzazione di viaggi tramite una chat: il client web è
-realizzato con Laravel e comunica con un'API Python basata su FastAPI e
-LangChain.
+Planner Helper è un'applicazione per organizzare viaggi: unisce
+una chat con assistente AI a un gestionale di itinerari e fornitori.
+L'interfaccia è realizzata con Laravel e Livewire; l'agente usa FastAPI,
+LangChain e OpenAI.
 
-## Struttura del progetto
+## Cosa permette di fare
 
-```text
-.
-├── backend/   # API FastAPI, agente LangChain e strumenti di viaggio
-└── frontend/  # Client web Laravel e interfaccia chat Livewire
-```
-## Funzionalità principali
+- Conversare con l'assistente e conservare più chat, con titoli e chat fissate.
+- Consultare itinerari per tipologia, regione e fornitore; modificarli, gestirne
+  lo stato ed esportarli in PDF.
+- Gestire fornitori e filtrarli per nome, ambito e regione.
+- Chiedere al bot di cercare fornitori e itinerari del proprio archivio e di
+  preparare una bozza di itinerario. Il salvataggio è previsto dopo conferma.
+- Registrarsi con un codice d'invito: chat, itinerari e fornitori sono associati
+  al singolo utente.
 
-- Chat per richiedere assistenza nella pianificazione di un viaggio.
-- Agente LangChain con strumenti per creare itinerari, cercare voli e hotel e
-  fornire informazioni storiche.
-- Interfaccia Laravel/Livewire che invia i messaggi all'API, con risposta in
-  streaming.
-- Gestionale (Livewire + database Laravel) per itinerari, regioni e fornitori, con filtri
-  e collegamenti tra le entità.
+Il bot dispone di tre esempi strutturali condivisi, non
+visualizzati nell'elenco degli itinerari.
 
-Le ricerche di voli e hotel richiedono una chiave SerpApi; le risposte
-dell'agente e la generazione dei contenuti richiedono una chiave OpenAI.
+## Organizzazione
 
-## Avvio rapido con `start-dev.sh`
+| Cartella | Contenuto |
+|---|---|
+| [frontend](./frontend/README.md) | Applicazione Laravel/Livewire, database e PDF |
+| [backend](./backend/README.md) | API FastAPI, agente e strumenti |
+| [docs](./docs/README.md) | Note sulla documentazione e sugli esempi locali |
 
-Lo script [start-dev.sh](./start-dev.sh) avvia in un solo terminale tutti i
-componenti di sviluppo:
+## Installazione locale
 
-| Servizio | Comando eseguito | Indirizzo |
-|---|---|---|
-| Laravel | `php artisan serve` | `http://127.0.0.1:8000` |
-| Vite (asset) | `npm run dev` | gestito da Vite |
-| API FastAPI | `uvicorn travel_agent_api.main:app --reload` | `http://127.0.0.1:8001` |
+Servono PHP 8.2 o superiore, Composer, Node.js/npm, Python 3.10 o superiore,
+Poetry e un database raggiungibile. Sono necessarie una chiave OpenAI e, per
+la ricerca di voli e hotel, una chiave SerpApi. L'uso di questi servizi può
+comportare costi.
 
-**Prerequisiti (una tantum)**
+I comandi seguenti sono per PowerShell, eseguiti nelle rispettive cartelle.
+Se esiste già un file `.env`, modificarlo senza sovrascriverlo.
 
-- PHP 8.2+, Composer, Node.js/npm e un database raggiungibile (vedi
-  `frontend\.env`).
-- Ambiente virtuale Python in `backend\.venv313` con le dipendenze installate
-  (lo script usa direttamente il suo `python.exe`, senza Poetry).
-- File `backend\.env` (chiavi OpenAI e SerpApi) e `frontend\.env` con
-  `FASTAPI_URL=http://127.0.0.1:8001`.
-- Dipendenze frontend installate (`composer install`, `npm install`) e
-  migrazioni eseguite (`php artisan migrate`).
+### 1. Backend
 
-**Avvio**
-
-Da **Git Bash**, nella cartella principale del progetto:
-
-```bash
-./start-dev.sh
-```
-
-Poi aprire `http://127.0.0.1:8000`. Premere `Ctrl+C` per fermare tutti i
-servizi. Se l'ambiente virtuale non viene trovato, lo script termina con un
-messaggio di errore.
-
-## Avvio manuale
-
-In alternativa, avviare i componenti in terminali separati.
-
-### 1. API Python
-
-Seguire i passaggi completi nel [README del backend](./backend/README.md). In
-sintesi, dalla cartella `backend`:
+Da `backend`:
 
 ```powershell
 poetry install
 Copy-Item .env.example .env
-# Inserire le chiavi API in backend\.env
-poetry run uvicorn travel_agent_api.main:app --reload --port 8001
 ```
 
-L'API sarà disponibile su `http://127.0.0.1:8001`; la documentazione interattiva
-di FastAPI sarà su `http://127.0.0.1:8001/docs`.
+In `backend\.env` impostare `OPENAI_API_KEY`, `SERPAPI_API_KEY` e un
+`INTERNAL_API_TOKEN` lungo, casuale e riservato. Lasciare
+`LARAVEL_API_URL=http://127.0.0.1:8002/api/internal` per l'avvio locale sotto.
 
-### 2. Client Laravel
+### 2. Frontend e database
 
-Da un altro terminale, dalla cartella `frontend`:
+Da `frontend`:
 
 ```powershell
 composer install
@@ -88,73 +61,67 @@ php artisan key:generate
 npm install
 ```
 
-Configurare il database nel file `frontend\.env` se richiesto dalla propria
-installazione, quindi impostare anche l'indirizzo dell'API:
-
-```dotenv
-FASTAPI_URL=http://127.0.0.1:8001
-```
-
-Avviare il client e gli asset:
+In `frontend\.env` configurare il database con le proprie impostazioni `DB_*`,
+`FASTAPI_URL=http://127.0.0.1:8001`, lo stesso `INTERNAL_API_TOKEN` del backend
+e un `REGISTRATION_INVITE_CODE` robusto, riservato e diverso dal token.
+Il modello usa MySQL: creare prima il database indicato nella configurazione.
 
 ```powershell
-php artisan serve --port=8000
-npm run dev
+php artisan migrate
 ```
 
-Aprire `http://127.0.0.1:8000`. Il backend consente richieste CORS dal client
-agli indirizzi locali `localhost:8000` e `127.0.0.1:8000`.
+Su un'installazione con dati esistenti, fare un backup prima di migrare. I
+seeder sono facoltativi e caricano dati tratti dagli esempi:
 
-## To Do – Roadmap per le prossime fasi
+```powershell
+php artisan db:seed
+```
 
-### 1. Integrazione tra Bot e Database (Laravel ⇄ Python)
+Eseguirli **solo prima della prima registrazione**, dopo aver controllato i
+dati: la prima registrazione assegna all'utente i dati preesistenti non
+assegnati e successivamente i seeder vengono bloccati per proteggerli.
+Senza seeder si parte con un archivio inizialmente vuoto.
 
-- **Obiettivo**: abbattere il muro che oggi separa la chat dal gestionale.
-- **Stato**: l'agente usa un'API interna di Laravel (header `X-Internal-Token`,
-  variabile `INTERNAL_API_TOKEN` uguale in `frontend/.env` e `backend/.env`).
-  Poiché `php artisan serve` è mono-processo, l'API gira su una seconda porta
-  (**8002**, `LARAVEL_API_URL=http://127.0.0.1:8002/api/internal` in `backend/.env`),
-  avviata da `start-dev.sh`.
-  - `GET /api/internal/fornitori` → tool `cerca_fornitori`
-  - `GET /api/internal/itinerari` (filtri `regione`, `fornitore`, `citta`, `tipo`, `durata_min`)
-    → tool `cerca_itinerari`; `GET /api/internal/itinerari/{id}` → `leggi_itinerario`
-  - `POST /api/internal/itinerari` → `salva_bozza_itinerario` (salva sempre come `bozza`)
-- **Cosa fare**: permettere all'agente Python di interrogare i fornitori reali e
-  gli itinerari esistenti, e consentire alla chat di creare e salvare bozze di
-  itinerario direttamente nel database di Laravel con un semplice comando.
+## Avvio in sviluppo
 
-### 2. Ottimizzazione del backend Python (performance e costi)
+Da Git Bash nella radice, `./start-dev.sh` avvia i servizi seguenti. Lo script
+è pensato per Windows, richiede `backend\.venv313` e usa PHP da Laragon o dal
+PATH; è possibile specificarlo con `PHP_BIN`. Arrestare con `Ctrl+C`.
 
-- **Obiettivo**: rendere il motore veloce e leggero.
-- **Cosa fare**:
-  - trasformare l'istanza dell'agente in un **singleton**, evitando di
-    ricrearlo a ogni chiamata;
-  - filtrare e **alleggerire i JSON restituiti da SerpApi** (voli e hotel)
-    mantenendo solo i dati essenziali (prezzi, compagnie, link), per ridurre il
-    consumo di token e velocizzare le risposte.
+| Servizio | Indirizzo locale |
+|---|---|
+| Laravel, interfaccia | `http://127.0.0.1:8000` |
+| Laravel, API interna | `http://127.0.0.1:8002` |
+| FastAPI | `http://127.0.0.1:8001` |
+| Vite | indirizzo mostrato nel terminale |
 
-### 3. Persistenza della chat
+Poetry può utilizzare un ambiente virtuale diverso da `.venv313`: in tal caso
+usare l'avvio manuale descritto nei README specifici, oppure predisporre
+quell'ambiente per lo script. La seconda istanza Laravel consente al bot di
+chiamare l'API interna mentre la prima gestisce la chat.
 
-- **Obiettivo**: non perdere la cronologia dei messaggi ricaricando la pagina.
-- **Cosa fare**: creare le tabelle per conversazioni e messaggi, associando un
-  `thread_id` per mantenere il contesto delle richieste della travel designer.
+Aprire l'interfaccia e registrare il primo utente con il codice d'invito.
+La password deve avere almeno 12 caratteri. Non è previsto un recupero
+automatico via email; custodire le credenziali in modo sicuro. Per impedire
+nuove registrazioni, rimuovere il codice dalla configurazione; cambiarlo
+invalida invece il codice precedente.
+Dopo modifiche alla configurazione riavviare i servizi e, se necessario,
+eseguire `php artisan config:clear` da `frontend`.
 
-### 4. Sicurezza e rate limiting
+## Uso responsabile e sicurezza
 
-- **Obiettivo**: proteggere le API da consumi anomali di OpenAI e SerpApi.
-- **Cosa fare**: introdurre un token di autenticazione condiviso tra Laravel e
-  FastAPI, validare i dati in ingresso e impostare un limite di
-  messaggi/richieste.
+- Controllare sempre disponibilità, prezzi e contenuti generati dal bot:
+  l'AI può commettere errori e gli esempi non sono preventivi.
+- Le richieste al bot e i dati utilizzati per rispondere possono essere inviati
+  a servizi esterni; non inserire informazioni che non si è autorizzati a
+  condividere.
+- La configurazione qui descritta è **per sviluppo locale**. Mantenere FastAPI
+  e l'API interna su reti private; per accesso remoto servono HTTPS e
+  protezione del traffico tra servizi. Disattivare `APP_DEBUG` in produzione e
+  configurare cookie sicuri.
+- Conservare backup periodici del database fuori dal PC e provare il
+  ripristino in un ambiente separato. Per i dettagli del database fare
+  riferimento alla documentazione del motore utilizzato.
 
-### 5. Esportazione PDF definitiva
-
-- **Obiettivo**: trasformare il pulsante "Genera PDF" da placeholder a
-  funzionalità reale.
-- **Cosa fare**: una volta ricevuti i file di esempio, realizzare il generatore
-  di documenti ufficiali pronti per essere inviati ai clienti.
-
-## Configurazione
-
-Le chiavi per i servizi esterni vanno inserite in `backend\.env`, copiando il
-modello da `backend\.env.example`. Non condividere né versionare file `.env`
-contenenti credenziali.
+Per test e dettagli tecnici consultare i README del
+[frontend](./frontend/README.md) e del [backend](./backend/README.md).

@@ -23,7 +23,7 @@ class ItinerariIndex extends Component
 
     public function render()
     {
-        $query = Itinerario::with(['fornitori', 'regioni']);
+        $query = Itinerario::with(['fornitori', 'regioni'])->where('user_id', auth()->id());
 
         // Filtra per tipologia (wedding o trip) se non è 'all'
         if ($this->selectedType !== 'all') {
@@ -40,14 +40,14 @@ class ItinerariIndex extends Component
 
         return view('livewire.itinerari-index', [
             'itinerari' => $query->latest()->get(),
-            'regioniOpzioni' => Regione::whereHas('itinerari')->orderBy('nome')->get(['id', 'nome']),
-            'fornitoriOpzioni' => Fornitore::whereHas('itinerari')->orderBy('nome')->get(['id', 'nome']),
+            'regioniOpzioni' => Regione::whereHas('itinerari', fn ($q) => $q->where('user_id', auth()->id()))->orderBy('nome')->get(['id', 'nome']),
+            'fornitoriOpzioni' => Fornitore::where('user_id', auth()->id())->whereHas('itinerari', fn ($q) => $q->where('itinerari.user_id', auth()->id()))->orderBy('nome')->get(['id', 'nome']),
         ]);
     }
 
     public function deleteItinerario($id)
     {
-        $itinerario = Itinerario::find($id);
+        $itinerario = Itinerario::where('user_id', auth()->id())->findOrFail($id);
         if ($itinerario) {
             $itinerario->regioni()->detach();
             $itinerario->fornitori()->detach();

@@ -66,21 +66,21 @@
                                 </div>
                             </div>
                             
-                            <!-- Descrizione -->
-                            <p class="card-text small flex-grow-1 mb-3 text-muted" style="line-height: 1.5;">
-                                {{ Str::limit($itinerario->descrizione, 120) }}
-                            </p>
-                            
-                            <!-- Prezzo e Durata -->
-                            <div class="d-flex justify-content-between align-items-center mb-3 pt-3 border-top" style="border-color: var(--lilac-ash);">
-                                <span class="fw-bold fs-4" style="color: var(--text-dark);">@if($itinerario->prezzo > 0)€ {{ number_format($itinerario->prezzo, 2, ',', '.') }}@endif</span>
-                                <span class="badge px-3 py-2 fs-6 text-dark" style="background-color: var(--lavender-veil); border: 1px solid var(--lilac-ash);">
-                                    <i class="bi bi-clock"></i> {{ $itinerario->durata_giorni }} Giorni
-                                </span>
-                            </div>
+                            @if($itinerario->descrizione)
+                                <p class="card-text small mb-3 text-muted" style="line-height: 1.5;">
+                                    {{ Str::limit($itinerario->descrizione, 120) }}
+                                </p>
+                            @endif
 
-                            <!-- Pulsanti Azione Rapida -->
-                            <div class="d-flex justify-content-end gap-2 mt-auto pt-2 border-top" style="border-color: var(--lilac-ash) !important;">
+                            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mt-auto pt-3 border-top" style="border-color: var(--lilac-ash) !important;">
+                                <div class="d-flex align-items-center flex-wrap gap-2">
+                                    <span class="badge px-3 py-2 fs-6 text-dark" style="background-color: var(--lavender-veil); border: 1px solid var(--lilac-ash);">
+                                        <i class="bi bi-clock"></i> {{ $itinerario->durata_giorni }} Giorni
+                                    </span>
+                                    @if($itinerario->prezzo > 0)
+                                        <span class="fw-bold" style="color: var(--text-dark);">€ {{ number_format($itinerario->prezzo, 2, ',', '.') }}</span>
+                                    @endif
+                                </div>
                                 <a href="{{ route('itinerari.show', $itinerario->id) }}" class="btn btn-sm btn-outline-primary px-3" style="border-color: var(--lilac-ash); color: var(--text-dark);">
                                     <i class="bi bi-eye"></i> Dettagli
                                 </a>

@@ -1,150 +1,93 @@
-# Travel Agent API
+# Planner Helper — Backend
 
-Backend Python del progetto Travel Agent. Espone un'API REST con FastAPI e usa
-LangChain/LangGraph e OpenAI per gestire le richieste di pianificazione di
-viaggio. Il client Laravel è opzionale e descritto nel
+API Python con FastAPI, LangChain/LangGraph e OpenAI per l'assistente di
+Planner Helper. Per la configurazione dell'intero progetto vedi il
 [README generale](../README.md).
 
-## Funzionalità
+## Funzioni dell'agente
 
-- Endpoint `POST /chat/travel-agent/stream` che restituisce la risposta
-  dell'agente in streaming come testo semplice (usato dal client Laravel).
-- Endpoint `POST /chat/travel-agent` per inviare una conversazione e ricevere
-  i messaggi aggiornati con la risposta dell'agente.
-- Agente creato con LangGraph e modello OpenAI `gpt-4o`.
-- Strumenti LangChain per:
-  - generare un itinerario strutturato;
-  - cercare voli con Google Flights tramite SerpApi;
-  - cercare hotel tramite SerpApi;
-  - rispondere a domande di carattere storico.
-- Endpoint di documentazione generati da FastAPI: `/docs` e `/redoc`.
+L'agente usa il modello `gpt-4o` e può:
 
-## Requisiti
+- rispondere in chat;
+- consultare fornitori e itinerari dell'utente attraverso l'API interna Laravel;
+- proporre itinerari e salvarli come bozze dopo conferma dell'utente;
+- consultare tre esempi strutturali condivisi di viaggi e matrimoni;
+- utilizzare strumenti per ricerche di voli e hotel tramite SerpApi e per
+  informazioni storiche e pianificazione.
 
-- Python 3.10 o superiore.
-- Poetry.
-- Una chiave API OpenAI.
-- Una chiave API SerpApi per le ricerche di voli e hotel.
+La selezione degli strumenti dipende dall'utente. Verificare sempre risultati,
+prezzi e disponibilità. Il prompt contiene anche un esempio concreto:
+controllarne il contenuto prima di pubblicare o usare il progetto.
 
-Le dipendenze Python sono dichiarate in `pyproject.toml` e bloccate in
-`poetry.lock`.
+## Installazione
 
-## Installazione su Windows
-
-Aprire PowerShell nella cartella `backend` ed eseguire:
+Servono Python 3.10 o superiore, Poetry e chiavi API OpenAI e SerpApi.
+Da `backend`, in PowerShell:
 
 ```powershell
 poetry install
 Copy-Item .env.example .env
 ```
 
-Modificare `backend\.env` e inserire le proprie chiavi:
+Se `.env` esiste già, non sovrascriverlo. Configurare:
 
-```dotenv
-OPENAI_API_KEY=la-tua-chiave-openai
-SERPAPI_API_KEY=la-tua-chiave-serpapi
-```
+| Variabile | Scopo |
+|---|---|
+| `OPENAI_API_KEY` | Accesso al modello OpenAI |
+| `SERPAPI_API_KEY` | Ricerche di voli e hotel |
+| `INTERNAL_API_TOKEN` | Segreto condiviso con Laravel, identico su entrambi i servizi |
+| `LARAVEL_API_URL` | URL dell'API interna, localmente `http://127.0.0.1:8002/api/internal` |
 
-Non inserire chiavi reali nel codice o nei file condivisi e non pubblicare il
-file `.env`.
+Non versionare le credenziali. Il codice d'invito è configurato solo nel
+frontend e deve essere distinto dal token interno.
 
 ## Avvio
 
-Per avviare l'intero progetto (backend, Laravel e Vite) con un solo comando si
-può usare lo script `start-dev.sh` nella radice, da Git Bash: vedi il
-[README generale](../README.md). Lo script usa l'ambiente virtuale
-`backend\.venv313`.
-
-Per avviare solo il backend, dalla cartella `backend`: il server di sviluppo:
+Da `backend`:
 
 ```powershell
-poetry run uvicorn travel_agent_api.main:app --reload --port 8001
+poetry run uvicorn travel_agent_api.main:app --host 127.0.0.1 --port 8001 --reload
 ```
 
-Indirizzi locali:
+Avviare anche Laravel e Vite seguendo il
+[README frontend](../frontend/README.md). Lo script
+[`start-dev.sh`](../start-dev.sh) avvia tutti i servizi da Git Bash, ma richiede
+lo specifico ambiente `backend/.venv313`.
 
-- API: `http://127.0.0.1:8001`
-- Documentazione Swagger: `http://127.0.0.1:8001/docs`
-- Documentazione ReDoc: `http://127.0.0.1:8001/redoc`
+FastAPI espone la documentazione locale su `http://127.0.0.1:8001/docs`.
+Gli endpoint di chat richiedono l'header `X-Agent-Identity` firmato da Laravel:
+non è sufficiente inviare soltanto il corpo della richiesta tramite `/docs`.
 
-Il client Laravel è configurato per chiamare l'API tramite `FASTAPI_URL`;
-impostare nel file `frontend\.env`:
+## Integrazione
 
-```dotenv
-FASTAPI_URL=http://127.0.0.1:8001
-```
+- `POST /chat/travel-agent/stream`: risposta testuale in streaming, usata
+  dall'interfaccia.
+- `POST /chat/travel-agent`: restituisce i messaggi con la risposta aggiunta.
+- Le chiamate dal bot all'API interna Laravel includono un token condiviso e
+  l'identità firmata dell'utente; il gestionale limita i dati a quell'utente.
 
-Per usare il client locale con la configurazione CORS attuale, servirlo sulla
-porta `8000` (`http://127.0.0.1:8000` o `http://localhost:8000`).
+In caso di errore durante la generazione, il backend può restituire un
+messaggio di errore nel contenuto della risposta. I servizi interni non devono
+essere esposti pubblicamente; la configurazione di sviluppo non è una guida
+completa al deployment.
 
-## Endpoint chat
-
-### `POST /chat/travel-agent/stream`
-
-Accetta lo stesso corpo della richiesta dell'endpoint seguente e risponde con
-`text/plain` in streaming: vengono inviati solo i token di testo generati
-dall'agente, mentre le chiamate e i risultati dei tool sono scartati. Gli errori
-sono restituiti come testo nello stream.
-
-### `POST /chat/travel-agent`
-
-Esempio di richiesta:
-
-```json
-{
-  "messages": [
-    {
-      "type": "human",
-      "content": "Vorrei organizzare un viaggio a Roma."
-    }
-  ]
-}
-```
-
-La risposta è una lista di messaggi: i messaggi inviati nella richiesta e la
-risposta generata dall'agente. Per provare l'endpoint, è possibile usare la
-pagina `/docs` dopo aver avviato il server.
-
-## Struttura del codice
+## Struttura e test
 
 ```text
 src/travel_agent_api/
-├── main.py                  # App FastAPI, CORS e registrazione del router
-├── routes/chat_router.py    # Endpoint della chat e modello della richiesta
-├── services/agent_service.py # Configurazione ed esecuzione dell'agente
-└── tools/
-    ├── chain_travel_plan.py
-    ├── chain_historical_expert.py
-    ├── flights_finder.py
-    └── hotels_finder.py
+├── main.py                 App FastAPI
+├── agent_identity.py       Verifica dell'identità e header interni
+├── routes/                 Endpoint chat
+├── services/               Configurazione dell'agente
+└── tools/                  Strumenti per ricerca, esempi e itinerari
+tests/                      Test dell'identità e degli esempi condivisi
 ```
 
-Le funzioni degli strumenti sono registrate come tool LangChain e vengono
-selezionate dall'agente in base alla richiesta dell'utente.
+Da `backend`:
 
-## Tracing e verifiche
+```powershell
+poetry run python -m unittest discover -s tests
+```
 
-Sono presenti istruzioni `print` nei principali passaggi del router, dell'agente
-e degli strumenti, utili per seguire l'esecuzione durante lo sviluppo. I log
-appaiono nel terminale in cui è avviato Uvicorn. Evitare di stampare o
-condividere chiavi API e altri dati sensibili.
-
-La cartella `tests` al momento non contiene test applicativi: gli endpoint
-possono essere provati manualmente tramite `/docs`.
-
-## Evoluzioni previste
-
-Singleton dell'agente, alleggerimento delle risposte SerpApi, autenticazione
-condivisa con Laravel e rate limiting, integrazione con il database dei
-fornitori e degli itinerari: vedi la sezione "To Do" del
-[README generale](../README.md).
-
-## Note
-
-- Le ricerche esterne dipendono dalla disponibilità e dalla configurazione di
-  SerpApi.
-- Le risposte dell'agente dipendono dalla disponibilità e dalla configurazione
-  di OpenAI.
-- Il CORS è impostato per gli indirizzi locali del client Laravel sulla porta
-  `8000`; aggiornare la configurazione in `src/travel_agent_api/main.py` se il
-  client viene servito da un'origine diversa.
+I test presenti usano mock per i servizi esterni; non sostituiscono una prova
+reale della chat con le chiavi configurate.

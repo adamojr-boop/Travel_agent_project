@@ -4,12 +4,23 @@
     <div class="card ragsy-card p-4" style="background-color: var(--lavender-veil); border: 1px solid var(--lilac-ash);">
         <div class="d-flex justify-content-between align-items-start">
             <h2 class="mb-1" style="color: var(--text-dark);">Gestione Fornitori</h2>
-            <button type="button" wire:click="$toggle('mostraForm')" class="btn btn-sm text-white fw-bold" style="background-color: var(--text-dark);"><i class="bi bi-plus-circle"></i> Nuovo fornitore</button>
+            @unless($mostraForm)
+                <button type="button" wire:click="toggleForm" class="btn btn-sm text-white fw-bold" style="background-color: var(--text-dark);"><i class="bi bi-plus-circle"></i> Nuovo fornitore</button>
+            @endunless
         </div>
         @if($mostraForm)
             <form wire:submit="salvaFornitore" class="row g-2 my-3 p-3 rounded-3 bg-white" style="border: 1px solid var(--lilac-ash);">
+                <div class="col-12"><h3 class="h6 fw-bold mb-1">Aggiungi fornitore</h3></div>
                 <div class="col-md-4"><input wire:model="nuovoNome" type="text" class="form-control form-control-sm" placeholder="Nome *">@error('nuovoNome')<small class="text-danger">{{ $message }}</small>@enderror</div>
-                <div class="col-md-2"><input wire:model="nuovoAmbito" type="text" class="form-control form-control-sm" placeholder="Ambito *"></div>
+                <div class="col-md-2">
+                    <select id="nuovoAmbito" wire:model="nuovoAmbito" class="form-select form-select-sm" aria-label="Ambito" required>
+                        <option value="">Ambito *</option>
+                        @foreach($ambiti as $valore => $etichetta)
+                            <option value="{{ $valore }}">{{ $etichetta }}</option>
+                        @endforeach
+                    </select>
+                    @error('nuovoAmbito')<small class="text-danger">{{ $message }}</small>@enderror
+                </div>
                 <div class="col-md-3"><input wire:model="nuovaCitta" type="text" class="form-control form-control-sm" placeholder="Città"></div>
                 <div class="col-md-3">
                     <select wire:model="nuovaRegione" class="form-select form-select-sm">
@@ -18,7 +29,10 @@
                     </select>
                 </div>
                 <div class="col-12"><textarea wire:model="nuovaDescrizione" rows="2" class="form-control form-control-sm" placeholder="Descrizione"></textarea></div>
-                <div class="col-12 text-end"><button type="submit" class="btn btn-sm btn-success">Salva</button></div>
+                <div class="col-12 d-flex justify-content-end gap-2">
+                    <button type="button" wire:click="annullaInserimento" class="btn btn-sm btn-outline-secondary">Annulla</button>
+                    <button type="submit" class="btn btn-sm btn-success">Salva</button>
+                </div>
             </form>
         @endif
         <p class="mb-0" style="color: var(--text-dark);">Elenco dei partner e fornitori di servizi, suddivisi per ambito operativo.</p>
@@ -31,8 +45,8 @@
                 <label for="ambitoFilter" class="form-label small fw-bold" style="color: var(--text-dark);">Filtra per Ambito</label>
                 <select wire:model.live="ambitoFilter" id="ambitoFilter" class="form-select" style="background-color: #ffffff; border-color: var(--lilac-ash); color: var(--text-dark);">
                     <option value="">Tutti gli ambiti</option>
-                    @foreach($ambiti as $ambito)
-                        <option value="{{ $ambito }}">{{ $ambito }}</option>
+                    @foreach($ambiti as $valore => $etichetta)
+                        <option value="{{ $valore }}">{{ $etichetta }}</option>
                     @endforeach
                 </select>
             </div>
@@ -59,8 +73,8 @@
                         <div class="card-body d-flex flex-column p-4">
                             <div class="d-flex justify-content-between align-items-start mb-3">
                                 <h4 class="card-title fw-bold mb-0" style="color: var(--text-dark);">{{ $fornitore->nome }}</h4>
-                                <span class="badge px-3 py-2" style="background-color: var(--lavender-veil); color: var(--text-dark); border: 1px solid var(--lilac-ash);">
-                                    {{ $fornitore->ambito }}
+                                <span class="badge px-3 py-2 fornitore-ambito fornitore-ambito-{{ match($fornitore->ambito_etichetta) { 'Hotel' => 'hotel', 'Transfers' => 'transfers', 'Tours' => 'tours', default => 'altro' } }}">
+                                    {{ $fornitore->ambito_etichetta }}
                                 </span>
                             </div>
                             
@@ -68,12 +82,7 @@
                                 @if($fornitore->citta)
                                     <div class="text-muted mb-2"><i class="bi bi-geo-alt"></i> {{ $fornitore->citta }}</div>
                                 @endif
-                                <select wire:change="setRegione({{ $fornitore->id }}, $event.target.value)" class="form-select form-select-sm" aria-label="Regione di {{ $fornitore->nome }}" style="background-color: #ffffff; border-color: var(--lilac-ash); color: var(--text-dark);">
-                                    <option value="">Regione non assegnata</option>
-                                    @foreach($regioni as $r)
-                                        <option value="{{ $r->id }}" @selected($fornitore->regione_id === $r->id)>{{ $r->nome }}</option>
-                                    @endforeach
-                                </select>
+                                <div class="text-muted"><i class="bi bi-map"></i> {{ $fornitore->regione?->nome ?? 'Regione non assegnata' }}</div>
                                 <div class="text-end mt-2">
                                     <button type="button" wire:click="eliminaFornitore({{ $fornitore->id }})" wire:confirm="Eliminare {{ $fornitore->nome }}?" class="btn btn-link btn-sm text-danger p-0"><i class="bi bi-trash"></i> Elimina</button>
                                 </div>

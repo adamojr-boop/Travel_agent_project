@@ -14,7 +14,7 @@ class Itinerario extends Model
     // Aggiunto 'type' tra i campi mass-assignable
     protected $fillable = [
         'type', 'titolo', 'descrizione', 'prezzo', 'durata_giorni',
-        'codice', 'data_inizio', 'data_fine', 'notti', 'persone', 'valuta', 'stato',
+        'codice', 'data_inizio', 'data_fine', 'notti', 'persone', 'valuta', 'stato', 'user_id',
     ];
 
     protected $casts = ['data_inizio' => 'date', 'data_fine' => 'date'];

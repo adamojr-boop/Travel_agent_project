@@ -15,7 +15,7 @@
 
     @vite(['resources/css/app.css' , 'resources/js/app.js'])
   </head>
-  <body data-bs-theme="dark">
+  <body data-bs-theme="light">
     <div class="d-block d-sm-flex">
       
       <x-sidebar/>

@@ -7,6 +7,7 @@ use App\Models\Fornitore;
 use App\Models\Itinerario;
 use App\Support\RegioniItinerario;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 
 class ItinerariEdit extends Component
@@ -30,7 +31,7 @@ class ItinerariEdit extends Component
             return;
         }
 
-        $it = Itinerario::with('giorni.servizi')->findOrFail($id);
+        $it = Itinerario::with('giorni.servizi')->where('user_id', auth()->id())->findOrFail($id);
         $this->itinerarioId = $it->id;
         $this->type = $it->type ?? 'trip';
         $this->titolo = $it->titolo;
@@ -129,6 +130,7 @@ class ItinerariEdit extends Component
             'giorni.*.servizi.*.tipo' => 'required|in:' . implode(',', ItinerarioController::TIPI_SERVIZIO),
             'giorni.*.servizi.*.titolo' => 'required|string|max:255',
             'giorni.*.servizi.*.prezzo_a_persona' => 'nullable|numeric|min:0',
+            'giorni.*.servizi.*.fornitore_id' => ['nullable', Rule::exists('fornitori', 'id')->where('user_id', auth()->id())],
         ]);
 
         $it = DB::transaction(function () {
@@ -146,8 +148,8 @@ class ItinerariEdit extends Component
             ];
 
             $it = $this->itinerarioId
-                ? tap(Itinerario::findOrFail($this->itinerarioId))->update($dati)
-                : Itinerario::create($dati + ['prezzo' => 0]);
+                ? tap(Itinerario::where('user_id', auth()->id())->findOrFail($this->itinerarioId))->update($dati)
+                : Itinerario::create($dati + ['prezzo' => 0, 'user_id' => auth()->id()]);
 
             $it->giorni()->delete();
 
@@ -195,7 +197,7 @@ class ItinerariEdit extends Component
     {
         return view('livewire.itinerari-edit', [
             'tipiServizio' => ItinerarioController::TIPI_SERVIZIO,
-            'tuttiIFornitori' => Fornitore::orderBy('nome')->get(['id', 'nome']),
+            'tuttiIFornitori' => Fornitore::where('user_id', auth()->id())->orderBy('nome')->get(['id', 'nome']),
         ])->layout('components.layout');
     }
 }

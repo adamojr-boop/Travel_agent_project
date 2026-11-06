@@ -1,53 +1,42 @@
-# Travel Agent – Frontend
+# Planner Helper — Frontend
 
-Client web del progetto Travel Agent, realizzato con Laravel 11, Livewire 3,
-Vite, Bootstrap e Tailwind. Contiene la chat con l'agente AI e un gestionale
-per itinerari e fornitori. Le regioni restano disponibili come dati associati
-agli itinerari, senza una pagina dedicata. Per la panoramica del progetto e
-l'avvio completo vedi il [README generale](../README.md).
+Applicazione web Laravel 11 e Livewire 3: gestisce accesso, chat, itinerari,
+fornitori e PDF. Per installazione completa e configurazione condivisa vedi il
+[README generale](../README.md).
 
-## Funzionalità
+## Funzioni
 
-- **Chat** (`/`): componente Livewire [Chatbot](./app/Livewire/Chatbot.php) che
-  invia la conversazione all'API FastAPI (`POST /chat/travel-agent/stream`) e
-  mostra la risposta in streaming; le risposte sono rese in Markdown
-  (`spatie/laravel-markdown`).
-- **Itinerari** (`/itinerari`, `/itinerari/{id}`, `/itinerari/{id}/edit`):
-  elenco con filtri (prezzo massimo, durata minima, regione), dettaglio,
-  modifica ed eliminazione; ogni itinerario ha regioni, fornitori e voci.
-- **Fornitori** (`/fornitori`): elenco gestito con Livewire. Le regioni si
-  selezionano, filtrano e visualizzano all'interno degli itinerari.
+- **Accesso:** registrazione con nome utente, password e codice d'invito;
+  login e logout. Non è disponibile il recupero automatico della password.
+- **Chat:** conversazioni persistenti, titoli modificabili, cronologia con
+  chat fissate e risposte dell'agente in streaming, rese in Markdown.
+- **Itinerari:** elenco filtrabile per tipologia, regione e fornitore,
+  dettaglio, modifica, eliminazione, stato bozza/confermato ed esportazione
+  PDF con dompdf.
+- **Fornitori:** inserimento ed eliminazione, ricerca e filtri per ambito e
+  regione. Le regioni sono dati di supporto, non una vista separata.
 
-Le route sono definite in [routes/web.php](./routes/web.php).
-
-## Modello dati
-
-Tabelle principali: `regioni`, `itinerari`, `fornitori`, `itinerario_voci` e le
-tabelle pivot `itinerario_regione` e `itinerario_fornitore`. Migrazioni e seeder
-sono in `database/`.
+Chat, itinerari e fornitori appartengono all'utente autenticato. I dati
+preesistenti senza proprietario vengono assegnati al primo utente registrato.
+Il bot accede al database tramite le API interne, non direttamente.
 
 ## Struttura
 
 ```text
-app/
-├── Http/Controllers/   # ChatController (vista della chat) e altri controller
-├── Livewire/           # Chatbot, Itinerari*, Fornitori*
-└── Models/             # Itinerario, ItinerarioVoce, Regione, Fornitore, User
-resources/views/        # Viste Blade e viste dei componenti Livewire
-routes/web.php          # Route dell'applicazione
-database/               # Migrazioni, seeder e factory
+app/Livewire/          Componenti delle pagine e della cronologia chat
+app/Http/              Controller e middleware
+app/Models/            Modelli delle conversazioni e del gestionale
+app/Support/           Identità dell'agente e logica di supporto
+resources/views/       Viste Blade, autenticazione e PDF
+resources/css/         Stili dell'interfaccia
+routes/                Route web e API interne
+database/              Migrazioni, seeder e dati iniziali
+tests/Feature/         Test applicativi
 ```
 
-## Requisiti
+## Installazione e dati iniziali
 
-- PHP 8.2 o superiore e Composer.
-- Node.js e npm.
-- Un database raggiungibile, configurato in `.env`.
-- API backend in esecuzione (vedi [README del backend](../backend/README.md)).
-
-## Installazione
-
-Dalla cartella `frontend`:
+Servono PHP 8.2+, Composer, Node.js/npm e un database. Da `frontend`:
 
 ```powershell
 composer install
@@ -56,38 +45,45 @@ php artisan key:generate
 npm install
 ```
 
-Configurare in `.env` i parametri del database (`DB_*`) e l'indirizzo
-dell'API:
-
-```dotenv
-FASTAPI_URL=http://127.0.0.1:8001
-```
-
-Quindi creare le tabelle ed eventualmente caricare i dati di esempio:
+Se `.env` esiste già, non sovrascriverlo. Configurare il database, `FASTAPI_URL`,
+`REGISTRATION_INVITE_CODE` e `INTERNAL_API_TOKEN` come indicato nel
+[README generale](../README.md). Il token interno deve essere identico nel
+backend; il codice d'invito deve essere diverso.
 
 ```powershell
 php artisan migrate
-php artisan db:seed
 ```
 
-## Avvio
+## Avvio manuale
 
-Per avviare frontend e backend insieme usare `start-dev.sh` dalla radice del
-progetto (vedi il [README generale](../README.md)). Per avviare solo il
-frontend:
+In terminali separati dalla cartella `frontend`:
 
 ```powershell
 php artisan serve --host=127.0.0.1 --port=8000
+```
+
+```powershell
+php artisan serve --host=127.0.0.1 --port=8002
+```
+
+```powershell
 npm run dev
 ```
 
-Aprire `http://127.0.0.1:8000`. Il backend accetta richieste CORS dalle
-origini `http://127.0.0.1:8000` e `http://localhost:8000`.
+Avviare anche FastAPI come descritto nel [README backend](../backend/README.md)
+e aprire `http://127.0.0.1:8000`. La porta 8002 è usata dal backend per le
+API interne quando il server di sviluppo sulla 8000 è occupato dalla chat.
+Per generare gli asset senza il server Vite usare `npm run build`.
+Se PowerShell blocca `npm.ps1` su Windows, usare `npm.cmd` negli stessi comandi.
 
-## Note
+## Verifiche
 
-- Il timeout della chiamata all'API della chat è di 120 secondi.
-- Le route non sono ancora protette da autenticazione.
-- Evoluzioni previste (persistenza della chat, integrazione con il database,
-  esportazione PDF, sicurezza): vedi la sezione "To Do" del
-  [README generale](../README.md).
+Da `frontend`:
+
+```powershell
+php artisan test
+npm run build
+```
+
+I test applicativi configurati dal progetto usano SQLite in memoria; non
+eseguire test puntando a un database con dati reali.

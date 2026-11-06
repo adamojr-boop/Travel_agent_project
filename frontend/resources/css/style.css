@@ -54,6 +54,66 @@ body {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
+.auth-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 460px;
+    padding: 24px;
+}
+
+.auth-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 20px;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.auth-content {
+    padding: 24px;
+    background-color: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.auth-content .form-control {
+    background-color: #ffffff;
+    border-color: var(--lilac-ash);
+    color: var(--text-dark);
+}
+
+.auth-submit {
+    --bs-btn-color: #ffffff;
+    --bs-btn-bg: var(--text-dark);
+    --bs-btn-border-color: var(--text-dark);
+    --bs-btn-hover-color: var(--text-dark);
+    --bs-btn-hover-bg: var(--lavender-2);
+    --bs-btn-hover-border-color: var(--lavender-2);
+    --bs-btn-active-color: var(--text-dark);
+    --bs-btn-active-bg: var(--lavender-2);
+    --bs-btn-active-border-color: var(--lavender-2);
+    font-weight: 700;
+}
+
+.auth-switch {
+    margin-top: 24px;
+    text-align: center;
+}
+
+.auth-switch a {
+    color: var(--text-dark);
+    font-weight: 700;
+}
+
 .dropzone-area {
     border: 2px dashed var(--lilac-ash);
     padding: 16px;
@@ -109,9 +169,17 @@ body {
 .sidebar {
     min-height: 100vh;
     padding-top: 12px;
+    padding-bottom: 20px;
     width: 170px;
     background-color: var(--lavender-veil);
     border-right: 1px solid var(--border-color);
+}
+
+.chat-history-title,
+.chat-history-action,
+.chat-history-title:hover,
+.chat-history-action:hover {
+    color: var(--text-dark);
 }
 
 /* Nasconde il messaggio in streaming finché non arriva il primo testo */
@@ -149,6 +217,40 @@ body {
 .itinerary-card {
     background-color: var(--bg-main);
     border: 1px solid var(--border-color);
+}
+
+.fornitore-ambito {
+    color: var(--text-dark);
+    border: 1px solid transparent;
+}
+
+.fornitore-ambito-hotel {
+    background-color: #f5dfa4;
+    border-color: #d3b766;
+}
+
+.fornitore-ambito-transfers {
+    background-color: #c6d2ed;
+    border-color: #9baed4;
+}
+
+.fornitore-ambito-tours {
+    background-color: #d3e6cf;
+    border-color: #a7c7a0;
+}
+
+.fornitore-ambito-altro {
+    background-color: #e9ecef;
+    border-color: #adb5bd;
+}
+
+.itinerary-detail-button {
+    --bs-btn-color: var(--text-dark);
+    --bs-btn-bg: #ffffff;
+    --bs-btn-border-color: var(--lilac-ash);
+    --bs-btn-hover-color: var(--text-dark);
+    --bs-btn-hover-bg: var(--lavender-2);
+    --bs-btn-hover-border-color: var(--dusty-mauve);
 }
 
 .sidebar .logo {
@@ -201,12 +303,35 @@ body {
     max-height: 90vh;
 }
 
+.chat-header {
+    padding: 6px 12px;
+    background-color: var(--lavender-veil);
+    border: 1px solid var(--border-color);
+    border-radius: 8px 8px 0 0;
+    border-bottom: 0;
+}
+
+.chat-title {
+    min-width: 0;
+}
+
+.chat-menu-toggle {
+    color: var(--text-dark);
+}
+
+.chat-menu-toggle:hover,
+.chat-menu-toggle:focus-visible,
+.chat-menu-toggle.show {
+    color: var(--text-dark);
+    background-color: var(--lavender-2);
+}
+
 .chat-input {
     display: flex;
     column-gap: 24px;
     padding: 16px;
     border-top: 1px solid var(--border-color);
-    background-color: var(--bg-main);
+    background-color: #ffffff;
 }
 
 .chat-input input {
@@ -214,7 +339,7 @@ body {
     padding: 10px 14px;
     border-radius: 8px;
     width: 100%;
-    background-color: var(--bg-card);
+    background-color: #ffffff;
     color: var(--text-dark);
     font-weight: 500;
 }
@@ -251,7 +376,7 @@ body {
     flex: 1;
     overflow-y: auto;
     padding: 16px;
-    background-color: var(--bg-main);
+    background-color: #ffffff;
 }
 
 .chat-box .chat-message {
